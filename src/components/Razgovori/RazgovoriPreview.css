@@ -1,0 +1,7 @@
+.rounded-lg {
+  border-radius: 10px;
+}
+
+.thumbnail-container {
+  cursor: pointer;
+}

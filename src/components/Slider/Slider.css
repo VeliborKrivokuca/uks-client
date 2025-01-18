@@ -1,0 +1,64 @@
+.tribine-slider {
+  position: relative;
+  width: 100%;
+  margin: 0 auto; /* Center the slider */
+  overflow: hidden;
+}
+
+.slider-title {
+  position: relative;
+  margin: 0 auto; /* Center the slider */
+  overflow: hidden;
+}
+
+.slider-image-wrapper {
+  position: relative;
+}
+
+.support-title {
+  padding-right: 1rem;
+  font-size: 2rem;
+}
+
+.support-description {
+  font-size: 1rem;
+}
+
+.slider-image {
+  object-fit: cover;
+  height: auto;
+}
+
+.gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    to top,
+    rgba(31, 55, 103, 0.8),
+    rgba(0, 58, 139, 0) 100%
+  );
+}
+
+.carousel-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+  text-align: left;
+}
+
+.width-90 {
+  width: 75%;
+  margin: 0 auto;
+}
+
+@media (max-width: 800px) {
+  .width-90 {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,18 @@
+.container {
+    max-width: 900px; /* optional, to center content */
+  }
+  
+  /* Use your brand’s primary color here */
+  .primary-color {
+    color: #2f2f8d; /* example purple/blue from your design */
+  }
+  
+  ul {
+    list-style: disc inside;
+    margin-left: 1rem; /* optional spacing */
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+  }
+  

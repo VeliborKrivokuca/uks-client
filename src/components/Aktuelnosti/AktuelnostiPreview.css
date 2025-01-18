@@ -1,0 +1,110 @@
+.blog-list-container {
+  margin: 0 auto;
+  padding: 20px;
+  width: 77%;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #00296b;
+}
+
+.blog-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin-bottom: 4rem;
+}
+
+.blog-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.blog-logo {
+  margin-right: 10px;
+}
+
+.blog-logo-img {
+  width: 40px;
+  height: 40px;
+}
+
+.blog-meta p {
+  margin: 0;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+.blog-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #00296b;
+  margin-bottom: 10px;
+}
+
+.blog-description {
+  font-size: 16px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.blog-footer {
+  text-align: right;
+}
+
+.details-button {
+  background-color: #00296b;
+  color: #ffffff;
+  text-transform: none;
+  font-size: 14px;
+}
+
+.title-primary {
+  color: #1a1675;
+}
+
+.blog-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.blog-image {
+  width: 500px;
+  object-fit: cover; /* Maintain aspect ratio */
+  display: block;
+}
+
+.blog-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Set a consistent height for the image */
+  overflow: hidden;
+}
+
+.blog-image {
+  width: 500px;
+  object-fit: cover; /* Ensures the image covers the entire container */
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(41, 71, 119, 0.879), transparent); /* Blue to transparent */
+  padding: 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.blog-title-overlay {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}

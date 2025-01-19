@@ -5,6 +5,7 @@ import "./RazgovoriPreview.css"; // Update the CSS file name if needed
 import noPhotoImage from "../../assets/no-photo.jpg";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const RazgovoriList = () => {
   const [razgovori, setRazgovori] = useState([]);
@@ -33,7 +34,7 @@ const RazgovoriList = () => {
 
     const fetchRazgovori = async () => {
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `/api/razgovori/language/${language}`
         );
         if (isMounted) {

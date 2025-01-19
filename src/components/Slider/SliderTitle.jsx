@@ -4,6 +4,7 @@ import axios from "axios";
 import "./Slider.css";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const SliderTitle = () => {
   const [slides, setSlides] = useState([]);
@@ -12,7 +13,7 @@ const SliderTitle = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await axios.get(`/api/slider/get/all`);
+        const response = await api.get(`/api/slider/get/all`);
         setSlides(response.data);
       } catch (error) {
         console.error("Error fetching tribine data:", error);

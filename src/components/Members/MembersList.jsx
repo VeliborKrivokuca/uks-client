@@ -48,7 +48,7 @@ function MembersList({ members, onProfileClick }) {
     // Fetch roles from the backend
     const fetchRoles = async () => {
       try {
-        const response = await axios.get(`/api/team/roles/${language}`);
+        const response = await api.get(`/api/team/roles/${language}`);
         const fetchedRoles = response.data.map((role) => role.role); // Assuming the backend returns [{ role: '...' }]
         setRoles(fetchedRoles);
       } catch (error) {

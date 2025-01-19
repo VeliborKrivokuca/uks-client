@@ -5,6 +5,7 @@ import image from "../../assets/logo-image.png";
 import "./AktuelnostiDetails.css";
 import noPhotoImage from "../../assets/no-photo.jpg";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const AktuelnostiDetails = () => {
   const { id } = useParams(); // Get blog ID from the URL
@@ -16,11 +17,11 @@ const AktuelnostiDetails = () => {
     const fetchBlogDetails = async () => {
       try {
         // Fetch blog details
-        const blogResponse = await axios.get(`/api/blogs/${id}`);
+        const blogResponse = await api.get(`/api/blogs/${id}`);
         setBlog(blogResponse.data);
 
         // Fetch images associated with the blog
-        const imagesResponse = await axios.get(
+        const imagesResponse = await api.get(
           `/api/blogs/${id}/images`
         );
         setImages(imagesResponse.data);

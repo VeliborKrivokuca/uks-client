@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Members.css"; // Include the CSS for styling
 import { API_BASE_URL } from "../../services/apiService";
 import { useLanguage } from "../../context/LanguageContext";
+import api from "../../services/api";
 
 const MembersPage = () => {
   const [members, setMembers] = useState([]); // State to store members
@@ -20,14 +21,14 @@ const MembersPage = () => {
       try {
         setLoading(true);
         // Fetch members
-        const membersResponse = await axios.get(
+        const membersResponse = await api.get(
           `/api/team/get/allTranslation/${language}`
         );
         console.log(membersResponse.data);
         setMembers(membersResponse.data.data || []);
 
         // Fetch roles
-        const rolesResponse = await axios.get(
+        const rolesResponse = await api.get(
           `/api/team/roles/${language}`
         );
         const fetchedRoles = rolesResponse.data.map((role) => role.role);

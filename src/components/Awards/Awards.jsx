@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const Awards = () => {
   const [awards, setAwards] = useState([]);
@@ -28,7 +29,7 @@ const Awards = () => {
   useEffect(() => {
     const fetchAwards = async () => {
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `/api/nagrade/language/${language}`
         );
         console.log(response.data);

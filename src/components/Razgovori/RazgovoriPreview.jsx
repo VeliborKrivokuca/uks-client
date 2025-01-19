@@ -7,6 +7,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
 import Slider from "../Slider/Slider";
 import Clients from "../Clients/Clients";
+import api from "../../services/api";
 
 const RazgovoriPreview = () => {
   const [razgovori, setRazgovori] = useState([]);
@@ -35,7 +36,7 @@ const RazgovoriPreview = () => {
 
     const fetchRazgovori = async () => {
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `/api/razgovori/language/${language}`
         );
         if (isMounted) {

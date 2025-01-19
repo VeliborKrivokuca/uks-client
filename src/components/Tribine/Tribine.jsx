@@ -6,6 +6,7 @@ import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const TribineList = () => {
   const [tribines, setTribines] = useState([]);
@@ -30,7 +31,7 @@ const TribineList = () => {
 
     const fetchTribines = async () => {
       try {
-        const response = await axios.get(`/api/tribine/language/${language}`);
+        const response = await api.get(`/api/tribine/language/${language}`);
         if (isMounted) {
           setTribines(response.data.data || []);
         }

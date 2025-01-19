@@ -6,6 +6,7 @@ import noPhotoImage from "../../assets/no-photo.jpg";
 import Clients from "../Clients/Clients";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const RazgovoriDetail = () => {
   const { id, lang } = useParams(); // Get the Razgovor ID and Language from the URL
@@ -31,7 +32,7 @@ const RazgovoriDetail = () => {
   useEffect(() => {
     const fetchRazgovorDetails = async () => {
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `/api/razgovori/detail/${id}`
         );
         setRazgovor(response.data);

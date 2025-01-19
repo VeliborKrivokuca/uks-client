@@ -3,6 +3,7 @@ import Carousel from "react-bootstrap/Carousel"; // Bootstrap Carousel
 import axios from "axios";
 import "./Slider.css";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const Slider = () => {
   const [slides, setSlides] = useState([]);
@@ -10,7 +11,7 @@ const Slider = () => {
   useEffect(() => {
     const fetchSlides = async () => {
       try {
-        const response = await axios.get(`/api/slider/get/all`);
+        const response = await api.get(`/api/slider/get/all`);
         setSlides(response.data);
       } catch (error) {
         console.error("Error fetching tribine data:", error);

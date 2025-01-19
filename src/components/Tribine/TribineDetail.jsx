@@ -4,7 +4,7 @@ import axios from "axios";
 import Clients from "../Clients/Clients";
 import "./TribineDetail.css";
 import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 
 const TribineDetail = () => {
   const { id } = useParams(); // Get the tribine ID from the route

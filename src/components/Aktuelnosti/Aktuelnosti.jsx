@@ -4,7 +4,6 @@ import axios from "axios";
 import "./Aktuelnosti.css"; // Add the CSS styles for this component.
 import image from "../../assets/logo-image.png";
 import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/apiService";
 import api from "../../services/api";
 
 const Aktuelnosti = () => {

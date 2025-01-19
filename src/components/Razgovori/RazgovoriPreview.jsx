@@ -4,7 +4,7 @@ import axios from "axios";
 import "./RazgovoriPreview.css"; // Update the CSS file name if needed
 import noPhotoImage from "../../assets/no-photo.jpg";
 import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 import Slider from "../Slider/Slider";
 import Clients from "../Clients/Clients";
 import api from "../../services/api";

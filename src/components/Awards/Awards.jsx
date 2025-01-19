@@ -4,7 +4,7 @@ import "./Awards.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward } from "@fortawesome/free-solid-svg-icons";
 import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 import api from "../../services/api";
 
 const Awards = () => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-bootstrap/Carousel"; // Bootstrap Carousel
 import axios from "axios";
 import "./Slider.css";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 import api from "../../services/api";
 
 const Slider = () => {

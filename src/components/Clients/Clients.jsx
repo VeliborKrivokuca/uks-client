@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Clients.css";
 import { getAllClients } from "../../services/apiService";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 
 const Clients = () => {
   const [clients, setClients] = useState([]);

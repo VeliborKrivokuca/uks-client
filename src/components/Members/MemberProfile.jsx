@@ -1,7 +1,7 @@
 import React from "react";
 import Clients from "../Clients/Clients";
-import { useLanguage } from "../../context/LanguageContext"; // Assuming you have a LanguageContext
-import { API_BASE_URL } from "../../services/apiService";
+import { useLanguage } from "../../context/LanguageContext";
+import { API_BASE_URL } from "../../services/api";
 
 const translations = {
   en: {

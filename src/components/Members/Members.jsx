@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import MembersList from "./MembersList";
 import MemberProfile from "./MemberProfile";
 import axios from "axios";
-import "./Members.css"; // Include the CSS for styling
-import { API_BASE_URL } from "../../services/apiService";
+import "./Members.css";
+import { API_BASE_URL } from "../../services/api";
 import { useLanguage } from "../../context/LanguageContext";
 import api from "../../services/api";
 

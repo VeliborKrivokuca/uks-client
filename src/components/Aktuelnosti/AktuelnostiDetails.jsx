@@ -4,7 +4,7 @@ import axios from "axios";
 import image from "../../assets/logo-image.png";
 import "./AktuelnostiDetails.css";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 import api from "../../services/api";
 
 const AktuelnostiDetails = () => {

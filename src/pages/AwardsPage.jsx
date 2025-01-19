@@ -24,6 +24,7 @@ const AwardsPage = () => {
 
   return (
     <div className="page">
+      <div className="background-container"></div>
       <Clients></Clients>
       <Slider></Slider>
       <div className="width-90 mx-auto mt-4">

@@ -24,6 +24,14 @@ h1 {
   line-height: 1.1;
 }
 
+.fs-8 {
+  font-size: 10px;
+}
+
+.fs-10 {
+  font-size: 10px;
+}
+
 .fs-12 {
   font-size: 12px;
 }
@@ -129,4 +137,24 @@ button:focus-visible {
 
 .w-70 {
   width: 73%;
+}
+
+.background-container {
+  height: 100vh;
+  position: absolute;
+  background-color: white; /* White background */
+  background-image: url('assets/wave-background.png'); /* Replace with your image URL */
+  background-repeat: repeat-y; /* Makes the image repeat */
+  background-position: center; /* Centers the repeating pattern */
+  background-size: 75%; /* Keeps the original size of the image */
+  width: 100%; /* Makes the background-container 90% of the viewport width */
+  margin: 0 auto; /* Centers the container horizontally */
+  z-index: -1;
+  opacity: 5%;
+}
+
+@media (max-width: 800px) {
+  .background-container {
+    background-size: 90%;
+  }
 }

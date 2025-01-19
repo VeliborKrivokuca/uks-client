@@ -3,7 +3,7 @@ import Carousel from "react-bootstrap/Carousel"; // Bootstrap Carousel
 import axios from "axios";
 import "./Slider.css";
 import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/apiService";
+import { API_BASE_URL } from "../../services/api";
 import api from "../../services/api";
 
 const SliderTitle = () => {

@@ -161,7 +161,7 @@ const Header = () => {
               className="h4 mt-2 primary-color me-2"
             />
             <div className="me-3">
-              <p className="label-small text-uppercase mb-0 fs-12 text-danger">{t.emailLabel}</p>
+              <p className="label-small text-uppercase mb-0 text-danger fs-8">{t.emailLabel}</p>
               <a
                 href="mailto:composas@gmail.com"
                 className="primary-color text-decoration-none text-uppercase mail fs-12"
@@ -177,7 +177,7 @@ const Header = () => {
               className="h4 mt-2 primary-color me-2"
             />
             <div className="">
-              <p className="label-small text-uppercase mb-0 fs-12 text-danger">{t.callUsLabel}</p>
+              <p className="label-small text-uppercase mb-0 fs-8 text-danger">{t.callUsLabel}</p>
               <a
                 href="tel:800-123-4567"
                 className="primary-color text-decoration-none text-uppercase mail fs-12"

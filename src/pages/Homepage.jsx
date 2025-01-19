@@ -14,6 +14,7 @@ import Aktuelnosti from "../components/Aktuelnosti/Aktuelnosti";
 import RazgovoriList from "../components/Razgovori/Razgovori";
 import AboutAssociationPreview from "../components/About/AboutAssociationPreview";
 import { useLanguage } from "../context/LanguageContext";
+import wave from "../assets/wave-background.png";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ const HomePage = () => {
 
   return (
     <div className="page">
+      <div className="background-container"></div>
       <Clients></Clients>
       <SliderTitle></SliderTitle>
       <div className="d-flex flex-wrap my-5 width-wrapper">

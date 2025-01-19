@@ -8,6 +8,7 @@ import Slider from "../Slider/Slider";
 import noPhotoImage from "../../assets/no-photo.jpg";
 import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/apiService";
+import api from "../../services/api";
 
 const Aktuelnosti = () => {
   const [blogs, setBlogs] = useState([]);
@@ -39,7 +40,7 @@ const Aktuelnosti = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get(
+        const response = await api.get(
           `/api/aktuelnosti/get/all/${language}`
         );
         const data = response.data;

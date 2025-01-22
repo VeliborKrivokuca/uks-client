@@ -58,7 +58,7 @@ function MembersList({ members, roles, onProfileClick }) {
       <Container className="mt-5">
         <Row>
           <Col>
-            <h2 className="title-color fw-bold">{t("members.sectionTitle")}</h2>
+            <h2 className="title-color">{t("members.sectionTitle")}</h2>
             <p className="mb-4 primary-color">
               {t("members.sectionDescription")}
             </p>

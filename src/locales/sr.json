@@ -264,10 +264,6 @@
             {
                 "name": "Nagrade",
                 "route": "nagrade"
-            },
-            {
-                "name": "Kontakt",
-                "route": "kontakt"
             }
         ]
     }

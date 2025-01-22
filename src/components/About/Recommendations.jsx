@@ -28,9 +28,9 @@ export default function Recommendations() {
         {/* Description & Links */}
         <Row className="my-4 primary-color">
           <Col>
-            <p className="primary-color text-xl fw-bold">
+            <h2 className="primary-color mb-3">
               {t("recommendations.subtitle")}
-            </p>
+            </h2>
             {links.map((link, index) => (
               <a
                 key={index}

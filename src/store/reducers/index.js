@@ -6,6 +6,7 @@ import tribineReducer from "./tribineReducer";
 import membersReducer from "./membersReducer";
 import sliderReducer from "./sliderReducer";
 import razgovoriReducer from "./razgovoriReducer";
+import pagesSlice from "../slices/pagesSlice";
 
 const rootReducer = combineReducers({
   awards: awardsReducer,
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   members: membersReducer,
   slider: sliderReducer,
   razgovori: razgovoriReducer,
+  pages: pagesSlice,
 });
 
 export default rootReducer;

@@ -53,7 +53,9 @@ const SliderTitle = () => {
                       />
                       <div className="gradient-overlay rounded"></div>
                       <Carousel.Caption>
-                        <h3 className="text-center">{slide.acTitle}</h3>
+                        <h3 className="text-center text-white">
+                          {slide.acTitle}
+                        </h3>
                       </Carousel.Caption>
                     </div>
                   </Carousel.Item>

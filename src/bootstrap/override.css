@@ -15,13 +15,13 @@
 }
 
 .ck-editor-text ul,
-li,
-p,
-a,
-h1,
-h2,
-h3,
-h4,
-h5 {
+.ck-editor-text li,
+.ck-editor-text p,
+.ck-editor-text a,
+.ck-editor-text h1,
+.ck-editor-text h2,
+.ck-editor-text h3,
+.ck-editor-text h4,
+.ck-editor-text h5 {
   color: var(--color-primary) !important;
 }

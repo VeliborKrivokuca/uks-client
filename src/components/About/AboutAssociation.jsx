@@ -18,7 +18,7 @@ export default function AboutAssociation() {
         {/* Title */}
         <Row className="my-4">
           <Col>
-            <h2 className="mb-4 title-color">{t("about.title")}</h2>
+            <h2 className="mb-4 title-color border-bottom-primary pb-3">{t("about.title")}</h2>
           </Col>
         </Row>
 

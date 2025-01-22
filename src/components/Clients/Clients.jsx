@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { getAllClients } from "../../services/apiService";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllClients } from "../../store/slices/pagesSlice";
 import { API_BASE_URL } from "../../services/api";
 import "./Clients.css";
 
 const Clients = () => {
-  const [clients, setClients] = useState([]);
+  const dispatch = useDispatch();
+  const { clients, loading, error } = useSelector((state) => state.pages);
 
   useEffect(() => {
-    const fetchClients = async () => {
-      try {
-        const data = await getAllClients();
-        setClients(data);
-      } catch (error) {
-        console.error("Error fetching clients:", error);
-      }
-    };
+    dispatch(fetchAllClients());
+  }, [dispatch]);
 
-    fetchClients();
-  }, []);
+  if (loading) {
+    return <p>Loading clients...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <Container className="my-4">

@@ -21,7 +21,7 @@ export default function AboutUs() {
         {/* Title & Subtitle */}
         <Row>
           <Col>
-            <h1 className="text-start title-color fw-bold border-bottom-primary pb-3">{t("about.title")}</h1>
+            <h1 className="text-start title-color border-bottom-primary pb-3">{t("about.title")}</h1>
           </Col>
         </Row>
 

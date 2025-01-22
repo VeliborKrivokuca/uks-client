@@ -48,7 +48,7 @@ const StatsSection = () => {
               md={3}
               className="text-center d-flex flex-column align-items-center"
             >
-              <div className="stat-item">
+              <div className="stat-item text-white">
                 <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
                 <p className="stat-number">{stat.number}</p>
                 <p className="stat-label">{stat.label}</p>

@@ -134,7 +134,7 @@ const TribineDetail = () => {
               <Col xs={12} lg="auto" className="px-0">
                 <h1 className="secondary-color">{tribine.tribine?.title}</h1>
               </Col>
-              <Col xs={12} lg="auto">
+              <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
                 <h1 className="secondary-color">{monthAndYear}</h1>
               </Col>
             </Row>

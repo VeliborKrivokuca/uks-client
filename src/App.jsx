@@ -2,24 +2,27 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/Homepage";
-import Aktuelnosti from "./pages/Aktuelnosti";
 import { getAllPages } from "./services/apiService";
 import Footer from "./components/Footer/Footer";
 import AwardsPage from "./pages/AwardsPage";
 import MembersPage from "./components/Members/Members";
 import AboutAssociation from "./components/About/AboutAssociation";
 import AboutUs from "./components/About/AboutUs";
-import AktuelnostiPage from "./pages/Aktuelnosti";
 import AktuelnostiDetails from "./components/Aktuelnosti/AktuelnostiDetails";
 import TribineList from "./components/Tribine/Tribine";
 import TribineDetail from "./components/Tribine/TribineDetail";
 import AktuelnostiPreview from "./components/Aktuelnosti/AktuelnostiPreview";
-import { LanguageProvider } from "./context/LanguageContext"; // Adjust the path
 import RazgovoriPreview from "./components/Razgovori/RazgovoriPreview";
 import RazgovoriDetail from "./components/Razgovori/RazgovoriDetails";
 import LegalDocuments from "./components/About/LegalDocuments";
 import AdmissionRegulations from "./components/About/AdmissionRegulations";
 import Recommendations from "./components/About/Recommendations";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./i18n";
+import { Provider } from "react-redux";
+import store from "./store/store";
+import MemberProfilePage from "./components/Members/MemberProfile";
+import NotFoundPage from "./components/NotFound/NotFound";
 
 const App = () => {
   const [pages, setPages] = useState([]);
@@ -38,11 +41,11 @@ const App = () => {
   }, []);
 
   const formatRoute = (name) => {
-    return name.toLowerCase().replace(/\s+/g, "-"); // Replace spaces with dashes
+    return name.toLowerCase().replace(/\s+/g, "-");
   };
 
   return (
-    <LanguageProvider>
+    <Provider store={store}>
       <Router>
         <Header pages={pages} />
         <Routes>
@@ -50,6 +53,7 @@ const App = () => {
           <Route path="/aktuelnosti" element={<AktuelnostiPreview />} />
           <Route path="/nagrade" element={<AwardsPage />} />
           <Route path="/clanovi" element={<MembersPage />} />
+          <Route path="/clanovi/:id" element={<MemberProfilePage />} />
           <Route path="/o-udruženju" element={<AboutAssociation />} />
           <Route path="/o-nama" element={<AboutUs />} />
           <Route path="/pravni-dokumenti" element={<LegalDocuments />} />
@@ -63,10 +67,11 @@ const App = () => {
           <Route path="/tribine/:id" element={<TribineDetail />} />
           <Route path="/razgovori" element={<RazgovoriPreview />} />
           <Route path="/razgovori/:id" element={<RazgovoriDetail />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
       </Router>
-    </LanguageProvider>
+    </Provider>
   );
 };
 

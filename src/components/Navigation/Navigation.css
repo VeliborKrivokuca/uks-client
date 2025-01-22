@@ -1,0 +1,29 @@
+.tabs-orange {
+  background-color: #ee6c4d;
+}
+
+.tabs-darkblue {
+  background-color: #293241;
+}
+
+.tabs-blue {
+  background-color: #3d5a80;
+}
+
+.tabs-lightblue {
+  background-color: #e0fbfc;
+}
+
+.tabs {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.tab-image {
+  position: absolute;
+  bottom: -13px;
+  right: -10px;
+  max-width: 200px;
+}

@@ -1,52 +1,13 @@
-.tribine-detail {
-  padding: 20px;
-}
-
 .detail-thumbnail {
   width: 100%;
-  margin-bottom: 3rem;
-  display: block;
   border-radius: 5px;
-}
-
-.tabs {
-  min-width: fit-content;
-  padding-right: 1.5rem;
-}
-
-.tabs button {
-  padding: 10px 20px;
-  height: 4rem;
-  width: 10rem;
-  border: none;
   display: block;
-  background-color: #EDF2FC;
-  box-shadow: 3px 10px 10px rgba(42, 42, 82, 0.438);
-  cursor: pointer;
-  color: #3D5A80;
-  border-radius: 5px;
-  margin: 1.5rem 0;
-}
-
-.tabs button.active {
-  background-color: #2a5078;
-  color: white;
 }
 
 .tab-content {
-  padding: 20px;
-  border-radius: 5px;
+  background-color: #fff;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.gallery-image {
-  margin: 1rem 1rem 1rem 0;
-  width: 300px;
-  object-fit: cover;
-  border-radius: 5px;
+.title-color {
+  color: #2a5078;
 }

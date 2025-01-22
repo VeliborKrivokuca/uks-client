@@ -1,0 +1,274 @@
+{
+    "header": {
+        "emailLabel": "Pošaljite nam email",
+        "callUsLabel": "Pozovite nas",
+        "searchPlaceholder": "Pretraga...",
+        "mail": "composas@gmail.com",
+        "phone": "800-123-4567",
+        "menuItems": [
+            {
+                "id": "1",
+                "name": "Aktuelnosti",
+                "parentId": null,
+                "route": "aktuelnosti"
+            },
+            {
+                "id": "2",
+                "name": "O udruženju",
+                "parentId": null,
+                "route": "o-udruženju"
+            },
+            {
+                "id": "3",
+                "name": "Članovi",
+                "parentId": null,
+                "route": "clanovi"
+            },
+            {
+                "id": "4",
+                "name": "Razgovori",
+                "parentId": null,
+                "route": "razgovori"
+            },
+            {
+                "id": "5",
+                "name": "Tribine",
+                "parentId": null,
+                "route": "tribine"
+            },
+            {
+                "id": "17",
+                "name": "Nagrade",
+                "parentId": null,
+                "route": "nagrade"
+            },
+            {
+                "id": "18",
+                "name": "O nama",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "19",
+                "name": "Pravni dokumenti",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
+            },
+            {
+                "id": "20",
+                "name": "Pravilnik o prijemu",
+                "parentId": "2",
+                "route": "pravilnik-o-prijemu"
+            },
+            {
+                "id": "21",
+                "name": "O udruženju",
+                "parentId": "2",
+                "route": "o-udruženju"
+            },
+            {
+                "id": "22",
+                "name": "Preporuke",
+                "parentId": "2",
+                "route": "preporuke"
+            }
+        ]
+    },
+    "info": {
+        "loading": "Učitavanje...",
+        "error": "Greška prilikom dohvatanja podataka",
+        "noData": "Nema informacija za prikazivanje"
+    },
+    "home": {
+        "members": "Naši članovi",
+        "news": "Aktuelnosti",
+        "tribunes": "Tribine",
+        "talks": "Razgovori",
+        "allTalks": "Svi razgovori",
+        "awards": "Nagrade",
+        "allAwards": "Sve nagrade",
+        "allNews": "Sve aktuelnosti"
+    },
+    "news": {
+        "title": "Aktuelnosti",
+        "subtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
+        "metaAuthor": "Udruženje kompozitora Srbije",
+        "details": "Više detalja →",
+        "composers": "Udruženje kompozitora Srbije",
+        "noBlogs": "Nema dostupnih aktuelnosti"
+    },
+    "gallery": {
+        "title": "Galerija",
+        "imageAlt": "Slika iz galerije bloga",
+        "noImages": "Nema dostupnih slika"
+    },
+    "recommendations": {
+        "title": "Preporuke",
+        "subtitle": "Preporuka minimalne vrednosti narudžbine ozbiljne (seriozne) muzike",
+        "description": "Priložena tabela o minimalnoj vrednosti narudžbina seriozne muzike stoji kao zvanična preporuka Udruženja kompozitora Srbije i pruža validan kompas o vrednosti svake narudžbine, kao i količini znanja, iskustva, truda, rada i vremena koje neimnovno biva uloženo u stvaranje svake kompozicije. Tabela prikazuje minimalnu odgovarajuću naknadu, dok složenost dela, stručnost i reputacija kompozitora, potrebna hitnost ili posebni zahtevi narudžbine mogu rezultirati većim honorarom. Vrednosti su predstavljene kroz procente u odnosu na minimalnu zaradu u Republici Srbiji, te se podrazumeva da je važno ažuriranje pri svakoj upotrebi. Etička obaveza svih aktera u narudžbini je da se unapred, otvoreno predstave svi navedeni, dodatni i propratni troškovi, koji su uslovljeni stvaranjem jednog zvučnog umetničkog dela, pre dogovaranja svakog vida saradnje.",
+        "links": [
+            {
+                "text": "UKS Obrazac za narudžbinu",
+                "href": "#"
+            },
+            {
+                "text": "UKS Narudžbine",
+                "href": "#"
+            }
+        ]
+    },
+    "members": {
+        "allRoles": "Svi",
+        "loading": "Učitavanje članova...",
+        "errorLoading": "Greška prilikom učitavanja podataka. Molimo pokušajte ponovo.",
+        "sectionTitle": "NAŠI ČLANOVI",
+        "sectionDescription": "Sekcija za članove udruženja pruža uvid u profile naših kompozitora, njihove biografije, dela i doprinose srpskoj muzičkoj sceni, ističući značaj njihovog stvaralaštva i uloge u očuvanju naše muzičke tradicije.",
+        "chooseSection": "Odaberite sekciju",
+        "chooseName": "Upišite ime i prezime",
+        "chooseNamePlaceholder": "Upišite ime",
+        "picture": "Slika",
+        "name": "Ime i prezime",
+        "role": "Uloga",
+        "profile": "Profil",
+        "profileButton": "Profil"
+    },
+    "talks": {
+        "title": "Razgovori",
+        "subtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
+        "noTalks": "Trenutno nema dostupnih razgovora.",
+        "noImage": "Nema dostupne slike",
+        "viewText": "Ceo tekst"
+    },
+    "tribine": {
+        "title": "Tribine",
+        "noTribines": "Nema dostupnih tribina za izabrani jezik.",
+        "noThumbnail": "Nema dostupnog thumbnail-a"
+    },
+    "about": {
+        "title": "O nama",
+        "subtitle": "Udruženje kompozitora Srbije",
+        "boardTitle": "Udruženje kompozitora Srbije",
+        "president": "Rade Radivojević, predsednik",
+        "description1": "Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja –1945. godine, do sada, predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u oblasti popularnog žanra.",
+        "vicePresident": "Svetlana Savić, potpredsednik",
+        "executiveBoard": "Članovi Upravnog odbora:",
+        "members": "Udruženje kompozitora Srbije ima 330 članova podeljenih u tri sekcije: Kompozitori ozbiljne muzike, Kompozitori džeza i popularne muzike, Muzički pisci (muzikolozi i etnomuzikolozi). Udruženje kompozitora Srbije ulaže veliku energiju da srpsku muziku učini:",
+        "visible": "VIDLJIVOM",
+        "accessible": "DOSTUPNOM",
+        "present": "PRISUTNOM",
+        "visibleDesc": "tako što promoviše dela svojih članova, organizuje muzičke događaje na kojima se daje značaj i izvodi muzika svojih istaknutih članova...",
+        "accessibleDesc": "tako što objavljuje partiture, CDove...",
+        "presentDesc": "tako što čini sve da dela kompozitora, članova Udruženja budu na repertoaru simfonijskih orkestara...",
+        "conclusion": "da njihova muzika živi na koncertnom podijumu, da bude snimljena i emitovana na radiju i televiziji, da podstakne pisanje komentara u stručnim časopisima, novinama i na portalima posvećenim muzici...",
+        "executiveMembers": [
+            "Ana Gnjatović, Vladimir Korać, Svetlana Savić, Tatjana Milošević Mijanović, Aleksandar Filipović, Dragoljub Ilić, Nevenka Leković, Rade Radivojević, Biljana Leković, Ivana Miladinović Prica, Ivana Petković Lozo"
+        ],
+        "supervisoryBoard": "Članovi Nadzornog odbora:",
+        "supervisoryMembers": [
+            "Milorad Marinković, Damjan Jovičin, Vladan Vučković Paja"
+        ],
+        "statusCommittee": "Statusna komisija:",
+        "statusMembers": [
+            "Rade Radivojević, Miroslav-Miša Savić, Katarina Lazarević Vladan Vučković Paja, Dragomir Milenković"
+        ],
+        "coordinator": "Predstavnik UKS-a u Koordinacionom odboru umetničkih udruženja je Dragomir Milenković."
+    },
+    "legalDocuments": {
+        "title": "Pravni dokumenti",
+        "subtitle": "Udruženje kompozitora Srbije",
+        "description": "Klikom na željeni link ispod možete preuzeti aktuelne verzije pravnih dokumenata Udruženja kompozitora Srbije:",
+        "links": [
+            {
+                "text": "Udruženje kompozitora Srbije – Statut 25.10.2022. (PDF)",
+                "href": "statut-25-10-2022.pdf"
+            },
+            {
+                "text": "Udruženje kompozitora Srbije – Poslovnik o radu Skupštine 16.10.2022. (PDF)",
+                "href": "poslovnik-16-10-2022.pdf"
+            }
+        ]
+    },
+    "admission": {
+        "title": "Pravilnik o prijemu",
+        "subtitle": "Udruženje kompozitora Srbije",
+        "description": "Klikom na link ispod možete preuzeti pravilnik u članstvo Udruženja kompozitora Srbije.",
+        "links": [
+            {
+                "text": "Pravilnik prijema u članstvo - UKS",
+                "href": "#"
+            }
+        ]
+    },
+    "awards": {
+        "awardTitle": "Nagrada",
+        "pageTitle": "Nagrade",
+        "moreInfo": "Više informacija",
+        "pageSubtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti."
+    },
+    "slider": {
+        "supportTitle": "Podrška kompozitorskoj umetnosti Srbije",
+        "supportDescription": "Posvećeni smo očuvanju, promociji i razvoju kompozitorske umetnosti u Srbiji, pružajući podršku našim stvaraocima i čuvajući muzičku tradiciju.",
+        "noSlides": "Nema dostupnih slajdera"
+    },
+    "aboutAssociation": {
+        "title": "O udruženju",
+        "subtitle": "Čuvamo tradiciju i inspirišemo budućnost srpske muzike",
+        "description": "Udruženje kompozitora Srbije posvećeno je promociji, očuvanju i razvoju kompozitorske umetnosti, pružajući podršku našim stvaraocima i negujući bogatstvo muzičke tradicije.",
+        "viewDetails": "Više detalja"
+    },
+    "stats": {
+        "satisfiedMembers": "Zadovoljnih članova",
+        "eventsOrganized": "Realizovanih događaja",
+        "yearsWithYou": "Godina smo uz vas",
+        "awardsGiven": "Dodeljenih nagrada"
+    },
+    "notFound": {
+        "title": "Ups!",
+        "description": "Stranica koju tražite ne postoji",
+        "back": "Povratak na početnu"
+    },
+    "error": {
+        "blogDetails": "Nisu pronaðeni detalji za ovu aktuelnosti"
+    },
+    "footer": {
+        "contactTitle": "Kontakt podaci",
+        "address": "Mišarska 12-14,",
+        "city": "11000 Beograd, Srbija",
+        "mailLabel": "Mail",
+        "phone": "Telefon",
+        "fax": "Fax",
+        "pagesTitle": "Stranice",
+        "socialMediaTitle": "Socijalne mreže",
+        "copyright": "Copyright © 2024. Udruženje kompozitora Srbije. Sva prava zadržava UKS",
+        "pages": [
+            {
+                "name": "Aktuelnosti",
+                "route": "aktuelnosti"
+            },
+            {
+                "name": "O udruženju",
+                "route": "o-udruženju"
+            },
+            {
+                "name": "Članovi",
+                "route": "clanovi"
+            },
+            {
+                "name": "Razgovori",
+                "route": "razgovori"
+            },
+            {
+                "name": "Tribine",
+                "route": "tribine"
+            },
+            {
+                "name": "Nagrade",
+                "route": "nagrade"
+            },
+            {
+                "name": "Kontakt",
+                "route": "kontakt"
+            }
+        ]
+    }
+}

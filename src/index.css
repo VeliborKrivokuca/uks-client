@@ -1,12 +1,36 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
-  all: unset;
+  font-size: 16px;
+
+  --font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif;
+
+  /* Primary Font Sizes (Scale) */
+  --font-size-2xs: 0.5rem; /* 10px  */
+  --font-size-xs: 0.75rem; /* 12px  */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem; /* 16px */
+  --font-size-lg: 1.25rem; /* 20px */
+  --font-size-xl: 1.5rem; /* 24px  */
+  --font-size-2xl: 2rem; /* 32px   */
+  --font-size-3xl: 3rem; /* 48px   */
+
+  /* Primary colors */
+  --color-primary: #3d5a80;
+  --color-secondary: #00296b;
+  --color-light-blue: #edf2fc;
+  --color-title: #1a1675;
+  --color-border: #1a1675;
 }
 
-body,
-html {
-  font-family: "Inter", system-ui, Avenir, Helvetica, Arial, sans-serif !important;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  font-size: var(--font-size-md); /* fallback for body text */
+  line-height: 1.5;
+  color: #333; /* or your default text color */
 }
 
 a {
@@ -24,16 +48,12 @@ h1 {
   line-height: 1.1;
 }
 
-.fs-8 {
-  font-size: 10px;
+.container {
+  transition: 0.5s ease-in-out;
 }
 
-.fs-10 {
-  font-size: 10px;
-}
-
-.fs-12 {
-  font-size: 12px;
+.cursor-pointer {
+  cursor: pointer;
 }
 
 button {
@@ -44,117 +64,17 @@ button {
   font-weight: 500;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.rounded-lg {
+  border-radius: 10px;
 }
 
-.width-wrapper {
-  margin: 0 auto;
-  width: 75%;
-}
-
-@media (max-width: 800px) {
-  .width-wrapper {
-    width: 90%;
-    margin: 0 auto;
-  }
-}
-
-.d-inline-block {
-  display: inline-block;
-}
-
-.primary-bg {
-  background-color: #3d5a80 !important;
-}
-
-.primary-color {
-  color: #3d5a80;
-}
-
-.title-color {
-  color: #1a1675;
-}
-
-.tab-image {
-  width: 250px;
-}
-
-.tabs-orange {
-  background-color: #ee6c4d;
-}
-
-.tabs-darkblue {
-  background-color: #293241;
-}
-
-.tabs-blue {
-  background-color: #3d5a80;
-}
-
-.tabs-lightblue {
-  background-color: #e0fbfc;
-}
-
-.tabs {
-  position: relative; /* Make the parent div a positioning context */
-  width: 150px; /* Example width */
-  height: 280px; /* Example height */
-  overflow: hidden; /* Ensure content doesn't overflow */
-  cursor: pointer;
-}
-
-.tab-image {
-  position: absolute;
-  bottom: -13px;
-  right: -10px; /* Adjust spacing from the right */
-  max-width: 200px; /* Adjust the size of the image */
-  max-height: 200px; /* Adjust the size of the image */
-}
-
-.color-primary {
-  color: #3d5a80;
-}
-
-.w-70 {
-  width: 73%;
-}
-
-.background-container {
-  height: 100vh;
-  position: absolute;
-  background-color: white; /* White background */
-  background-image: url('assets/wave-background.png'); /* Replace with your image URL */
-  background-repeat: repeat-y; /* Makes the image repeat */
-  background-position: center; /* Centers the repeating pattern */
-  background-size: 75%; /* Keeps the original size of the image */
-  width: 100%; /* Makes the background-container 90% of the viewport width */
-  margin: 0 auto; /* Centers the container horizontally */
-  z-index: -1;
-  opacity: 5%;
-}
-
-@media (max-width: 800px) {
-  .background-container {
-    background-size: 90%;
-  }
+ul {
+  list-style: none !important;
 }

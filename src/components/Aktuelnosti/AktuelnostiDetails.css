@@ -1,53 +1,21 @@
-.blog-details-container {
-    width: 77%;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .blog-title {
-    font-size: 28px;
-    font-weight: bold;
-    color: #00296b;
-    margin-bottom: 20px;
-  }
-  
-  .blog-description {
-    font-size: 18px;
-    color: #333;
-    margin-bottom: 40px;
-    line-height: 1.6;
-  }
-  
-  .blog-gallery {
-    margin-top: 40px;
-  }
-  
-  .gallery-title {
-    font-size: 22px;
-    font-weight: bold;
-    color: #00296b;
-    margin-bottom: 20px;
-  }
-  
-  .image-grid {
-    display: flex;
-    width: 100%;
-  }
-  
-  .image-item {
-    overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .gallery-image {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-  
-  .gallery-image:hover {
-    transform: scale(1.05);
-  }
-  
+.blog-logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+.secondary-color {
+  color: #00296b;
+}
+
+.blog-description {
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.gallery-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #00296b;
+  margin-bottom: 1rem;
+}

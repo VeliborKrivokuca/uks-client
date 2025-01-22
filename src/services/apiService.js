@@ -9,5 +9,5 @@ export const getAllPages = async () => {
 
 export const getAllClients = async () => {
   const response = await axios.get(`${API_BASE_URL}/api/clients/get/all`);
-  return response.data; // Ensure API returns an array of clients
+  return response.data;
 };

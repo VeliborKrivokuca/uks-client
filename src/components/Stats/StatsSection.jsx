@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import "./StatsSection.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -7,58 +8,56 @@ import {
   faHistory,
   faMedal,
 } from "@fortawesome/free-solid-svg-icons";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const StatsSection = () => {
-  const { language } = useLanguage();
+  const { t } = useTranslation();
 
   const stats = [
     {
       icon: faUserFriends,
       number: "500+",
-      labels: {
-        1: "Zadovoljnih članova",
-        2: "Satisfied members",
-      },
+      label: t("stats.satisfiedMembers"),
     },
     {
       icon: faCalendarCheck,
       number: "100+",
-      labels: {
-        1: "Realizovanih događaja",
-        2: "Events organized",
-      },
+      label: t("stats.eventsOrganized"),
     },
     {
       icon: faHistory,
       number: "80+",
-      labels: {
-        1: "Godina smo uz vas",
-        2: "Years with you",
-      },
+      label: t("stats.yearsWithYou"),
     },
     {
       icon: faMedal,
       number: "50+",
-      labels: {
-        1: "Dodeljenih nagrada",
-        2: "Awards given",
-      },
+      label: t("stats.awardsGiven"),
     },
   ];
 
   return (
-    <div className="stats-section width-wrapper shadow my-5">
-      <div className="stats-grid">
-        {stats.map((stat, index) => (
-          <div className="stat-item" key={index}>
-            <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
-            <p className="stat-number">{stat.number}</p>
-            <p className="stat-label">{stat.labels[language]}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+    <Container>
+      <Container className="primary-bg rounded-lg shadow my-5 text-white">
+        <Row className="gy-4 justify-content-center py-3">
+          {stats.map((stat, index) => (
+            <Col
+              key={index}
+              xs={12}
+              sm={6}
+              md={3}
+              className="text-center d-flex flex-column align-items-center"
+            >
+              <div className="stat-item">
+                <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
+                <p className="stat-number">{stat.number}</p>
+                <p className="stat-label">{stat.label}</p>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </Container>
+    </Container>
   );
 };
 

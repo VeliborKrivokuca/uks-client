@@ -1,91 +1,142 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  fetchBlogDetails,
+  fetchBlogImages,
+} from "../../store/actions/aktuelnostiActions";
+import { Container, Row, Col } from "react-bootstrap";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
 import image from "../../assets/logo-image.png";
-import "./AktuelnostiDetails.css";
 import noPhotoImage from "../../assets/no-photo.jpg";
+import "./AktuelnostiDetails.css";
 import { API_BASE_URL } from "../../services/api";
-import api from "../../services/api";
+import { useTranslation } from "react-i18next";
+import Clients from "../Clients/Clients";
 
 const AktuelnostiDetails = () => {
-  const { id } = useParams(); // Get blog ID from the URL
-  const [blog, setBlog] = useState(null); // State for blog details
-  const [images, setImages] = useState([]); // State for blog images
+  const { id } = useParams();
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const { blog, images, loading, error } = useSelector(
+    (state) => state.aktuelnostiDetails
+  );
 
   useEffect(() => {
-    // Fetch blog details and images for the given ID
-    const fetchBlogDetails = async () => {
-      try {
-        // Fetch blog details
-        const blogResponse = await api.get(`/api/blogs/${id}`);
-        setBlog(blogResponse.data);
+    dispatch(fetchBlogDetails(id));
+    dispatch(fetchBlogImages(id));
+  }, [dispatch, id]);
 
-        // Fetch images associated with the blog
-        const imagesResponse = await api.get(
-          `/api/blogs/${id}/images`
-        );
-        setImages(imagesResponse.data);
-        console.log(blog);
-      } catch (error) {
-        console.error("Error fetching blog details or images:", error);
-      }
-    };
+  const handleImageClick = (index) => {
+    const formattedImages = images.map((img) => ({
+      src: `${API_BASE_URL}/images/${img.image_path}`,
+      alt: t("gallery.imageAlt"),
+    }));
+    setLightboxImages(formattedImages);
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+  };
 
-    fetchBlogDetails();
-  }, [id]);
-
-  if (!blog) {
-    return <p>Loading blog details...</p>; // Loading state
-  }
+  if (loading) return <p>{t("loading.blogDetails")}</p>;
 
   return (
-    <div className="blog-details-container">
-      <div className="blog-header">
-        <div className="blog-logo rounded-circle border">
-          <img src={image} alt="Logo" className="blog-logo-img" />
-        </div>
-        <div className="blog-meta">
-          <p className="blog-meta-item">Udruženje kompozitora Srbije</p>
-          <p className="blog-meta-item">
-            {new Date(blog.adTimePublish).toLocaleDateString()}
-          </p>
-        </div>
-      </div>
-      <h1 className="blog-title">{blog.acTitle}</h1>
-      <img
-        src={
-          blog.acImage
-            ? `${API_BASE_URL}/images/${blog.acImage}` // Dynamic blog thumbnail
-            : noPhotoImage // Fallback image if no thumbnail
-        }
-        alt={blog.acTitle}
-        className="blog-thumbnail mx-auto text-center w-100 my-3"
-      />
-      {/* Render blog.acDescription as HTML */}
-      <div
-        className="blog-description"
-        dangerouslySetInnerHTML={{ __html: blog.acDescription }}
-      ></div>
+    <Container fluid className="my-4">
+      <Clients></Clients>
+      <Container>
+        {/* Header / Meta Info */}
+        <Row className="align-items-center mb-4">
+          <Col xs="auto">
+            <div className="rounded-circle border">
+              <img src={image} alt="Logo" className="blog-logo-img" />
+            </div>
+          </Col>
+          <Col>
+            <p className="mb-0">{t("news.metaAuthor")}</p>
+            <p className="mb-0">
+              {new Date(blog?.adTimePublish).toLocaleDateString()}
+            </p>
+          </Col>
+        </Row>
 
-      {images.length > 0 && (
-        <div className="blog-gallery">
-          <h2 className="gallery-title">Galerija</h2>
-          <div className="row">
-            {Array.isArray(images) && images.length > 0 ? (
-              images.map((image) => (
+        {/* Title */}
+        <Row>
+          <Col>
+            <h1 className="secondary-color">{blog?.acTitle}</h1>
+          </Col>
+        </Row>
+
+        {/* Main Image */}
+        <Row className="my-3">
+          <Col>
+            <img
+              src={
+                blog?.acImage
+                  ? `${API_BASE_URL}/images/${blog.acImage}`
+                  : noPhotoImage
+              }
+              alt={blog?.acTitle}
+              className="w-100 rounded shadow-sm"
+            />
+          </Col>
+        </Row>
+
+        {/* Description */}
+        <Row className="mb-4">
+          <Col>
+            <div
+              className="blog-description"
+              dangerouslySetInnerHTML={{ __html: blog?.acDescription }}
+            />
+          </Col>
+        </Row>
+
+        {/* Gallery Section */}
+        {images.length > 0 && (
+          <Row className="blog-gallery">
+            <Col xs={12}>
+              <h2 className="gallery-title">{t("gallery.title")}</h2>
+            </Col>
+            {images.map((img, index) => (
+              <Col xs={6} md={4} lg={3} key={index} className="mb-3">
                 <img
-                  src={`${API_BASE_URL}/images/${image.image_path}`} // Adjust image path
-                  alt="Blog Gallery"
-                  className="gallery-image col-md-4 col-6"
+                  src={`${API_BASE_URL}/images/${img.image_path}`}
+                  alt={t("gallery.imageAlt")}
+                  className="w-100 rounded cursor-pointer"
+                  onClick={() => handleImageClick(index)}
                 />
-              ))
-            ) : (
-              <p>No images available</p>
-            )}
-          </div>
-        </div>
+              </Col>
+            ))}
+          </Row>
+        )}
+
+        {/* Error message display */}
+        {error && (
+          <Row className="mt-4">
+            <Col>
+              <div className="alert alert-danger" role="alert">
+                {t("error.blogDetails", { error })}
+              </div>
+            </Col>
+          </Row>
+        )}
+      </Container>
+
+      {lightboxOpen && (
+        <Lightbox
+          open={lightboxOpen}
+          close={() => setLightboxOpen(false)}
+          slides={lightboxImages}
+          index={currentIndex}
+          onIndexChange={setCurrentIndex}
+        />
       )}
-    </div>
+    </Container>
   );
 };
 

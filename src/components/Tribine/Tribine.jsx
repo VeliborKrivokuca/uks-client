@@ -1,93 +1,90 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./Tribine.css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchTribines } from "../../store/actions/tribineActions";
+import { Container, Row, Col } from "react-bootstrap";
+
 import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../../services/api";
-import api from "../../services/api";
+
+import "./Tribine.css";
 
 const TribineList = () => {
-  const [tribines, setTribines] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { t, i18n } = useTranslation();
 
-  const translations = {
-    1: {
-      title: "Tribine",
-      noTribines: "Nema dostupnih tribina za izabrani jezik.",
-    },
-    2: {
-      title: "Panels",
-      noTribines: "No panels available for the selected language.",
-    },
-  };
-
-  const t = translations[language];
+  const { tribines, loading, error } = useSelector((state) => state.tribine);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchTribines = async () => {
-      try {
-        const response = await api.get(`/api/tribine/language/${language}`);
-        if (isMounted) {
-          setTribines(response.data.data || []);
-        }
-      } catch (error) {
-        console.error("Error fetching tribine:", error);
-      }
-    };
-
-    fetchTribines();
-
-    return () => {
-      isMounted = false; // Prevent updates after unmount
-    };
-  }, [language]);
+    dispatch(fetchTribines(i18n.language));
+  }, [dispatch, i18n.language]);
 
   const handleTribineClick = (id) => {
     navigate(`/tribine/${id}`);
   };
 
   return (
-    <div className="">
-      <div className="background-container"></div>
-      <div className="tribine-list">
-        <div className="mx-auto text-center mb-5 mt-3">
-          <img src={image} alt="Tribine Header" className="tribina-img w-100" />
-        </div>
-        <h1 className="title-style">{t.title}</h1>
-        <div className="grid">
-          {tribines.length === 0 ? (
-            <p>{t.noTribines}</p>
-          ) : (
-            tribines.map((tribine) => (
-              <div
-                key={tribine.id}
-                className="tribine-card"
-                onClick={() => handleTribineClick(tribine.tribine_id)}
-              >
-                <div className="thumbnail-container">
-                  <img
-                    src={
-                      tribine.thumbnail
-                        ? `${API_BASE_URL}/${tribine.thumbnail}`
-                        : noPhotoImage
-                    }
-                    alt={tribine.title || "No Thumbnail Available"}
-                    className="thumbnail"
-                  />
-                  <div className="gradient-overlay"></div>
-                  <h3 className="tribine-title">{tribine.title}</h3>
-                </div>
-              </div>
-            ))
-          )}
-        </div>
-      </div>
-    </div>
+    <Container className="my-5">
+      {/* Header Image */}
+      <Row>
+        <Col className="text-center">
+          <img
+            src={image}
+            alt="Tribine Header"
+            className="img-fluid rounded shadow"
+          />
+        </Col>
+      </Row>
+
+      {/* Title */}
+      <Row className="my-4">
+        <Col>
+          <h1 className="title-color border-bottom-primary pb-3">
+            {t("tribine.title")}
+          </h1>
+          {loading && <p>{t("info.loading")}</p>}
+          {error && <p>{t("info.error", { error })}</p>}
+        </Col>
+      </Row>
+
+      {/* Tribine Cards */}
+      <Row className="g-4">
+        {/* If there are no tribines and not loading/error, show a message */}
+        {!loading && !error && tribines.length === 0 && (
+          <Col>
+            <p>{t("info.noData")}</p>
+          </Col>
+        )}
+
+        {tribines.map((tribine) => (
+          <Col
+            xs={12}
+            sm={6}
+            md={4}
+            lg={3}
+            key={tribine.id}
+            onClick={() => handleTribineClick(tribine.tribine_id)}
+          >
+            <div className="tribine-card cursor-pointer position-relative shadow rounded overflow-hidden">
+              <img
+                src={
+                  tribine.thumbnail
+                    ? `${API_BASE_URL}/${tribine.thumbnail}`
+                    : noPhotoImage
+                }
+                alt={tribine.title || t("tribine.noThumbnail")}
+                className="thumbnail"
+              />
+              <div className="gradient-overlay" />
+              <h3 className="tribine-title text-white">{tribine.title}</h3>
+            </div>
+          </Col>
+        ))}
+      </Row>
+    </Container>
   );
 };
 

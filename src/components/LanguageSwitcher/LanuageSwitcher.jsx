@@ -1,16 +1,21 @@
 import React from "react";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
 const LanguageSwitcher = () => {
-  const { language, setLanguage } = useLanguage();
+  const { i18n } = useTranslation();
+  const currentLanguage = i18n.language;
 
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 1 ? 2 : 1)); // Toggle between Serbian (1) and English (2)
+  const switchLanguage = () => {
+    const newLanguage = currentLanguage === "en" ? "sr" : "en";
+    i18n.changeLanguage(newLanguage);
   };
 
   return (
-    <button onClick={toggleLanguage} className="bg-white fs-12">
-      {language === 1 ? "English" : "Serbian"}
+    <button
+      className="bg-transparent px-3 py-2 rounded ms-xl-0 ms-auto text-xs primary-color"
+      onClick={switchLanguage}
+    >
+      {currentLanguage === "en" ? "Srpski" : "English"}
     </button>
   );
 };

@@ -1,63 +1,88 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Container, Row, Col } from "react-bootstrap";
+
 import Clients from "../Clients/Clients";
-import { useLanguage } from "../../context/LanguageContext";
+import { fetchMemberDetail } from "../../store/actions/membersActions";
 import { API_BASE_URL } from "../../services/api";
+import { useTranslation } from "react-i18next";
 
-const translations = {
-  en: {
-    sectionTitle: "OUR MEMBERS",
-    sectionDescription:
-      "The section for association members provides insight into the profiles of our composers, their biographies, works, and contributions to the Serbian music scene, highlighting the importance of their creativity and role in preserving our musical tradition.",
-    backButton: "« Back",
-  },
-  sr: {
-    sectionTitle: "NAŠI ČLANOVI",
-    sectionDescription:
-      "Sekcija za članove udruženja pruža uvid u profile naših kompozitora, njihove biografije, dela i doprinose srpskoj muzičkoj sceni, ističući značaj njihovog stvaralaštva i uloge u očuvanju naše muzičke tradicije.",
-    backButton: "« Nazad",
-  },
-};
+const MemberProfilePage = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-const MemberProfile = ({ member, onBackClick }) => {
-  const { language } = useLanguage(); // Get current language from context
-  const t = translations[language === 1 ? "sr" : "en"]; // Select translations based on language
+  const { memberDetail, loading, error } = useSelector(
+    (state) => state.members
+  );
+
+  useEffect(() => {
+    dispatch(fetchMemberDetail(id));
+  }, [dispatch, id]);
+
+  if (loading) {
+    return (
+      <Container>
+        <p>{t("members.loading")}</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <p>{error}</p>
+      </Container>
+    );
+  }
+
+  if (!memberDetail) {
+    return (
+      <Container>
+        <p>{t("members.noDetails")}</p>
+      </Container>
+    );
+  }
+
+  const { acName, acImage, acPosition, acDescription } = memberDetail;
 
   return (
-    <div>
-      <Clients></Clients>
-      <div className="width-90 mt-4">
-        <h1 className="mt-4 title-color fw-bold">{t.sectionTitle}</h1>
-        <p className="mb-4 primary-color border-bottom pb-4">
-          {t.sectionDescription}
-        </p>
+    <>
+      <Clients />
+      <Container>
+        <Row>
+          <Col className="mt-3">
+            <h2 className="title-color fw-bold">{t("members.sectionTitle")}</h2>
+            <p className="mb-4 primary-color border-bottom-primary pb-3">
+              {t("members.sectionDescription")}
+            </p>
+          </Col>
+        </Row>
 
-        <div>
-          <div className="card-body">
-            <div className="d-flex align-items-start mb-3">
-              <img
-                src={`${API_BASE_URL}/images/${member.acImage}`}
-                alt={member.acName}
-                className="rounded-3 me-3 profile-photo"
-              />
-              <div>
-                <h2 className="h4 mb-1 primary-color mb-4">{member.acName}</h2>
-                <p className="fw-semibold mb-1">{member.acPosition}</p>
-              </div>
-            </div>
-            {/* Render HTML content from acDescription */}
-            <div
-              className="text-muted"
-              dangerouslySetInnerHTML={{ __html: member.acDescription }}
-            ></div>
-          </div>
-        </div>
+        <Row className="mt-3">
+          <Col md={3} className="mb-3">
+            <img
+              src={`${API_BASE_URL}/images/${acImage}`}
+              alt={acName}
+              className="rounded-3 profile-photo w-100"
+            />
+          </Col>
+          <Col>
+            <h2 className="secondary-color mb-3">{acName}</h2>
+            <p className="fw-bold secondary-color mb-3">{acPosition}</p>
+          </Col>
+        </Row>
 
-        <button className="btn btn-secondary mt-3" onClick={onBackClick}>
-          {t.backButton}
-        </button>
-      </div>
-    </div>
+        <Col md={12}>
+          <div
+            className="ck-editor-text"
+            dangerouslySetInnerHTML={{ __html: acDescription }}
+          ></div>
+        </Col>
+      </Container>
+    </>
   );
 };
 
-export default MemberProfile;
+export default MemberProfilePage;

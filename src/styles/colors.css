@@ -1,0 +1,28 @@
+/* Then use them in classes or utility classes */
+.primary-color {
+  color: var(--color-primary);
+}
+
+.secondary-color {
+  color: var(--color-secondary) !important;
+}
+
+.title-color {
+  color: var(--color-title);
+}
+
+.border-bottom-primary {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.light-blue {
+  background-color: var(--color-light-blue) !important;
+}
+
+.primary-bg {
+  background-color: var(--color-primary) !important;
+}
+
+.secondary-bg {
+  background-color: var(--color-secondary) !important;
+}

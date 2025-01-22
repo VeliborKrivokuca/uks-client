@@ -1,72 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
 import Clients from "../Clients/Clients";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../../services/api";
+import "./Members.css";
 
-const translations = {
-  en: {
-    sectionTitle: "OUR MEMBERS",
-    sectionDescription:
-      "The section for association members provides insight into the profiles of our composers, their biographies, works, and contributions to the Serbian music scene, highlighting the importance of their creativity and role in preserving our musical tradition.",
-    backButton: "« Back",
-    chooseSection: "Choose section",
-    chooseName: "Enter name and last name",
-    all: "All",
-    picture: "Picture",
-    name: "Name",
-    role: "Role",
-    profile: "Profile",
-  },
-  sr: {
-    sectionTitle: "NAŠI ČLANOVI",
-    sectionDescription:
-      "Sekcija za članove udruženja pruža uvid u profile naših kompozitora, njihove biografije, dela i doprinose srpskoj muzičkoj sceni, ističući značaj njihovog stvaralaštva i uloge u očuvanju naše muzičke tradicije.",
-    backButton: "« Nazad",
-    chooseSection: "Odaberite sekciju",
-    chooseName: "Upišite ime i prezime",
-    all: "Svi",
-    picture: "Slika",
-    name: "Ima i prezime",
-    role: "Uloga",
-    profile: "Profil",
-  },
-};
-
-function MembersList({ members, onProfileClick }) {
+function MembersList({ members, roles, onProfileClick }) {
   const [searchName, setSearchName] = useState("");
-  const [roles, setRoles] = useState([]); // State for roles
-  const [selectedSection, setSelectedSection] = useState("Svi");
-  const [currentPage, setCurrentPage] = useState(1); // Current page state
-  const membersPerPage = 5; // Number of members per page
-  const { language } = useLanguage(); // Get current language from context
-  const t = translations[language === 1 ? "sr" : "en"]; // Select translations based on language
+  const [selectedSection, setSelectedSection] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    // Fetch roles from the backend
-    const fetchRoles = async () => {
-      try {
-        const response = await api.get(`/api/team/roles/${language}`);
-        const fetchedRoles = response.data.map((role) => role.role); // Assuming the backend returns [{ role: '...' }]
-        setRoles(fetchedRoles);
-      } catch (error) {
-        console.error("Error fetching roles:", error);
-      }
-    };
+  const { t } = useTranslation();
+  const membersPerPage = 5;
 
-    fetchRoles();
-  }, [language]);
-
-  // Filter members by name and role
+  // ----- Filtering -----
   const filteredMembers = members.filter((m) => {
-    const nameMatch = m.acName.toLowerCase().includes(searchName.toLowerCase());
-    if (selectedSection === "Svi") return nameMatch;
+    const nameMatch = m.acName
+      ?.toLowerCase()
+      .includes(searchName.trim().toLowerCase());
+    if (selectedSection === "all") return nameMatch;
     return nameMatch && m.acPosition === selectedSection;
   });
 
-  // Pagination calculations
+  // ----- Pagination -----
   const indexOfLastMember = currentPage * membersPerPage;
   const indexOfFirstMember = indexOfLastMember - membersPerPage;
   const currentMembers = filteredMembers.slice(
@@ -79,135 +37,185 @@ function MembersList({ members, onProfileClick }) {
     setCurrentPage(pageNumber);
   };
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prevPage) => prevPage + 1);
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
     }
   };
 
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prevPage) => prevPage - 1);
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
     }
   };
 
   return (
-    <div className="">
-      <Clients></Clients>
-      <div className="width-90">
-        <h1 className="mt-4 title-color fw-bold">{t.sectionTitle}</h1>
-        <p className="text-muted mb-4">{t.sectionDescription}</p>
+    <>
+      {/* Clients */}
+      <Clients />
+
+      {/* Header Section */}
+      <Container className="mt-5">
+        <Row>
+          <Col>
+            <h2 className="title-color fw-bold">{t("members.sectionTitle")}</h2>
+            <p className="mb-4 primary-color">
+              {t("members.sectionDescription")}
+            </p>
+          </Col>
+        </Row>
 
         {/* Filters */}
-        <div className="row g-3 mb-4">
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">{t.chooseSection}</label>
-            <select
-              className="form-select"
+        <Row className="g-3 mb-4">
+          <Col xs={12} md={6}>
+            <Form.Label className="fw-semibold secondary-color text-md">
+              {t("members.chooseSection")}
+            </Form.Label>
+            <Form.Select
+              className="light-blue p-3"
               value={selectedSection}
               onChange={(e) => setSelectedSection(e.target.value)}
             >
-              <option value="Svi">{t.all}</option>
+              <option value="all">{t("members.allRoles")}</option>
               {roles.map((role, index) => (
                 <option key={index} value={role}>
                   {role}
                 </option>
               ))}
-            </select>
-          </div>
-          <div className="col-md-6">
-            <label className="form-label fw-semibold">{t.chooseName}</label>
-            <input
+            </Form.Select>
+          </Col>
+          <Col xs={12} md={6}>
+            <Form.Label className="fw-semibold text-md secondary-color text-md">
+              {t("members.chooseName")}
+            </Form.Label>
+            <Form.Control
               type="text"
-              className="form-control select"
-              placeholder={t.all}
+              className="light-blue p-3"
+              placeholder={t("members.chooseNamePlaceholder")}
               value={searchName}
               onChange={(e) => setSearchName(e.target.value)}
             />
-          </div>
-        </div>
+          </Col>
+        </Row>
 
         {/* Members Table */}
-        <div className="table-responsive">
-          <table className="table align-middle mb-4">
-            <thead className="table-light bg-none">
-              <tr className="tr">
-                <th scope="col" className="bg-none">
-                  {t.picture}
-                </th>
-                <th scope="col" className="bg-none">
-                  {t.name}
-                </th>
-                <th scope="col" className="bg-none">
-                  {t.role}
-                </th>
-                <th scope="col" className="bg-none text-end">
-                  {t.profile}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentMembers.map((member) => (
-                <tr key={member.anId} className="custom-row">
-                  <td style={{ width: "80px" }}>
-                    <img
-                      src={`${API_BASE_URL}/images/${member.acImage}`}
-                      alt={member.acName}
-                      className="rounded-circle member-photo"
-                    />
-                  </td>
-                  <td className="fw-semibold">{member.acName}</td>
-                  <td className="text-muted">{member.acPosition}</td>
-                  <td className="text-end">
-                    <button
-                      className="btn primary-bg text-white"
-                      onClick={() => onProfileClick(member)}
-                    >
-                      Profil &raquo;
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <Row>
+          <Col>
+            <div className="table-responsive">
+              <Table hover className="align-middle mb-4">
+                <thead className="table-light text-center">
+                  <tr className="py-3">
+                    <th className="light-blue py-3 fw-normal secondary-color border-0">
+                      {t("members.picture")}
+                    </th>
+                    <th className="light-blue py-3 fw-normal secondary-color border-0">
+                      {t("members.name")}
+                    </th>
+                    <th className="light-blue py-3 fw-normal secondary-color border-0">
+                      {t("members.role")}
+                    </th>
+                    <th className="light-blue py-3 fw-normal secondary-color border-0">
+                      {t("members.profile")}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="text-center">
+                  {currentMembers.map((member) => (
+                    <tr key={member.anId}>
+                      <td className="secondary-color">
+                        <img
+                          src={`${API_BASE_URL}/images/${member.acImage}`}
+                          alt={member.acName}
+                          className="rounded-circle member-photo shadow"
+                        />
+                      </td>
+                      <td className="secondary-color fw-bold">
+                        {member.acName}
+                      </td>
+                      <td className="secondary-color fw-light">
+                        {member.acPosition}
+                      </td>
+                      <td className="secondary-color">
+                        <Button
+                          variant="primary"
+                          className="primary-bg px-4 text-white border-0"
+                          onClick={() => onProfileClick(member)}
+                        >
+                          {t("members.profileButton")}{" "}
+                          <FontAwesomeIcon
+                            icon={faArrowRight}
+                            className="text-xs"
+                          />
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </Table>
+            </div>
+          </Col>
+        </Row>
 
         {/* Pagination */}
-        <nav aria-label="Page navigation">
-          <ul className="pagination justify-content-center">
-            <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
-              <button className="page-link" onClick={handlePreviousPage}>
-                <FontAwesomeIcon className="title-color" icon={faArrowLeft} />
-              </button>
-            </li>
-            {Array.from({ length: totalPages }, (_, index) => (
-              <li
-                key={index + 1}
-                className={`page-item ${
-                  currentPage === index + 1 ? "active custom-active" : ""
-                }`}
-              >
-                <button
-                  className="page-link"
-                  onClick={() => handlePageChange(index + 1)}
-                >
-                  {index + 1}
-                </button>
-              </li>
-            ))}
-            <li
-              className={`page-item ${
-                currentPage === totalPages ? "disabled" : ""
-              }`}
-            >
-              <button className="page-link" onClick={handleNextPage}>
-                <FontAwesomeIcon className="title-color" icon={faArrowRight} />
-              </button>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+        {totalPages > 1 && (
+          <Row>
+            <Col>
+              <nav aria-label="Page navigation">
+                <ul className="pagination justify-content-center">
+                  {/* Previous Button */}
+                  <li
+                    className={`page-item ${
+                      currentPage === 1 ? "disabled" : ""
+                    }`}
+                  >
+                    <Button
+                      variant="light"
+                      className="page-link"
+                      onClick={handlePrevPage}
+                    >
+                      <FontAwesomeIcon icon={faArrowLeft} />
+                    </Button>
+                  </li>
+                  {/* Page Numbers */}
+                  {Array.from({ length: totalPages }, (_, index) => {
+                    const pageNumber = index + 1;
+                    const isActive = currentPage === pageNumber;
+                    return (
+                      <li
+                        key={pageNumber}
+                        className={`page-item ${isActive ? "active" : ""}`}
+                      >
+                        <Button
+                          variant="light"
+                          className="page-link"
+                          onClick={() => handlePageChange(pageNumber)}
+                        >
+                          {pageNumber}
+                        </Button>
+                      </li>
+                    );
+                  })}
+                  {/* Next Button */}
+                  <li
+                    className={`page-item ${
+                      currentPage === totalPages ? "disabled" : ""
+                    }`}
+                  >
+                    <Button
+                      variant="light"
+                      className="page-link"
+                      onClick={handleNextPage}
+                    >
+                      <FontAwesomeIcon icon={faArrowRight} />
+                    </Button>
+                  </li>
+                </ul>
+              </nav>
+            </Col>
+          </Row>
+        )}
+      </Container>
+    </>
   );
 }
 

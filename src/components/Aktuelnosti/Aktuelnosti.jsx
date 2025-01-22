@@ -1,89 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./Aktuelnosti.css"; // Add the CSS styles for this component.
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
+import "./Aktuelnosti.css";
 import image from "../../assets/logo-image.png";
-import { useLanguage } from "../../context/LanguageContext";
-import api from "../../services/api";
+import { useTranslation } from "react-i18next";
+import { Col, Container, Row } from "react-bootstrap";
 
 const Aktuelnosti = () => {
-  const [blogs, setBlogs] = useState([]);
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
 
-  const translations = {
-    1: {
-      details: "Više detalja →",
-      composers: "Udruženje kompozitora Srbije",
-      noBlogs: "Nema dostupnih aktuelnosti",
-    },
-    2: {
-      details: "More details →",
-      composers: "Composers Association of Serbia",
-      noBlogs: "No available news",
-    },
-  };
-
-  const t = translations[language];
+  const { blogs, loading, error } = useSelector((state) => state.aktuelnosti);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await api.get(
-          `/api/aktuelnosti/get/all/${language}`
-        );
-        const data = response.data; // Ensure data is an array
-
-        // Sort blogs by publish_time (descending) and take only the latest 4
-        const sortedBlogs = data
-          .sort((a, b) => new Date(b.publish_time) - new Date(a.publish_time))
-          .slice(0, 2);
-
-        setBlogs(sortedBlogs);
-        console.log(sortedBlogs);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-        setBlogs([]); // Fallback to empty array
-      }
-    };
-
-    fetchBlogs();
-  }, [language]);
+    dispatch(fetchBlogs(i18n.language));
+  }, [dispatch, i18n.language]);
 
   const handleViewDetails = (id) => {
-    navigate(`/blog/${id}`); // Navigate to the detailed blog page
+    navigate(`/blog/${id}`);
   };
 
   return (
-    <div className="blog-list-container">
-      {Array.isArray(blogs) && blogs.length > 0 ? (
-        blogs.map((blog) => (
-          <div key={blog.anId} className="blog-card">
-            <div className="blog-header">
-              <div className="blog-logo rounded-circle border">
-                <img src={image} alt="Logo" className="blog-logo-img" />
-              </div>
-              <div className="blog-meta">
-                <p className="blog-meta-item">{t.composers}</p>
-                <p className="blog-meta-item">
-                  {new Date(blog.publish_time).toLocaleDateString()}
+    <Container className="my-4">
+      <Row>
+        {loading && <p>{t("news.loading")}</p>}
+        {error && <p>{t("news.error", { error })}</p>}
+        {!loading && !error && blogs.length > 0 ? (
+          blogs.map((blog) => (
+            <Col key={blog.anId} xs={12} className="mb-4">
+              <div>
+                <Row className="g-0 flex-nowrap align-items-center mb-3">
+                  <Col xs="auto" className="blog-logo-container me-3">
+                    <img src={image} alt="Logo" className="blog-logo-img" />
+                  </Col>
+
+                  <Col className="blog-meta">
+                    <p>{t("news.composers")}</p>
+                    <p>{new Date(blog.publish_time).toLocaleDateString()}</p>
+                  </Col>
+                </Row>
+
+                <h3 className="secondary-color">{blog.title}</h3>
+                <p className="blog-description primary-color">
+                  {blog.subtitle}
                 </p>
+                <button
+                  className="text-white rounded primary-bg"
+                  onClick={() => handleViewDetails(blog.translation_id)}
+                >
+                  {t("news.details")}
+                </button>
               </div>
-            </div>
-            <h3 className="blog-title">{blog.title}</h3>
-            <p className="blog-description primary-color">{blog.subtitle}</p>
-            <button
-              className="details-button rounded primary-bg"
-              onClick={() => handleViewDetails(blog.translation_id)}
-            >
-              {t.details}
-            </button>
-          </div>
-        ))
-      ) : (
-        <p>{t.noBlogs}</p>
-      )}
-    </div>
+            </Col>
+          ))
+        ) : (
+          <p>{t("news.noBlogs")}</p>
+        )}
+      </Row>
+    </Container>
   );
 };
 

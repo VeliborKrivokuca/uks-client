@@ -1,109 +1,95 @@
-import React, { useState } from "react";
-import "./Header.css";
+import React, { useState, useRef, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEnvelope,
   faPhone,
   faSearch,
   faBars,
-  faGripLinesVertical,
 } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../assets/logo.png";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LanguageSwitcher from "../LanguageSwitcher/LanuageSwitcher";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 
-const translations = {
-  1: {
-    emailLabel: "Pošaljite nam email",
-    callUsLabel: "Pozovite nas",
-    language: "English",
-    searchPlaceholder: "Pretraga...",
-    menuItems: [
-      {
-        anId: "1",
-        acName: "Aktuelnosti",
-        ParentId: null,
-        route: "aktuelnosti",
-      },
-      {
-        anId: "2",
-        acName: "O udruženju",
-        ParentId: null,
-        route: "o-udruženju",
-      },
-      { anId: "3", acName: "Članovi", ParentId: null, route: "clanovi" },
-      { anId: "4", acName: "Razgovori", ParentId: null, route: "razgovori" },
-      { anId: "5", acName: "Tribine", ParentId: null, route: "tribine" },
-      { anId: "17", acName: "Nagrade", ParentId: null, route: "nagrade" },
-      { anId: "18", acName: "Kontakt", ParentId: null, route: "kontakt" },
-      { anId: "18", acName: "O nama", ParentId: 2, route: "o-nama" },
-      { anId: "19", acName: "Pravni dokumenti", ParentId: 2, route: "pravni-dokumenti" },
-      { anId: "20", acName: "Pravilnik o prijemu", ParentId: 2, route: "pravilnik-o-prijemu" },
-      { anId: "21", acName: "O udruženju", ParentId: 2, route: "o-udruženju" },
-      { anId: "22", acName: "Preporuke", ParentId: 2, route: "preporuke" },
-    ],
-  },
-  2: {
-    emailLabel: "Send us an email",
-    callUsLabel: "Call us Now",
-    language: "Srpski",
-    searchPlaceholder: "Search...",
-    menuItems: [
-      { anId: "1", acName: "News", ParentId: null, route: "aktuelnosti" },
-      {
-        anId: "2",
-        acName: "About the Association",
-        ParentId: null,
-        route: "o-udruženju",
-      },
-      { anId: "3", acName: "Members", ParentId: null, route: "clanovi" },
-      {
-        anId: "4",
-        acName: "Conversations",
-        ParentId: null,
-        route: "razgovori",
-      },
-      { anId: "5", acName: "Talks", ParentId: null, route: "tribine" },
-      { anId: "17", acName: "Awards", ParentId: null, route: "nagrade" },
-      { anId: "18", acName: "Contact", ParentId: null, route: "kontakt" },
-      { anId: "18", acName: "About us", ParentId: 2, route: "o-nama" },
-      { anId: "19", acName: "Legal documents", ParentId: 2, route: "pravni-dokumenti" },
-      { anId: "20", acName: "Rules of admission", ParentId: 2, route: "pravilnik-o-prijemu" },
-      { anId: "21", acName: "About association", ParentId: 2, route: "o-udruženju" },
-      { anId: "22", acName: "Recommendations", ParentId: 2, route: "preporuke" },
-    ],
-  },
-};
+import logo from "../../assets/logo.png";
+import "./Header.css";
 
 const Header = () => {
-  const { language } = useLanguage();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMenus, setOpenMenus] = useState({});
+  const { t } = useTranslation();
+  const dropdownRef = useRef(null);
+  const menuItemsSearch = t("header.menuItems", { returnObjects: true });
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredItems, setFilteredItems] = useState([]);
+  const navigate = useNavigate();
 
-  const t = translations[language];
+  const handleSearchChange = (e) => {
+    const term = e.target.value;
+    setSearchTerm(term);
+
+    if (term.trim() === "") {
+      setFilteredItems([]);
+      return;
+    }
+
+    const results = menuItemsSearch.filter((item) =>
+      item.name.toLowerCase().includes(term.toLowerCase())
+    );
+    setFilteredItems(results);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+
+    if (filteredItems.length === 1) {
+      navigate(`/${filteredItems[0].route}`);
+    }
+  };
+
+  const handleResultClick = (route) => {
+    navigate(`/${route}`);
+    setSearchTerm("");
+    setFilteredItems([]);
+    setIsMobileMenuOpen(false);
+    setOpenMenus({});
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpenMenus({});
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const buildHierarchy = (items) => {
     const map = {};
     const tree = [];
 
     items.forEach((item) => {
-      map[item.anId] = { ...item, children: [] };
+      map[item.id] = { ...item, children: [] };
     });
 
     items.forEach((item) => {
-      if (item.ParentId) {
-        map[item.ParentId].children.push(map[item.anId]);
+      if (item.parentId) {
+        map[item.parentId].children.push(map[item.id]);
       } else {
-        tree.push(map[item.anId]);
+        tree.push(map[item.id]);
       }
     });
 
     return tree;
   };
 
-  const menuItems = buildHierarchy(t.menuItems);
+  const menuItems = buildHierarchy(
+    t("header.menuItems", { returnObjects: true })
+  );
 
   const toggleDropdown = (id) => {
     setOpenMenus((prev) => ({
@@ -112,114 +98,172 @@ const Header = () => {
     }));
   };
 
-  const renderMenu = (items) => {
-    return items.map((item) => {
-      const isOpen = openMenus[item.anId];
+  const renderMenu = (items) =>
+    items.map((item) => {
+      const isOpen = openMenus[item.id] || false;
 
       return (
-        <li key={item.anId} className={`nav-item mb-1 ${isOpen ? "open" : ""}`}>
+        <li
+          key={item.id}
+          className={`text-white pe-3 mb-0 py-1 text-center ${
+            isOpen ? "open" : ""
+          }`}
+        >
           {item.children && item.children.length > 0 ? (
             <>
               <span
                 onClick={(e) => {
                   e.preventDefault();
-                  toggleDropdown(item.anId);
+                  toggleDropdown(item.id);
                 }}
-                className="nav-link dropdown-toggle fs-14"
+                className="cursor-pointer text-decoration-none fw-normal"
               >
-                {item.acName}
+                {item.name}
               </span>
               {isOpen && (
-                <ul className="dropdown-menu primary-bg px-3 pb-1 pt-2">
+                <ul
+                  ref={dropdownRef}
+                  className="position-absolute primary-bg px-3 py-2 rounded-lg"
+                >
                   {renderMenu(item.children)}
                 </ul>
               )}
             </>
           ) : (
-            <Link to={`/${item.route}`} className="nav-link">
-              {item.acName}
+            <Link
+              to={`/${item.route}`}
+              className="text-white text-sm text-decoration-none fw-normal"
+              onClick={() => {
+                setOpenMenus({});
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              {item.name}
             </Link>
           )}
         </li>
       );
     });
-  };
 
   return (
-    <header cla>
-      <div className="header-top py-2 width-90 ps-0">
-        <div className="logo">
-          <Link to="/">
-            <img src={logo} alt="Logo" className="logo-img" />
-          </Link>
-        </div>
+    <header className="shadow-sm">
+      <Container className="py-3">
+        <Row className="align-items-center">
+          <Col lg={3} md={6} sm={8} xs={8}>
+            <Link to="/">
+              <img src={logo} alt="Logo" className="w-100" />
+            </Link>
+          </Col>
 
-        <div className="contact-info ms-auto">
-          <div className="email">
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              className="h4 mt-2 primary-color me-2"
-            />
-            <div className="me-3">
-              <p className="label-small text-uppercase mb-0 text-danger fs-8">{t.emailLabel}</p>
-              <a
-                href="mailto:composas@gmail.com"
-                className="primary-color text-decoration-none text-uppercase mail fs-12"
-              >
-                composas@gmail.com
-              </a>
-            </div>
-          </div>
-          <span className="primary-color">|</span>
-          <div className="phone ms-3">
-            <FontAwesomeIcon
-              icon={faPhone}
-              className="h4 mt-2 primary-color me-2"
-            />
-            <div className="">
-              <p className="label-small text-uppercase mb-0 fs-8 text-danger">{t.callUsLabel}</p>
-              <a
-                href="tel:800-123-4567"
-                className="primary-color text-decoration-none text-uppercase mail fs-12"
-              >
-                800-123-4567
-              </a>
+          <Col className="d-none d-xl-flex justify-content-end contact-info">
+            <div className="d-flex align-items-center">
+              <FontAwesomeIcon
+                icon={faEnvelope}
+                className="text-xl primary-color me-2"
+              />
+              <div>
+                <p className="text-uppercase mb-0 text-danger text-xxs">
+                  {t("header.emailLabel")}
+                </p>
+                <a
+                  href={`mailto:${t("header.mail")}`}
+                  className="secondary-color text-decoration-none text-uppercase mail text-xs"
+                >
+                  {t("header.mail")}
+                </a>
+              </div>
             </div>
 
-          </div>
-        </div>
-        <LanguageSwitcher></LanguageSwitcher>
-        <button
-          className="hamburger"
-          onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-        >
-          <FontAwesomeIcon icon={faBars} />
-        </button>
-      </div>
+            <span className="primary-color mx-2">|</span>
 
-      <div
-        className={`header-nav-wrapper py-2 ${
-          isMobileMenuOpen ? "active" : ""
+            <div className="d-flex align-items-center">
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-xl primary-color me-2"
+              />
+              <div>
+                <p className="text-uppercase mb-0 text-xxs text-danger">
+                  {t("header.callUsLabel")}
+                </p>
+                <a
+                  href={`tel:${t("header.phone")}`}
+                  className="secondary-color text-decoration-none text-uppercase mail text-xs"
+                >
+                  {t("header.phone")}
+                </a>
+              </div>
+            </div>
+          </Col>
+
+          <Col xs="auto" className="d-none d-xl-flex">
+            <LanguageSwitcher />
+          </Col>
+
+          <Col xs="auto" className="ms-auto d-xl-none">
+            <button
+              className="d-block d-xxl-none bg-transparent p-0 text-xl"
+              onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+            >
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+          </Col>
+        </Row>
+      </Container>
+
+      <Container
+        fluid
+        className={`d-xl-block primary-bg py-2 ${
+          isMobileMenuOpen ? "d-block" : "d-none"
         }`}
       >
-        <nav className="header-nav width-90 d-flex align-items-end">
-          <ul className={`mb-0 ps-0 ms-0 nav-menu ${isMobileMenuOpen ? "active" : ""}`}>
-            {renderMenu(menuItems)}
-          </ul>
-          <div className="search-bar ms-0 ms-md-auto pe-3">
-            <div className="search-input-wrapper">
-              <input
-                type="text"
-                placeholder={t.searchPlaceholder}
-                className="form-control"
-              />
-              <button className="btn-icon">
-                <FontAwesomeIcon icon={faSearch} className="icon" />
-              </button>
-            </div>
-          </div>
-        </nav>
-      </div>
+        <Container>
+          <Row>
+            <Col>
+              <nav className="d-flex align-items-center">
+                <ul
+                  className={`text-sm d-flex flex-column flex-xl-row mb-0 ps-0 ms-0 ${
+                    isMobileMenuOpen ? "d-flex" : ""
+                  }`}
+                >
+                  {renderMenu(menuItems)}
+                </ul>
+
+                <div className="d-xxl-block d-none ms-auto">
+                  <form
+                    onSubmit={handleSearchSubmit}
+                    className="input-group search-input-wrapper"
+                  >
+                    <input
+                      type="text"
+                      placeholder={t("header.searchPlaceholder")}
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                      className="form-control border-0"
+                    />
+                    <button type="submit" className="btn bg-white border-0 ">
+                      <FontAwesomeIcon icon={faSearch} />
+                    </button>
+                  </form>
+
+                  {filteredItems.length > 0 && (
+                    <ul className="search-results position-absolute bg-white border rounded shadow mt-2 p-2 z-3">
+                      {filteredItems.map((item) => (
+                        <li
+                          key={item.id}
+                          className="py-1 px-2 cursor-pointer"
+                          onClick={() => handleResultClick(item.route)}
+                        >
+                          {item.name}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              </nav>
+            </Col>
+          </Row>
+        </Container>
+      </Container>
     </header>
   );
 };

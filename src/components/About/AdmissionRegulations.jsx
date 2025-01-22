@@ -1,73 +1,56 @@
 import React from "react";
-import "./AboutAssociation.css"; // your custom CSS file
-import { useLanguage } from "../../context/LanguageContext";
-import about from "../../assets/about.png";
-import Slider from "../Slider/Slider";
+import { Container, Row, Col } from "react-bootstrap";
 import Clients from "../Clients/Clients";
+import Slider from "../Slider/Slider";
+import { useTranslation } from "react-i18next";
+import "./AboutAssociation.css";
 
 export default function AdmissionRegulations() {
-  const { language } = useLanguage();
-
-  const translations = {
-    1: {
-      title: "Pravilnik o prijemu",
-      subtitle: "Udruženje kompozitora Srbije",
-      description:
-        "Klikom na link ispod možete preuzeti pravilnik u članstvo Udruženja kompozitora Srbije.",
-      links: [
-        {
-          text: "Pravilnik prijema u članstvo - UKS",
-          href: "#",
-        },
-      ],
-    },
-    2: {
-      title: "Admission Regulations",
-      subtitle: "Association of Composers of Serbia",
-      description:
-        "By clicking on the link below, you can download the rules for membership of the Association of Composers of Serbia.",
-      links: [
-        {
-          text: "Rules of admission to membership - UKS",
-          href: "#",
-        },
-      ],
-    },
-  };
-
-  const t = translations[language];
+  const { t } = useTranslation();
 
   return (
-    <div>
-      <Clients />
-      <Slider />
-      <div className="width-90 my-5">
-        <div className="">
-          <h1 className="text-start title-primary">{t.title}</h1>
-          <p className="text-start border-bottom pb-3 title-primary font-weight-light">
-            {t.subtitle}
-          </p>
-        </div>
-        <div class="my-5 primary-color">
-          <p>
-            <p>{t.description}</p>
-          </p>
-          <ul>
-            {t.links.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-decoration-none primary-color text-decoration-underline"
-                >
-                  {link.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Container fluid className="my-4">
+      {/* Top Section: Clients & Slider */}
+      <Row className="mb-4">
+        <Col>
+          <Clients />
+          <Slider />
+        </Col>
+      </Row>
+      <Container>
+        {/* Title & Subtitle */}
+        <Row>
+          <Col>
+            <h1 className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+              {t("admission.title")}
+            </h1>
+          </Col>
+        </Row>
+
+        {/* Content */}
+        <Row className="my-4">
+          <h2 className="primary-color">{t("admission.subtitle")}</h2>
+          <Col className="primary-color">
+            <p>{t("admission.description")}</p>
+            <ul className="ps-0 ms-0">
+              {t("admission.links", { returnObjects: true }).map(
+                (link, index) => (
+                  <li key={index}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-decoration-none primary-color text-decoration-underline"
+                    >
+                      {link.text}
+                    </a>
+                  </li>
+                )
+              )}
+            </ul>
+          </Col>
+        </Row>
+      </Container>
+    </Container>
   );
 }

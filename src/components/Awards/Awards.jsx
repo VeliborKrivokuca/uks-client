@@ -1,96 +1,97 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import "./Awards.css";
+import { Container, Row, Col } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { fetchAwards } from "../../store/actions/awardsActions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward } from "@fortawesome/free-solid-svg-icons";
-import { useLanguage } from "../../context/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../../services/api";
-import api from "../../services/api";
 
-const Awards = () => {
-  const [awards, setAwards] = useState([]);
+import "./Awards.css";
+
+const Awards = ({ isHomepage = false }) => {
   const [selectedAward, setSelectedAward] = useState(null);
-  const { language } = useLanguage();
+  const { t, i18n } = useTranslation();
 
-  // Translations
-  const translations = {
-    1: {
-      awardTitle: "Nagrada",
-      moreInfo: "Više informacija",
-    },
-    2: {
-      awardTitle: "Award",
-      moreInfo: "More information",
-    },
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
 
-  const t = translations[language];
+  const { awards, loading, error } = useSelector((state) => state.awards);
 
   useEffect(() => {
-    const fetchAwards = async () => {
-      try {
-        const response = await api.get(
-          `/api/nagrade/language/${language}`
-        );
-        console.log(response.data);
-        setAwards(response.data.data);
-      } catch (error) {
-        console.error("Error fetching awards data:", error);
-      }
-    };
+    dispatch(fetchAwards(i18n.language));
 
-    fetchAwards();
-  }, [language]);
+    // If navigating from the homepage to the awards page with state
+    if (location.state?.selectedAward) {
+      setSelectedAward(location.state.selectedAward);
+    }
+  }, [dispatch, i18n.language, location.state]);
 
   const handleViewMore = (award) => {
-    setSelectedAward(award);
+    if (isHomepage) {
+      // Navigate to awards page with the selected award
+      navigate("/nagrade", { state: { selectedAward: award } });
+    } else {
+      // Open the description directly on the awards page
+      setSelectedAward(award);
+    }
   };
 
   return (
-    <div className="awards-section">
-      <div className="awards-grid mt-4 pt-1">
-        {awards.map((award) => (
-          <div className="award-card" key={award.title}>
-            <img
-              src={`${API_BASE_URL}/images/${award.image}`}
-              alt={award.title}
-              className="award-image"
-            />
-            <div className="award-details">
-              <div className="award-bottom w-100">
-                <p className="text-light text-center w-100 mb-0">{`${t.awardTitle}`}</p>
-                <p className="text-center m-0 text-light pb-3">
-                  "{`${award.title}`}"
-                </p>
-                <FontAwesomeIcon
-                  className="h3 mx-auto text-center w-100 text-light"
-                  icon={faAward}
+    <Container className="my-4 pt-1">
+      {loading && <p>{t("loading.general")}</p>}
+      {error && (
+        <p className="text-danger">
+          {t("info.error")} {error}
+        </p>
+      )}
+      {!loading && !error && (
+        <Row className="gy-4">
+          {awards.map((award) => (
+            <Col key={award.title} sm={6} md={6} lg={6} xl={3}>
+              <div className="award-card position-relative shadow rounded overflow-hidden">
+                <img
+                  src={`${API_BASE_URL}/images/${award.image}`}
+                  alt={award.title}
+                  className="award-image w-100 h-100"
                 />
-                <p className="award-date text-light text-center mb-0">
-                  {award.acDate}
-                </p>
-                <p
-                  className="text-light mx-auto text-center w-100 award-date pt-3 text-decoration-underline"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => handleViewMore(award)}
-                >
-                  {t.moreInfo}
-                </p>
+                <div className="award-details w-100 position-absolute d-flex flex-column justify-content-end">
+                  <p className="text-light text-center mb-0 text-lg fw-light">
+                    {t("awards.awardTitle")}
+                  </p>
+                  <p className="text-center m-0 text-light pb-3 text-lg">
+                    "{award.title}"
+                  </p>
+                  <FontAwesomeIcon
+                    className="h3 text-center w-100 text-light"
+                    icon={faAward}
+                  />
+                  <p
+                    className="text-light text-center w-100 pt-3 text-decoration-underline fw-light cursor-pointer"
+                    onClick={() => handleViewMore(award)}
+                  >
+                    {t("awards.moreInfo")}
+                  </p>
+                </div>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
+            </Col>
+          ))}
+        </Row>
+      )}
 
       {selectedAward && (
-        <div className="award-description text-start mt-5">
-          <div
-            className="award-description"
-            dangerouslySetInnerHTML={{ __html: selectedAward.description }}
-          ></div>
-        </div>
+        <Row className="mt-5">
+          <Col>
+            <div
+              className="ck-editor-text"
+              dangerouslySetInnerHTML={{ __html: selectedAward.description }}
+            />
+          </Col>
+        </Row>
       )}
-    </div>
+    </Container>
   );
 };
 

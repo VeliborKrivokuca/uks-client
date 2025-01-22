@@ -1,102 +1,104 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./RazgovoriPreview.css"; // Update the CSS file name if needed
+import { Container, Row, Col } from "react-bootstrap";
+import "./RazgovoriPreview.css";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/api";
 import Slider from "../Slider/Slider";
 import Clients from "../Clients/Clients";
-import api from "../../services/api";
+import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchRazgovori } from "../../store/actions/razgovoriActions";
+import { mapLanguageCodeToId } from "../../services/languageUtils";
+import { API_BASE_URL } from "../../services/api";
 
 const RazgovoriPreview = () => {
-  const [razgovori, setRazgovori] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const { t, i18n } = useTranslation();
 
-  const translations = {
-    1: {
-      title: "Razgovori",
-      subtitle:
-        "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-      noTalks: "Trenutno nema dostupnih razgovora.",
-    },
-    2: {
-      title: "Talks",
-      subtitle:
-        "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-      noTalks: "No talks available at the moment.",
-    },
-  };
-
-  const t = translations[language];
+  const { razgovori, loading, error } = useSelector((state) => state.razgovori);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const fetchRazgovori = async () => {
-      try {
-        const response = await api.get(
-          `/api/razgovori/language/${language}`
-        );
-        if (isMounted) {
-          setRazgovori(response.data.data || []);
-        }
-      } catch (error) {
-        console.error("Error fetching razgovori:", error);
-      }
-    };
-    console.log(razgovori);
-
-    fetchRazgovori();
-
-    return () => {
-      isMounted = false; // Prevent updates after unmount
-    };
-  }, [language]);
+    const languageId = mapLanguageCodeToId(i18n.language);
+    dispatch(fetchRazgovori(languageId));
+  }, [dispatch, i18n.language]);
 
   const handleRazgovoriClick = (id) => {
     navigate(`/razgovori/${id}`);
   };
 
+  if (loading) {
+    return (
+      <Container>
+        <p>{t("info.loading")}</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <p>{t("info.error", { error })}</p>
+      </Container>
+    );
+  }
+
   return (
-    <div className="razgovori-list">
-      <Clients></Clients>
-      <Slider></Slider>
-      <div className="width-90 my-5">
-        <h1 className="text-start title-primary">{t.title}</h1>
-        <p className="text-start border-bottom pb-3 title-primary font-weight-light">
-          {t.subtitle}
-        </p>
-        <div className="grid">
+    <>
+      <Clients />
+      <Slider />
+      {/* Title and Subtitle */}
+      <Container>
+        <Row className="my-4">
+          <Col>
+            <h1 className="title-color">{t("talks.title")}</h1>
+            <p className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+              {t("talks.subtitle")}
+            </p>
+          </Col>
+        </Row>
+
+        {/* Talks Grid */}
+        <Row>
           {razgovori.length === 0 ? (
-            <p>{t.noTalks}</p>
+            <Col>
+              <p>{t("razgovori.noTalks")}</p>
+            </Col>
           ) : (
             razgovori.map((razgovor) => (
-              <div
+              <Col
                 key={razgovor.id}
-                className="razgovori-card"
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                className="mb-4"
                 onClick={() => handleRazgovoriClick(razgovor.id)}
               >
-                <div className="thumbnail-container">
+                <div className="position-relative cursor-pointer">
                   <img
                     src={
                       razgovor.image
                         ? `${API_BASE_URL}/images/${razgovor.image}`
                         : noPhotoImage
                     }
-                    alt={razgovor.title || "No Image Available"}
-                    className="thumbnail rounded-lg"
+                    alt={razgovor.title || t("talks.noImage")}
+                    className="thumbnail rounded w-100"
                   />
-                  <div className="gradient-overlay rounded-lg"></div>
-                  <h3 className="razgovori-title">{razgovor.title}</h3>
+                  <div className="gradient-overlay rounded"></div>
+                  <h3 className="text-xl ps-3 position-absolute bottom-0 start-0 pb-5 text-white">
+                    {razgovor.title}
+                  </h3>
+                  <p className="text-sm ps-3 position-absolute bottom-0 p-0 text-white w-100 end-0 pe-3 text-decoration-underline">
+                    {t("talks.viewText")}
+                  </p>
                 </div>
-              </div>
+              </Col>
             ))
           )}
-        </div>
-      </div>
-    </div>
+        </Row>
+      </Container>
+    </>
   );
 };
 

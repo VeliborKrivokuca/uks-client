@@ -1,51 +1,47 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchRazgovorDetail } from "../../store/actions/razgovoriActions";
+import Clients from "../Clients/Clients";
+import { Container, Row, Col } from "react-bootstrap";
 import "./RazgovoriDetails.css";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import Clients from "../Clients/Clients";
-import { useLanguage } from "../../context/LanguageContext";
 import { API_BASE_URL } from "../../services/api";
-import api from "../../services/api";
+import { useTranslation } from "react-i18next";
 
 const RazgovoriDetail = () => {
-  const { id, lang } = useParams(); // Get the Razgovor ID and Language from the URL
-  const [razgovor, setRazgovor] = useState(null);
-  const { language } = useLanguage();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { t, i18n } = useTranslation();
 
-  // Translations
-  const translations = {
-    1: {
-      title: "Razgovori",
-      subtitle:
-        "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-    },
-    2: {
-      title: "Talks",
-      subtitle:
-        "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-    },
-  };
-
-  const t = translations[language];
+  const { razgovor, loading, error } = useSelector((state) => state.razgovori);
 
   useEffect(() => {
-    const fetchRazgovorDetails = async () => {
-      try {
-        const response = await api.get(
-          `/api/razgovori/detail/${id}`
-        );
-        setRazgovor(response.data);
-      } catch (error) {
-        console.error("Error fetching razgovor details:", error);
-      }
-    };
+    dispatch(fetchRazgovorDetail(id, i18n.language));
+  }, [dispatch, id, i18n.language]);
 
-    fetchRazgovorDetails();
-  }, [id, lang]);
+  if (loading) {
+    return (
+      <Container>
+        <p>{t("info.loading")}</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <p>{t("info.error", { error })}</p>
+      </Container>
+    );
+  }
 
   if (!razgovor) {
-    return <div>Loading...</div>;
+    return (
+      <Container>
+        <p>{t("info.noData")}</p>
+      </Container>
+    );
   }
 
   // Generate thumbnail URL
@@ -55,34 +51,40 @@ const RazgovoriDetail = () => {
       : noPhotoImage;
 
   return (
-    <div className="">
-      <Clients></Clients>
-      <div className="width-wrapper">
-        <h1 className="text-start title-primary">{t.title}</h1>
-        <p className="text-start border-bottom pb-3 title-primary font-weight-light">
-          {t.subtitle}
-        </p>
-        <div className="razgovori-detail">
-          <div className="d-lg-flex">
-            <h2 className="d-block d-lg-none">{razgovor.translation.user}</h2>
+    <>
+      <Clients />
+      {/* Title and Subtitle */}
+      <Container>
+        <Row className="mb-4">
+          <Col>
+            <h1 className="text-start title-color">{t("talks.title")}</h1>
+            <p className="text-start border-bottom pb-3 title-color">
+              {t("talks.subtitle")}
+            </p>
+          </Col>
+        </Row>
+
+        {/* Content Section */}
+        <Row>
+          <Col xs={12} lg={4} className="mb-4 mb-lg-0">
             <img
               src={getThumbnailUrl()}
               alt={razgovor.razgovor.title}
-              className="razgovori-thumbnail"
+              className="w-100 rounded"
             />
-            <div className="px-lg-4">
-              <h2 className="d-none d-lg-block">{razgovor.translation.user}</h2>
-              <div
-                className="razgovori-description"
-                dangerouslySetInnerHTML={{
-                  __html: razgovor.translation.description,
-                }}
-              ></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </Col>
+          <Col xs={12} lg={8}>
+            <h2>{razgovor.translation.user}</h2>
+            <div
+              className="ck-editor-text"
+              dangerouslySetInnerHTML={{
+                __html: razgovor.translation.description,
+              }}
+            ></div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

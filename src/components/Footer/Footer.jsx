@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import "./Footer.css";
+import React from "react";
+import { Container, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebook,
@@ -8,145 +8,107 @@ import {
   faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/logo.png";
-import { useLanguage } from "../../context/LanguageContext";
-
-const translations = {
-  1: {
-    contactTitle: "Kontakt podaci",
-    address: "Mišarska 12-14,",
-    city: "11000 Beograd, Srbija",
-    mailLabel: "Mail",
-    phone: "Telefon",
-    fax: "Fax",
-    pagesTitle: "Stranice",
-    socialMediaTitle: "Socijalne mreže",
-    copyright:
-      "Copyright © 2024. Udruženje kompozitora Srbije. Sva prava zadržava UKS",
-    pages: [
-      { name: "Aktuelnosti", route: "aktuelnosti" },
-      { name: "O udruženju", route: "o-udruženju" },
-      { name: "Članovi", route: "clanovi" },
-      { name: "Razgovori", route: "razgovori" },
-      { name: "Tribine", route: "tribine" },
-      { name: "Nagrade", route: "nagrade" },
-      { name: "Kontakt", route: "kontakt" },
-    ],
-  },
-  2: {
-    contactTitle: "Contact Information",
-    address: "Mišarska 12-14,",
-    city: "11000 Belgrade, Serbia",
-    mailLabel: "Email",
-    phone: "Phone",
-    fax: "Fax",
-    pagesTitle: "Pages",
-    socialMediaTitle: "Social Media",
-    copyright:
-      "Copyright © 2024. Association of Composers of Serbia. All rights reserved by UKS",
-    pages: [
-      { name: "News", route: "aktuelnosti" },
-      { name: "About the Association", route: "o-udruženju" },
-      { name: "Members", route: "clanovi" },
-      { name: "Conversations", route: "razgovori" },
-      { name: "Talks", route: "tribine" },
-      { name: "Awards", route: "nagrade" },
-      { name: "Contact", route: "kontakt" },
-    ],
-  },
-};
+import { useTranslation } from "react-i18next";
+import "./Footer.css";
 
 const Footer = () => {
-  const { language } = useLanguage();
-  const t = translations[language] || translations[1];
+  const { t } = useTranslation();
+
+  // Retrieve pages from translations
+  const pages = t("footer.pages", { returnObjects: true });
 
   return (
-    <footer className="footer pt-5">
-      <div className="footer-content">
-        {/* Contact Info Section */}
-        <div className="footer-section">
-          <h3>{t.contactTitle}</h3>
-          <p>{t.address}</p>
-          <p>{t.city}</p>
-          <p className="mt-3">
-            {t.mailLabel}:{" "}
-            <a href="mailto:composas@gmail.com" className="footer-link">
-              composas@gmail.com
-            </a>
-          </p>
-          <p>
-            {t.phone}: +381 11 3340 894
-          </p>
-          <p>
-            {t.fax}: +381 11 3340 894
-          </p>
-        </div>
+    <footer className="light-blue  pt-5">
+      <Container>
+        <Row className="gy-4">
+          {/* Contact Info Section */}
+          <Col md={4}>
+            <h3 className="text-md mb-4 pb-2 fw-bold">
+              {t("footer.contactTitle")}
+            </h3>
+            <p className="mb-1">{t("footer.address")}</p>
+            <p className="mb-1">{t("footer.city")}</p>
+            <p className="mt-3 mb-1">
+              {t("footer.mailLabel")}:{" "}
+              <a
+                href={`mailto:${t("header.mail")}`}
+                className="text-decoration-none primary-color"
+              >
+                {t("header.mail")}
+              </a>
+            </p>
+            <p className="mb-1">{t("footer.phone")}: +381 11 3340 894</p>
+            <p className="mb-1">{t("footer.fax")}: +381 11 3340 894</p>
+          </Col>
 
-        {/* Pages Section */}
-        <div className="footer-section">
-          <h3>{t.pagesTitle}</h3>
-          <div className="footer-grid">
-            {t.pages.map((page, index) => (
-              <div key={index} className="footer-grid-item">
-                <a href={`/${page.route}`} className="footer-link">
-                  {page.name}
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
+          {/* Pages Section */}
+          <Col md={4}>
+            <h3 className="text-md mb-4 pb-2 fw-bold">
+              {t("footer.pagesTitle")}
+            </h3>
+            <ul className="list-unstyled">
+              {pages.map((page, index) => (
+                <li key={index} className="mb-2">
+                  <a
+                    href={`/${page.route}`}
+                    className="text-decoration-none primary-color"
+                  >
+                    {page.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </Col>
 
-        {/* Social Media Section */}
-        <div className="footer-section">
-          <h3>{t.socialMediaTitle}</h3>
-          <div className="social-icons">
-            <a
-              href="#"
-              className="social-icon bg-white px-2 pt-1 pb-1 d-flex rounded-circle"
-            >
-              <FontAwesomeIcon
-                className="h4 px-1 align-self-center mt-1"
-                icon={faFacebook}
-              />
-            </a>
-            <a
-              href="#"
-              className="social-icon bg-white px-2 pt-1 pb-1 d-flex rounded-circle"
-            >
-              <FontAwesomeIcon
-                className="h4 px-1 align-self-center mt-1"
-                icon={faInstagram}
-              />
-            </a>
-            <a
-              href="#"
-              className="social-icon bg-white px-2 pt-1 pb-1 d-flex rounded-circle"
-            >
-              <FontAwesomeIcon
-                className="h4 px-1 align-self-center mt-1"
-                icon={faTwitter}
-              />
-            </a>
-            <a
-              href="#"
-              className="social-icon bg-white px-2 pt-1 pb-1 d-flex rounded-circle"
-            >
-              <FontAwesomeIcon
-                className="h4 px-1 align-self-center mt-1"
-                icon={faLinkedin}
-              />
-            </a>
-          </div>
+          {/* Social Media Section */}
+          <Col md={4} className="text-center text-md-start">
+            <h3 className="text-md mb-4 pb-2 fw-bold">
+              {t("footer.socialMediaTitle")}
+            </h3>
+            <div className="d-flex justify-content-center justify-content-md-start gap-3 mt-3">
+              <a
+                href="#"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faFacebook} />
+              </a>
+              <a
+                href="#"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faInstagram} />
+              </a>
+              <a
+                href="#"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faTwitter} />
+              </a>
+              <a
+                href="#"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faLinkedin} />
+              </a>
+            </div>
 
-          {/* Logo Section */}
-          <div className="footer-section logo-section">
-            <img src={logo} alt="Logo" className="footer-logo" />
-          </div>
-        </div>
-      </div>
+            {/* Logo */}
+            <div className="mt-4">
+              <img
+                src={logo}
+                alt="Logo"
+                className="img-fluid footer-img-logo"
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
       {/* Footer Bottom */}
-      <div className="footer-bottom w-100 py-3 justify-content-center align-items-center d-flex">
-        <p className="mb-0">{t.copyright}</p>
+      <div className="footer-bg text-white text-center py-3 mt-4">
+        <Container>
+          <p className="mb-0 text-white">{t("footer.copyright")}</p>
+        </Container>
       </div>
     </footer>
   );

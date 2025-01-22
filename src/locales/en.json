@@ -1,0 +1,297 @@
+{
+  "header": {
+    "emailLabel": "Send us an email",
+    "callUsLabel": "Call us Now",
+    "searchPlaceholder": "Search...",
+    "mail": "composas@gmail.com",
+    "phone": "800-123-4567",
+    "menuItems": [
+      {
+        "id": "1",
+        "name": "News",
+        "parentId": null,
+        "route": "aktuelnosti"
+      },
+      {
+        "id": "2",
+        "name": "About the Association",
+        "parentId": null,
+        "route": "o-udruženju"
+      },
+      {
+        "id": "3",
+        "name": "Members",
+        "parentId": null,
+        "route": "clanovi"
+      },
+      {
+        "id": "4",
+        "name": "Conversations",
+        "parentId": null,
+        "route": "razgovori"
+      },
+      {
+        "id": "5",
+        "name": "Tribunes",
+        "parentId": null,
+        "route": "tribine"
+      },
+      {
+        "id": "17",
+        "name": "Awards",
+        "parentId": null,
+        "route": "nagrade"
+      },
+      {
+        "id": "18",
+        "name": "Contact",
+        "parentId": null,
+        "route": "kontakt"
+      },
+      {
+        "id": "18",
+        "name": "About us",
+        "parentId": "2",
+        "route": "o-nama"
+      },
+      {
+        "id": "19",
+        "name": "Legal documents",
+        "parentId": "2",
+        "route": "pravni-dokumenti"
+      },
+      {
+        "id": "20",
+        "name": "Rules of admission",
+        "parentId": "2",
+        "route": "pravilnik-o-prijemu"
+      },
+      {
+        "id": "21",
+        "name": "About association",
+        "parentId": "2",
+        "route": "o-udruženju"
+      },
+      {
+        "id": "22",
+        "name": "Recommendations",
+        "parentId": "2",
+        "route": "preporuke"
+      }
+    ]
+  },
+  "info": {
+    "loading": "Loading...",
+    "error": "Error fetching data",
+    "noData": "No data to show"
+  },
+  "home": {
+    "members": "Our Members",
+    "news": "News",
+    "tribunes": "Tribunes",
+    "talks": "Talks",
+    "allTalks": "All Talks",
+    "awards": "Awards",
+    "allAwards": "All Awards",
+    "allNews": "All News"
+  },
+  "news": {
+    "title": "News",
+    "subtitle": "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
+    "details": "More details →",
+    "composers": "Composers Association of Serbia",
+    "noBlogs": "No available news",
+    "metaAuthor": "Serbian Composers Association"
+  },
+  "gallery": {
+    "title": "Gallery",
+    "imageAlt": "Blog Gallery Image",
+    "noImages": "No images available"
+  },
+  "recommendations": {
+    "title": "Recommendations",
+    "subtitle": "Recommended minimum order value for serious music",
+    "description": "The attached table on the minimum value of orders for serious music stands as an official recommendation of the Association of Composers of Serbia and provides a valid compass on the value of each order, as well as the amount of knowledge, experience, effort, work and time invested in the creation of each composition. The table shows the minimum applicable fee, while the complexity of the work, the expertise and reputation of the composer, the urgency required or the special requirements of the order may result in a higher fee. The values are presented as percentages in relation to the minimum wage in the Republic of Serbia, so it is understood that it is important to update each time you use them. The ethical obligation of all actors in the order is to openly present in advance all the listed, additional and accompanying costs, which are conditioned by the creation of a sound work of art, before agreeing on any kind of cooperation.",
+    "links": [
+      {
+        "text": "UKS Order form",
+        "href": "#"
+      },
+      {
+        "text": "UKS Orders",
+        "href": "#"
+      }
+    ]
+  },
+  "members": {
+    "allRoles": "All",
+    "loading": "Loading members...",
+    "errorLoading": "Failed to load data. Please try again.",
+    "sectionTitle": "OUR MEMBERS",
+    "sectionDescription": "The section for association members provides insight into the profiles of our composers, their biographies, works, and contributions to the Serbian music scene, highlighting the importance of their creativity and role in preserving our musical tradition.",
+    "chooseSection": "Choose section",
+    "chooseName": "Enter name and last name",
+    "chooseNamePlaceholder": "Enter name",
+    "picture": "Picture",
+    "name": "Name",
+    "role": "Role",
+    "profile": "Profile",
+    "profileButton": "Profile"
+  },
+  "tribine": {
+    "title": "Panels",
+    "noTribines": "No panels available for the selected language.",
+    "noThumbnail": "No Thumbnail Available",
+    "date": "Date"
+  },
+  "talks": {
+    "title": "Talks",
+    "subtitle": "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
+    "noTalks": "No talks available at the moment.",
+    "noImage": "No Image Available",
+    "viewText": "View text"
+  },
+  "awards": {
+    "awardTitle": "Award",
+    "pageTitle": "Awards",
+    "moreInfo": "More information",
+    "pageSubtitle": "Follow the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art."
+  },
+  "slider": {
+    "supportTitle": "Support for the Compositional Art of Serbia",
+    "supportDescription": "We are dedicated to preserving, promoting, and developing the compositional art in Serbia, providing support to our creators and safeguarding musical traditions.",
+    "noSlides": "No slides available"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "Association of Composers of Serbia",
+    "boardTitle": "Association of Composers of Serbia",
+    "president": "Rade Radivojević, President",
+    "vicePresident": "Svetlana Savić, Vice President",
+    "executiveBoard": "Executive Board Members:",
+    "description1": "The Association of Composers of Serbia represents a prominent and productive organization that, since its founding in 1945, has been dedicated to fostering and preserving Serbian cultural heritage and promoting contemporary musical creativity, both in the realm of classical music and popular genres.",
+    "members": "The Association of Composers of Serbia has 330 members divided into three sections: Composers of Classical Music, Composers of Jazz and Popular Music, and Music Writers (musicologists and ethnomusicologists). The Association of Composers of Serbia invests significant effort to make Serbian music:",
+    "visible": "VISIBLE",
+    "accessible": "ACCESSIBLE",
+    "present": "PRESENT",
+    "visibleDesc": "by promoting the works of its members, organizing musical events that highlight and perform the music of its distinguished members...",
+    "accessibleDesc": "by publishing scores, CDs...",
+    "presentDesc": "by ensuring the works of its composer members are included in the repertoires of symphony orchestras...",
+    "conclusion": "so that their music lives on concert stages, is recorded and broadcast on radio and television, and inspires reviews in professional journals, newspapers, and on music-dedicated portals...",
+    "executiveMembers": [
+      "Ana Gnjatović",
+      "Vladimir Korać",
+      "Svetlana Savić",
+      "Tatjana Milošević Mijanović",
+      "Aleksandar Filipović",
+      "Dragoljub Ilić",
+      "Nevenka Leković",
+      "Rade Radivojević",
+      "Biljana Leković",
+      "Ivana Miladinović Prica",
+      "Ivana Petković Lozo"
+    ],
+    "supervisoryBoard": "Supervisory Board Members:",
+    "supervisoryMembers": [
+      "Milorad Marinković",
+      "Damjan Jovičin",
+      "Vladan Vučković Paja"
+    ],
+    "statusCommittee": "Status Committee:",
+    "statusMembers": [
+      "Rade Radivojević",
+      "Miroslav-Miša Savić",
+      "Katarina Lazarević",
+      "Vladan Vučković Paja",
+      "Dragomir Milenković"
+    ],
+    "coordinator": "The UKS representative in the Coordination Board of Artistic Associations is Dragomir Milenković."
+  },
+  "legalDocuments": {
+    "title": "Legal Documents",
+    "subtitle": "Association of Composers of Serbia",
+    "description": "Click the desired link below to download the latest versions of legal documents of the Association of Composers of Serbia:",
+    "links": [
+      {
+        "text": "Association of Composers of Serbia – Statute 25.10.2022. (PDF)",
+        "href": "statut-25-10-2022.pdf"
+      },
+      {
+        "text": "Association of Composers of Serbia – Rules of Procedure 16.10.2022. (PDF)",
+        "href": "poslovnik-16-10-2022.pdf"
+      }
+    ]
+  },
+  "admission": {
+    "title": "Admission Regulations",
+    "subtitle": "Association of Composers of Serbia",
+    "description": "By clicking on the link below, you can download the rules for membership of the Association of Composers of Serbia.",
+    "links": [
+      {
+        "text": "Rules of admission to membership - UKS",
+        "href": "#"
+      }
+    ]
+  },
+  "aboutAssociation": {
+    "title": "About the Association",
+    "subtitle": "Preserving tradition and inspiring the future of Serbian music",
+    "description": "The Serbian Composers' Association is dedicated to promoting, preserving, and advancing the art of composition, supporting our creators, and nurturing the richness of musical tradition.",
+    "viewDetails": "View Details"
+  },
+  "stats": {
+    "satisfiedMembers": "Satisfied members",
+    "eventsOrganized": "Events organized",
+    "yearsWithYou": "Years with you",
+    "awardsGiven": "Awards given"
+  },
+  "notFound": {
+    "title": "Oops!",
+    "description": "The page you are looking for doesn't exist",
+    "back": "Go back gome"
+  },
+  "error": {
+    "blogDetails": "Not details found for this news"
+  },
+  "footer": {
+    "contactTitle": "Contact Information",
+    "address": "Mišarska 12-14,",
+    "city": "11000 Belgrade, Serbia",
+    "mailLabel": "Email",
+    "phone": "Phone",
+    "fax": "Fax",
+    "pagesTitle": "Pages",
+    "socialMediaTitle": "Social Media",
+    "copyright": "Copyright © 2024. Association of Composers of Serbia. All rights reserved by UKS",
+    "pages": [
+      {
+        "name": "News",
+        "route": "aktuelnosti"
+      },
+      {
+        "name": "About the Association",
+        "route": "o-udruženju"
+      },
+      {
+        "name": "Members",
+        "route": "clanovi"
+      },
+      {
+        "name": "Conversations",
+        "route": "razgovori"
+      },
+      {
+        "name": "Talks",
+        "route": "tribine"
+      },
+      {
+        "name": "Awards",
+        "route": "nagrade"
+      },
+      {
+        "name": "Contact",
+        "route": "kontakt"
+      }
+    ]
+  }
+}

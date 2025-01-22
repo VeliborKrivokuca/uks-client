@@ -1,39 +1,25 @@
 import React from "react";
 import Clients from "../components/Clients/Clients";
 import Awards from "../components/Awards/Awards";
-import { useLanguage } from "../context/LanguageContext";
 import Slider from "../components/Slider/Slider";
+import { useTranslation } from "react-i18next";
+import { Container } from "react-bootstrap";
 
 const AwardsPage = () => {
-  const { language } = useLanguage();
-
-  const translations = {
-    1: {
-      pageTitle: "Nagrade",
-      pageSubtitle:
-        "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-    },
-    2: {
-      pageTitle: "Awards",
-      pageSubtitle:
-        "Follow the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-    },
-  };
-
-  const t = translations[language];
+  const { t } = useTranslation();
 
   return (
-    <div className="page">
-      <div className="background-container"></div>
+    <Container fluid>
       <Clients></Clients>
       <Slider></Slider>
-      <div className="width-90 mx-auto mt-4">
-        <h1 className="text-start title-color">{t.pageTitle}</h1>
-        <p className="text-start primary-color">{t.pageSubtitle}</p>
-        <hr />
-      </div>
+      <Container className="my-4 ">
+        <h1 className="text-start title-color">{t("awards.pageTitle")}</h1>
+        <p className="text-start primary-color pb-3 border-bottom-primary">
+          {t("awards.pageSubtitle")}
+        </p>
+      </Container>
       <Awards></Awards>
-    </div>
+    </Container>
   );
 };
 

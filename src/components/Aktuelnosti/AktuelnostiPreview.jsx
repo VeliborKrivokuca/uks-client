@@ -1,123 +1,120 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./AktuelnostiPreview.css";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
+import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../../services/api";
+import { Container, Row, Col } from "react-bootstrap";
+
 import image from "../../assets/logo-image.png";
+import noPhotoImage from "../../assets/no-photo.jpg";
 import Clients from "../Clients/Clients";
 import Slider from "../Slider/Slider";
-import noPhotoImage from "../../assets/no-photo.jpg";
-import { useLanguage } from "../../context/LanguageContext";
-import { API_BASE_URL } from "../../services/api";
-import api from "../../services/api";
+
+import "./AktuelnostiPreview.css";
 
 const Aktuelnosti = () => {
-  const [blogs, setBlogs] = useState([]);
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const { language } = useLanguage();
+  const dispatch = useDispatch();
 
-  // Translations
-  const translations = {
-    1: {
-      title: "Aktuelnosti",
-      subtitle:
-        "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-      noBlogs: "Trenutno nema dostupnih aktuelnosti.",
-      detailsButton: "Više detalja →",
-      metaAuthor: "Udruženje kompozitora Srbije",
-    },
-    2: {
-      title: "News",
-      subtitle:
-        "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-      noBlogs: "No blogs available at the moment.",
-      detailsButton: "More details →",
-      metaAuthor: "Serbian Composers Association",
-    },
-  };
-
-  const t = translations[language];
+  const { blogs, loading, error } = useSelector((state) => state.aktuelnosti);
 
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        const response = await api.get(
-          `/api/aktuelnosti/get/all/${language}`
-        );
-        const data = response.data;
-
-        // Sort blogs by publish_time in descending order
-        const sortedBlogs = data.sort(
-          (a, b) => new Date(b.publish_time) - new Date(a.publish_time)
-        );
-
-        setBlogs(sortedBlogs);
-        console.log(sortedBlogs);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-        setBlogs([]); // Fallback to empty array
-      }
-    };
-
-    fetchBlogs();
-  }, [language]);
+    dispatch(fetchBlogs(i18n.language));
+  }, [dispatch, i18n.language]);
 
   const handleViewDetails = (id) => {
     navigate(`/blog/${id}`);
   };
 
   return (
-    <div>
+    <Container className="my-4">
       <Clients />
       <Slider />
-      <div className="blog-list-container">
-        <h1 className="text-start title-primary">{t.title}</h1>
-        <p className="text-start border-bottom pb-3 title-primary font-weight-light">
-          {t.subtitle}
-        </p>
-        {Array.isArray(blogs) && blogs.length > 0 ? (
-          blogs.map((blog) => (
-            <div key={blog.anId} className="blog-card">
-              <div className="d-lg-flex">
-                <img
-                  src={
-                    blog.image
-                      ? `${API_BASE_URL}/images/${blog.image}`
-                      : noPhotoImage
-                  }
-                  alt={blog.title}
-                  className="blog-image"
-                />
-                <div className="mx-lg-4 mt-2">
-                  <div className="blog-header">
-                    <div className="blog-logo rounded-circle border">
-                      <img src={image} alt="Logo" className="blog-logo-img" />
-                    </div>
-                    <div className="blog-meta">
-                      <p className="blog-meta-item">{t.metaAuthor}</p>
-                      <p className="blog-meta-item">
-                        {new Date(blog.publish_time).toLocaleDateString()}
-                      </p>
-                    </div>
-                  </div>
-                  <h3 className="blog-title">{blog.title}</h3>
-                  <p className="blog-description primary-color">
-                    {blog.subtitle}
-                  </p>
-                  <button
-                    className="details-button rounded primary-bg"
-                    onClick={() => handleViewDetails(blog.translation_id)}
+
+      {/* Title & Subtitle */}
+      <Row className="my-4">
+        <Col className="px-4">
+          <h2 className="text-start title-color">{t("news.title")}</h2>
+          <p className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+            {t("news.subtitle")}
+          </p>
+        </Col>
+      </Row>
+
+      {/* Blog List */}
+      <Row>
+        <Col className="p-0">
+          {loading && <p>{t("news.loading")}</p>}
+          {error && <p>{t("news.error", { error })}</p>}
+
+          {!loading && !error && blogs.length > 0
+            ? blogs.map((blog) => (
+                <Row
+                  key={blog.anId}
+                  className="mb-4 p-4 flex-column-reverse flex-lg-row align-items-stretch"
+                >
+                  {/* Image Column */}
+                  <Col
+                    xs={12}
+                    lg={6}
+                    className="d-flex justify-content-center align-items-center py-3 py-lg-0 blog-image-wrapper"
                   >
-                    {t.detailsButton}
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p>{t.noBlogs}</p>
-        )}
-      </div>
-    </div>
+                    <img
+                      src={
+                        blog.image
+                          ? `${API_BASE_URL}/images/${blog.image}`
+                          : noPhotoImage
+                      }
+                      alt={blog.title}
+                      className="shadow blog-img w-100 h-100"
+                    />
+                  </Col>
+
+                  {/* Text Column */}
+                  <Col
+                    xs={12}
+                    lg={6}
+                    className="d-flex flex-column justify-content-between ps-0 ps-lg-4"
+                  >
+                    <div>
+                      <div className="blog-header d-flex align-items-center mb-3">
+                        <div className="blog-logo rounded-circle border me-3">
+                          <img
+                            src={image}
+                            alt="Logo"
+                            className="blog-logo-img"
+                          />
+                        </div>
+                        <div className="blog-meta">
+                          <p className="primary-color mb-0">
+                            {t("news.metaAuthor")}
+                          </p>
+                          <p className="primary-color mb-0">
+                            {new Date(blog.publish_time).toLocaleDateString()}
+                          </p>
+                        </div>
+                      </div>
+                      <h3 className="secondary-color">{blog.title}</h3>
+                      <p className="primary-color">{blog.subtitle}</p>
+                    </div>
+                    <div>
+                      <button
+                        className="primary-bg rounded primary-bg shadow mt-3 text-white"
+                        onClick={() => handleViewDetails(blog.translation_id)}
+                      >
+                        {t("news.details")}
+                      </button>
+                    </div>
+                  </Col>
+                </Row>
+              ))
+            : /* Show this if not loading/error but no blogs */
+              !loading && !error && <p>{t("news.noBlogs")}</p>}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

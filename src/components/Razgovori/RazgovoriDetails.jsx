@@ -74,7 +74,7 @@ const RazgovoriDetail = () => {
             />
           </Col>
           <Col xs={12} lg={8}>
-            <h2>{razgovor.translation.user}</h2>
+            <h2 className="secondary-color">{razgovor.translation.user}</h2>
             <div
               className="ck-editor-text"
               dangerouslySetInnerHTML={{

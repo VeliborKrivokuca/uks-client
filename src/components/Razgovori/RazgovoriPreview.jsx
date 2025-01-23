@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap";
 import "./RazgovoriPreview.css";
@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchRazgovori } from "../../store/actions/razgovoriActions";
 import { mapLanguageCodeToId } from "../../services/languageUtils";
 import { API_BASE_URL } from "../../services/api";
+import Pagination from "../Pagination/Pagination";
 
 const RazgovoriPreview = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,9 @@ const RazgovoriPreview = () => {
   const { t, i18n } = useTranslation();
 
   const { razgovori, loading, error } = useSelector((state) => state.razgovori);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8);
 
   useEffect(() => {
     const languageId = mapLanguageCodeToId(i18n.language);
@@ -27,21 +31,16 @@ const RazgovoriPreview = () => {
     navigate(`/razgovori/${id}`);
   };
 
-  if (loading) {
-    return (
-      <Container>
-        <p>{t("info.loading")}</p>
-      </Container>
-    );
-  }
+  // Filter only active razgovori (status === 1)
+  const activeRazgovori = razgovori.filter((razgovor) => razgovor.status === "1");
 
-  if (error) {
-    return (
-      <Container>
-        <p>{t("info.error", { error })}</p>
-      </Container>
-    );
-  }
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentRazgovori = activeRazgovori.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   return (
     <>
@@ -60,12 +59,24 @@ const RazgovoriPreview = () => {
 
         {/* Talks Grid */}
         <Row>
-          {razgovori.length === 0 ? (
+          {loading && (
             <Col>
-              <p>{t("razgovori.noTalks")}</p>
+              <p>{t("info.loading")}</p>
             </Col>
-          ) : (
-            razgovori.map((razgovor) => (
+          )}
+          {error && (
+            <Col>
+              <p>{t("info.error", { error })}</p>
+            </Col>
+          )}
+          {!loading && !error && currentRazgovori.length === 0 && (
+            <Col>
+              <p>{t("talks.noTalks")}</p>
+            </Col>
+          )}
+          {!loading &&
+            !error &&
+            currentRazgovori.map((razgovor) => (
               <Col
                 key={razgovor.id}
                 xs={12}
@@ -73,7 +84,7 @@ const RazgovoriPreview = () => {
                 md={4}
                 lg={3}
                 className="mb-4"
-                onClick={() => handleRazgovoriClick(razgovor.id)}
+                onClick={() => handleRazgovoriClick(razgovor.razgovorId)}
               >
                 <div className="position-relative cursor-pointer">
                   <img
@@ -87,16 +98,24 @@ const RazgovoriPreview = () => {
                   />
                   <div className="gradient-overlay rounded"></div>
                   <h3 className="text-xl ps-3 position-absolute bottom-0 start-0 pb-5 text-white">
-                    {razgovor.title}
+                    {razgovor.translationTitle}
                   </h3>
                   <p className="text-sm ps-3 position-absolute bottom-0 p-0 text-white w-100 end-0 pe-3 text-decoration-underline">
                     {t("talks.viewText")}
                   </p>
                 </div>
               </Col>
-            ))
-          )}
+            ))}
         </Row>
+
+        {/* Pagination */}
+        <Pagination
+          currentPage={currentPage}
+          totalItems={activeRazgovori.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+          onItemsPerPageChange={setItemsPerPage}
+        />
       </Container>
     </>
   );

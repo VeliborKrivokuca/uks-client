@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchTribines } from "../../store/actions/tribineActions";
@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
+import Pagination from "../Pagination/Pagination";
 import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../../services/api";
 
@@ -18,6 +19,9 @@ const TribineList = () => {
 
   const { tribines, loading, error } = useSelector((state) => state.tribine);
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(8); // Default items per page
+
   useEffect(() => {
     dispatch(fetchTribines(i18n.language));
   }, [dispatch, i18n.language]);
@@ -25,6 +29,18 @@ const TribineList = () => {
   const handleTribineClick = (id) => {
     navigate(`/tribine/${id}`);
   };
+  console.log(tribines);
+
+  // Filter only active tribines
+  const activeTribines = tribines.filter((tribine) => tribine.status === "1");
+
+  // Pagination logic
+  const indexOfLastTribine = currentPage * itemsPerPage;
+  const indexOfFirstTribine = indexOfLastTribine - itemsPerPage;
+  const currentTribines = activeTribines.slice(
+    indexOfFirstTribine,
+    indexOfLastTribine
+  );
 
   return (
     <Container className="my-5">
@@ -53,13 +69,13 @@ const TribineList = () => {
       {/* Tribine Cards */}
       <Row className="g-4">
         {/* If there are no tribines and not loading/error, show a message */}
-        {!loading && !error && tribines.length === 0 && (
+        {!loading && !error && activeTribines.length === 0 && (
           <Col>
             <p>{t("info.noData")}</p>
           </Col>
         )}
 
-        {tribines.map((tribine) => (
+        {currentTribines.map((tribine) => (
           <Col
             xs={12}
             sm={6}
@@ -84,6 +100,15 @@ const TribineList = () => {
           </Col>
         ))}
       </Row>
+
+      {/* Pagination */}
+      <Pagination
+        currentPage={currentPage}
+        totalItems={activeTribines.length}
+        itemsPerPage={itemsPerPage}
+        onPageChange={setCurrentPage}
+        onItemsPerPageChange={setItemsPerPage}
+      />
     </Container>
   );
 };

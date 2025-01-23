@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
@@ -12,6 +12,8 @@ import Clients from "../Clients/Clients";
 import Slider from "../Slider/Slider";
 
 import "./AktuelnostiPreview.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const Aktuelnosti = () => {
   const { t, i18n } = useTranslation();
@@ -20,12 +22,38 @@ const Aktuelnosti = () => {
 
   const { blogs, loading, error } = useSelector((state) => state.aktuelnosti);
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
   useEffect(() => {
     dispatch(fetchBlogs(i18n.language));
   }, [dispatch, i18n.language]);
 
   const handleViewDetails = (id) => {
     navigate(`/blog/${id}`);
+  };
+
+  // Pagination logic
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentBlogs = blogs.slice(indexOfFirstItem, indexOfLastItem);
+  const totalPages = Math.ceil(blogs.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prev) => prev - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage((prev) => prev + 1);
+    }
   };
 
   return (
@@ -49,8 +77,8 @@ const Aktuelnosti = () => {
           {loading && <p>{t("news.loading")}</p>}
           {error && <p>{t("news.error", { error })}</p>}
 
-          {!loading && !error && blogs.length > 0
-            ? blogs.map((blog) => (
+          {!loading && !error && currentBlogs.length > 0
+            ? currentBlogs.map((blog) => (
                 <Row
                   key={blog.anId}
                   className="mb-4 p-4 flex-column-reverse flex-lg-row align-items-stretch"
@@ -114,6 +142,64 @@ const Aktuelnosti = () => {
               !loading && !error && <p>{t("news.noBlogs")}</p>}
         </Col>
       </Row>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <Row>
+          <Col>
+            <nav aria-label="Page navigation">
+              <ul className="pagination justify-content-center">
+                {/* Previous Button */}
+                <li
+                  className={`page-item ${currentPage === 1 ? "disabled" : ""}`}
+                >
+                  <button
+                    className="page-link"
+                    onClick={handlePrevPage}
+                    disabled={currentPage === 1}
+                  >
+                    <FontAwesomeIcon icon={faArrowLeft} />
+                  </button>
+                </li>
+
+                {/* Page Numbers */}
+                {Array.from({ length: totalPages }, (_, index) => {
+                  const pageNumber = index + 1;
+                  const isActive = currentPage === pageNumber;
+                  return (
+                    <li
+                      key={pageNumber}
+                      className={`page-item ${isActive ? "active" : ""}`}
+                    >
+                      <button
+                        className="page-link"
+                        onClick={() => handlePageChange(pageNumber)}
+                      >
+                        {pageNumber}
+                      </button>
+                    </li>
+                  );
+                })}
+
+                {/* Next Button */}
+                <li
+                  className={`page-item ${
+                    currentPage === totalPages ? "disabled" : ""
+                  }`}
+                >
+                  <button
+                    className="page-link"
+                    onClick={handleNextPage}
+                    disabled={currentPage === totalPages}
+                  >
+                    <FontAwesomeIcon icon={faArrowRight} />
+                  </button>
+                </li>
+              </ul>
+            </nav>
+          </Col>
+        </Row>
+      )}
     </Container>
   );
 };

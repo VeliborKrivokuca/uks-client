@@ -22,13 +22,20 @@ const Aktuelnosti = () => {
     navigate(`/blog/${id}`);
   };
 
+  // Sort blogs by publish_time in descending order and take the latest 2
+  const latestBlogs = blogs
+    ? [...blogs]
+        .sort((a, b) => new Date(b.publish_time) - new Date(a.publish_time))
+        .slice(0, 2)
+    : [];
+
   return (
     <Container className="my-4">
       <Row>
         {loading && <p>{t("news.loading")}</p>}
         {error && <p>{t("news.error", { error })}</p>}
-        {!loading && !error && blogs.length > 0 ? (
-          blogs.map((blog) => (
+        {!loading && !error && latestBlogs.length > 0 ? (
+          latestBlogs.map((blog) => (
             <Col key={blog.anId} xs={12} className="mb-4">
               <div>
                 <Row className="g-0 flex-nowrap align-items-center mb-3">

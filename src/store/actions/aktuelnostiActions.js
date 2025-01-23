@@ -38,7 +38,6 @@ export const fetchBlogs = (language) => async (dispatch) => {
     const response = await api.get(`/api/aktuelnosti/get/all/${languageId}`);
     const sortedBlogs = response.data
       .sort((a, b) => new Date(b.publish_time) - new Date(a.publish_time))
-      .slice(0, 2); // Fetch the latest 2 blogs
     dispatch({ type: FETCH_BLOGS_SUCCESS, payload: sortedBlogs });
   } catch (error) {
     dispatch({ type: FETCH_BLOGS_FAILURE, payload: error.message });

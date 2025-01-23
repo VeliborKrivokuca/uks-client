@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Clients from "../Clients/Clients";
+import Pagination from "../Pagination/Pagination";
 import { useTranslation } from "react-i18next";
 import { API_BASE_URL } from "../../services/api";
 import "./Members.css";
@@ -11,9 +10,9 @@ function MembersList({ members, roles, onProfileClick }) {
   const [searchName, setSearchName] = useState("");
   const [selectedSection, setSelectedSection] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
 
   const { t } = useTranslation();
-  const membersPerPage = 5;
 
   // ----- Filtering -----
   const filteredMembers = members.filter((m) => {
@@ -25,29 +24,12 @@ function MembersList({ members, roles, onProfileClick }) {
   });
 
   // ----- Pagination -----
-  const indexOfLastMember = currentPage * membersPerPage;
-  const indexOfFirstMember = indexOfLastMember - membersPerPage;
+  const indexOfLastMember = currentPage * itemsPerPage;
+  const indexOfFirstMember = indexOfLastMember - itemsPerPage;
   const currentMembers = filteredMembers.slice(
     indexOfFirstMember,
     indexOfLastMember
   );
-  const totalPages = Math.ceil(filteredMembers.length / membersPerPage);
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
-
-  const handlePrevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1);
-    }
-  };
 
   return (
     <>
@@ -141,11 +123,7 @@ function MembersList({ members, roles, onProfileClick }) {
                           className="primary-bg px-4 text-white border-0"
                           onClick={() => onProfileClick(member)}
                         >
-                          {t("members.profileButton")}{" "}
-                          <FontAwesomeIcon
-                            icon={faArrowRight}
-                            className="text-xs"
-                          />
+                          {t("members.profileButton")}
                         </Button>
                       </td>
                     </tr>
@@ -157,63 +135,13 @@ function MembersList({ members, roles, onProfileClick }) {
         </Row>
 
         {/* Pagination */}
-        {totalPages > 1 && (
-          <Row>
-            <Col>
-              <nav aria-label="Page navigation">
-                <ul className="pagination justify-content-center">
-                  {/* Previous Button */}
-                  <li
-                    className={`page-item ${
-                      currentPage === 1 ? "disabled" : ""
-                    }`}
-                  >
-                    <Button
-                      variant="light"
-                      className="page-link"
-                      onClick={handlePrevPage}
-                    >
-                      <FontAwesomeIcon icon={faArrowLeft} />
-                    </Button>
-                  </li>
-                  {/* Page Numbers */}
-                  {Array.from({ length: totalPages }, (_, index) => {
-                    const pageNumber = index + 1;
-                    const isActive = currentPage === pageNumber;
-                    return (
-                      <li
-                        key={pageNumber}
-                        className={`page-item ${isActive ? "active" : ""}`}
-                      >
-                        <Button
-                          variant="light"
-                          className="page-link"
-                          onClick={() => handlePageChange(pageNumber)}
-                        >
-                          {pageNumber}
-                        </Button>
-                      </li>
-                    );
-                  })}
-                  {/* Next Button */}
-                  <li
-                    className={`page-item ${
-                      currentPage === totalPages ? "disabled" : ""
-                    }`}
-                  >
-                    <Button
-                      variant="light"
-                      className="page-link"
-                      onClick={handleNextPage}
-                    >
-                      <FontAwesomeIcon icon={faArrowRight} />
-                    </Button>
-                  </li>
-                </ul>
-              </nav>
-            </Col>
-          </Row>
-        )}
+        <Pagination
+          currentPage={currentPage}
+          totalItems={filteredMembers.length}
+          itemsPerPage={itemsPerPage}
+          onPageChange={setCurrentPage}
+          onItemsPerPageChange={setItemsPerPage}
+        />
       </Container>
     </>
   );

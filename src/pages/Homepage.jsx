@@ -36,14 +36,12 @@ const HomePage = () => {
         />
         <TribinePreview />
 
-        <div className="section-divider-large">
-          <SectionHeader
-            title={t("home.awards")}
-            buttonText={t("home.allAwards")}
-            onButtonClick={handleNavigationNagrade}
-          />
-          <Awards isHomepage={true} />
-        </div>
+        <SectionHeader
+          title={t("home.awards")}
+          buttonText={t("home.allAwards")}
+          onButtonClick={handleNavigationNagrade}
+        />
+        <Awards isHomepage={true} />
 
         <SectionHeader
           title={t("home.news")}

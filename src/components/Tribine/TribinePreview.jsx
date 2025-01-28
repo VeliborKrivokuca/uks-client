@@ -99,7 +99,7 @@ const TribinePreview = () => {
 
   return (
     <Container>
-      <Row className="mb-4">
+      <Row className="mb-4 mt-0">
         <Col>
           {loading && <p>{t("info.loading")}</p>}
           {error && <p>{t("info.error", { error })}</p>}
@@ -116,9 +116,9 @@ const TribinePreview = () => {
         {currentTribines.map((tribine) => {
           const { day, month } = formatDate(tribine.date);
           return (
-            <Col xs={12} lg={12} xl={4} key={tribine.id}>
+            <Col xs={12} lg={12} xl={4} key={tribine.id} className="tribine-card-column">
               <div className="border-0 bg-transparent">
-                <Row className="flex-column">
+                <Row className="flex-column tribine-row">
                   <Col xs={4} className="align-items-center text-white w-auto">
                     <div className="text-center">
                       <Row>

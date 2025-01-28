@@ -37,9 +37,9 @@ const StatsSection = () => {
   ];
 
   return (
-    <Container>
-      <Container className="primary-bg rounded-lg shadow my-5 text-white">
-        <Row className="gy-4 justify-content-center py-3">
+    <Container className="section-divider-large">
+      <Container className="primary-bg shadow text-white px-5 py-2">
+        <Row className="justify-content-center py-3 gy-4">
           {stats.map((stat, index) => (
             <Col
               key={index}
@@ -48,10 +48,13 @@ const StatsSection = () => {
               md={3}
               className="text-center d-flex flex-column align-items-center"
             >
-              <div className="stat-item text-white">
-                <FontAwesomeIcon icon={stat.icon} className="stat-icon" />
-                <p className="stat-number">{stat.number}</p>
-                <p className="stat-label">{stat.label}</p>
+              <div className="stat-item text-white py-4">
+                <FontAwesomeIcon
+                  icon={stat.icon}
+                  className="stat-icon text-main-title pe-2"
+                />
+                <p className="text-main-title fw-bold mb-0">{stat.number}</p>
+                <p className="fw-normal text-subtitle">{stat.label}</p>
               </div>
             </Col>
           ))}

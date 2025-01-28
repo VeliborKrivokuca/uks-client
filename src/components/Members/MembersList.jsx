@@ -10,7 +10,7 @@ function MembersList({ members, roles, onProfileClick }) {
   const [searchName, setSearchName] = useState("");
   const [selectedSection, setSelectedSection] = useState("all");
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(30);
 
   const { t } = useTranslation();
 
@@ -40,8 +40,10 @@ function MembersList({ members, roles, onProfileClick }) {
       <Container className="mt-5">
         <Row>
           <Col>
-            <h2 className="title-color">{t("members.sectionTitle")}</h2>
-            <p className="mb-4 primary-color">
+            <h2 className="title-color fw-bold text-main-title">
+              {t("members.sectionTitle")}
+            </h2>
+            <p className="mb-4 primary-color text-subtitle">
               {t("members.sectionDescription")}
             </p>
           </Col>

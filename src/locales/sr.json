@@ -83,6 +83,7 @@
         "members": "Naši članovi",
         "news": "Aktuelnosti",
         "tribunes": "Tribine",
+        "allTribunes": "Sve tribine",
         "talks": "Razgovori",
         "allTalks": "Svi razgovori",
         "awards": "Nagrade",
@@ -228,7 +229,7 @@
         "back": "Povratak na početnu"
     },
     "error": {
-        "blogDetails": "Nisu pronaðeni detalji za ovu aktuelnosti"
+        "blogDetails": "Slike ili tekst nedostaju za ovu aktuelnost"
     },
     "footer": {
         "contactTitle": "Kontakt podaci",

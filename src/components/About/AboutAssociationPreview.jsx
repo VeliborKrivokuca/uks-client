@@ -18,18 +18,18 @@ const AboutAssociationPreview = () => {
     <Container className="my-4">
       <Row>
         <Col>
-          <h3 className="secondary-color text-uppercase mb-3">
+          <h3 className="secondary-color text-uppercase mb-3 text-main-title fw-bold">
             {t("aboutAssociation.title")}
           </h3>
-          <p className="fw-bold mb-4 secondary-color">
+          <p className="fw-bold mb-4 pb-3 secondary-color text-subtitle">
             {t("aboutAssociation.subtitle")}
           </p>
-          <p className="mb-4 primary-color">
+          <p className="mb-4 primary-color text-subtitle">
             {t("aboutAssociation.description")}
           </p>
 
           <button
-            className="primary-bg text-white rounded mt-2 px-3 py-2"
+            className="primary-bg text-white rounded mt-2 px-3 py-1 shadow text-subtitle"
             onClick={handleNavigation}
           >
             {t("aboutAssociation.viewDetails")}{" "}

@@ -15,3 +15,13 @@ export const fetchAwards = (language) => async (dispatch) => {
     dispatch({ type: FETCH_AWARDS_FAILURE, payload: error.message });
   }
 };
+
+export const fetchAwardById = (id) => async (dispatch) => {
+  try {
+    const response = await api.get(`/api/nagrade/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching award by ID:", error);
+    return null;
+  }
+};

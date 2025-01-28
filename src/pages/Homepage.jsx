@@ -11,44 +11,56 @@ import AboutAssociationPreview from "../components/About/AboutAssociationPreview
 import StatsSection from "../components/Stats/StatsSection";
 import { useTranslation } from "react-i18next";
 import { Container } from "react-bootstrap";
+import TribinePreview from "../components/Tribine/TribinePreview";
 
 const HomePage = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
   const handleNavigationNagrade = () => navigate("/nagrade");
+  const handleNavigationTribine = () => navigate("/tribine");
   const handleNavigationRazgovori = () => navigate("/razgovori");
   const handleNavigationAktuelnosti = () => navigate("/aktuelnosti");
 
   return (
     <Container fluid className="px-0">
-      <Clients />
-      <SliderTitle />
-      <Navigation />
+      <div className="wave-background">
+        <Clients />
+        <SliderTitle />
+        <Navigation />
 
-      <SectionHeader
-        title={t("home.awards")}
-        buttonText={t("home.allAwards")}
-        onButtonClick={handleNavigationNagrade}
-      />
-      <Awards isHomepage={true} />
+        <SectionHeader
+          title={t("home.tribunes")}
+          buttonText={t("home.allTribunes")}
+          onButtonClick={handleNavigationTribine}
+        />
+        <TribinePreview />
 
-      <SectionHeader
-        title={t("home.news")}
-        buttonText={t("home.allNews")}
-        onButtonClick={handleNavigationAktuelnosti}
-      />
-      <Aktuelnosti />
+        <div className="section-divider-large">
+          <SectionHeader
+            title={t("home.awards")}
+            buttonText={t("home.allAwards")}
+            onButtonClick={handleNavigationNagrade}
+          />
+          <Awards isHomepage={true} />
+        </div>
 
-      <SectionHeader
-        title={t("home.talks")}
-        buttonText={t("home.allTalks")}
-        onButtonClick={handleNavigationRazgovori}
-      />
-      <RazgovoriList />
+        <SectionHeader
+          title={t("home.news")}
+          buttonText={t("home.allNews")}
+          onButtonClick={handleNavigationAktuelnosti}
+        />
+        <Aktuelnosti />
 
-      <AboutAssociationPreview />
-      <StatsSection />
+        <AboutAssociationPreview />
+        <StatsSection />
+        <SectionHeader
+          title={t("home.talks")}
+          buttonText={t("home.allTalks")}
+          onButtonClick={handleNavigationRazgovori}
+        />
+        <RazgovoriList />
+      </div>
     </Container>
   );
 };

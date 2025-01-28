@@ -33,6 +33,16 @@ const AktuelnostiDetails = () => {
     dispatch(fetchBlogImages(id));
   }, [dispatch, id]);
 
+  function formatDateToDDMMYYYY(dateInput) {
+    const date = new Date(dateInput);
+
+    const day = String(date.getDate()).padStart(2, "0"); // Ensures two digits
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
+  }
+
   const handleImageClick = (index) => {
     const formattedImages = images.map((img) => ({
       src: `${API_BASE_URL}/images/${img.image_path}`,
@@ -43,23 +53,30 @@ const AktuelnostiDetails = () => {
     setLightboxOpen(true);
   };
 
-  if (loading) return <p>{t("loading.blogDetails")}</p>;
+  if (loading)
+    return (
+      <Container>
+        <p>{t("info.loading")}</p>
+      </Container>
+    );
 
   return (
-    <Container fluid className="my-4">
+    <Container fluid>
       <Clients></Clients>
-      <Container>
+      <Container className="section-divider-small">
         {/* Header / Meta Info */}
         <Row className="align-items-center mb-4">
           <Col xs="auto">
-            <div className="rounded-circle border">
+            <div className="rounded-circle primary-border">
               <img src={image} alt="Logo" className="blog-logo-img" />
             </div>
           </Col>
-          <Col>
-            <p className="mb-0">{t("news.metaAuthor")}</p>
-            <p className="mb-0">
-              {new Date(blog?.adTimePublish).toLocaleDateString()}
+          <Col className="ps-0">
+            <p className="mb-0 primary-color text-subtitle">
+              {t("news.metaAuthor")}
+            </p>
+            <p className="mb-0 primary-color text-subtitle">
+              {formatDateToDDMMYYYY(blog?.adTimePublish)}
             </p>
           </Col>
         </Row>
@@ -67,7 +84,7 @@ const AktuelnostiDetails = () => {
         {/* Title */}
         <Row>
           <Col>
-            <h1 className="secondary-color">{blog?.acTitle}</h1>
+            <h1 className="secondary-color text-main-title fw-bold">{blog?.acTitle}</h1>
           </Col>
         </Row>
 
@@ -90,7 +107,7 @@ const AktuelnostiDetails = () => {
         <Row className="mb-4">
           <Col>
             <div
-              className="blog-description"
+              className="blog-description ck-editor-text"
               dangerouslySetInnerHTML={{ __html: blog?.acDescription }}
             />
           </Col>
@@ -119,7 +136,7 @@ const AktuelnostiDetails = () => {
         {error && (
           <Row className="mt-4">
             <Col>
-              <div className="alert alert-danger" role="alert">
+              <div className="alert alert-primary" role="alert">
                 {t("error.blogDetails", { error })}
               </div>
             </Col>

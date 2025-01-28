@@ -42,7 +42,7 @@ const RazgovoriList = () => {
   }
 
   return (
-    <Container className="my-5">
+    <Container>
       {razgovori.length === 0 ? (
         <p>{t("razgovori.noTalks")}</p>
       ) : (
@@ -54,7 +54,7 @@ const RazgovoriList = () => {
               sm={6}
               md={4}
               lg={3}
-              onClick={() => handleRazgovoriClick(razgovor.id)}
+              onClick={() => handleRazgovoriClick(razgovor.razgovorId)}
             >
               <div className="position-relative cursor-pointer">
                 <img
@@ -64,11 +64,11 @@ const RazgovoriList = () => {
                       : noPhotoImage
                   }
                   alt={razgovor.title || t("talks.noImage")}
-                  className="thumbnail w-100 rounded-lg"
+                  className="thumbnail w-100 rounded"
                 />
-                <div className="gradient-overlay rounded-lg position-absolute" />
+                <div className="gradient-overlay rounded position-absolute" />
                 <h3 className="ps-3 pb-3 position-absolute text-white bottom-0 pb-5">
-                  {razgovor.title}
+                  {razgovor.translationTitle}
                 </h3>
                 <p className="text-sm ps-3 position-absolute bottom-0 p-0 text-white w-100 end-0 pe-3 text-decoration-underline">
                   {t("talks.viewText")}

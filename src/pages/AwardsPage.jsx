@@ -13,8 +13,10 @@ const AwardsPage = () => {
       <Clients></Clients>
       <Slider></Slider>
       <Container className="my-4 ">
-        <h1 className="text-start title-color">{t("awards.pageTitle")}</h1>
-        <p className="text-start primary-color pb-3 border-bottom-primary">
+        <h1 className="text-start title-color fw-bold text-main-title text-uppercase">
+          {t("awards.pageTitle")}
+        </h1>
+        <p className="text-start primary-color pb-3 border-bottom-primary text-subtitle fw-normal">
           {t("awards.pageSubtitle")}
         </p>
       </Container>

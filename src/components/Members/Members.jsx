@@ -26,7 +26,11 @@ const MembersPage = () => {
   };
 
   if (loading) {
-    return <p>{t("members.loading")}</p>;
+    return (
+      <Container>
+        <p>{t("members.loading")}</p>
+      </Container>
+    );
   }
 
   if (error) {

@@ -22,6 +22,13 @@
 .ck-editor-text h2,
 .ck-editor-text h3,
 .ck-editor-text h4,
-.ck-editor-text h5 {
+.ck-editor-text h5,
+.ck-editor-text span {
   color: var(--color-primary) !important;
+}
+
+.alert-primary {
+  background-color: var(--color-primary) !important;
+  border: 0 !important;
+  color: white !important;
 }

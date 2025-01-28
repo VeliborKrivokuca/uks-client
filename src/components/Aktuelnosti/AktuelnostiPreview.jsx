@@ -24,7 +24,12 @@ const Aktuelnosti = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 4;
+
+  const truncateText = (text, maxLength = 50) => {
+    if (!text) return "";
+    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
+  };
 
   useEffect(() => {
     dispatch(fetchBlogs(i18n.language));
@@ -56,16 +61,28 @@ const Aktuelnosti = () => {
     }
   };
 
+  function formatDateToDDMMYYYY(dateInput) {
+    const date = new Date(dateInput);
+
+    const day = String(date.getDate()).padStart(2, "0"); // Ensures two digits
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
+  }
+
   return (
     <Container className="my-4">
       <Clients />
       <Slider />
 
       {/* Title & Subtitle */}
-      <Row className="my-4">
-        <Col className="px-4">
-          <h2 className="text-start title-color">{t("news.title")}</h2>
-          <p className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+      <Row>
+        <Col className="mt-4">
+          <h2 className="text-start title-color text-main-title fw-bold text-uppercase px-2">
+            {t("news.title")}
+          </h2>
+          <p className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2">
             {t("news.subtitle")}
           </p>
         </Col>
@@ -81,7 +98,7 @@ const Aktuelnosti = () => {
             ? currentBlogs.map((blog) => (
                 <Row
                   key={blog.anId}
-                  className="mb-4 p-4 flex-column-reverse flex-lg-row align-items-stretch"
+                  className="mb-4 px-4 flex-column-reverse flex-lg-row align-items-stretch mt-4"
                 >
                   {/* Image Column */}
                   <Col
@@ -96,7 +113,7 @@ const Aktuelnosti = () => {
                           : noPhotoImage
                       }
                       alt={blog.title}
-                      className="shadow blog-img w-100 h-100"
+                      className="shadow blog-img w-100 h-100 rounded"
                     />
                   </Col>
 
@@ -115,21 +132,28 @@ const Aktuelnosti = () => {
                             className="blog-logo-img"
                           />
                         </div>
-                        <div className="blog-meta">
+                        <div className="blog-meta text-subtitle">
                           <p className="primary-color mb-0">
                             {t("news.metaAuthor")}
                           </p>
                           <p className="primary-color mb-0">
-                            {new Date(blog.publish_time).toLocaleDateString()}
+                            {formatDateToDDMMYYYY(blog.publish_time)}
                           </p>
                         </div>
                       </div>
-                      <h3 className="secondary-color">{blog.title}</h3>
-                      <p className="primary-color">{blog.subtitle}</p>
+                      <h3
+                        className="secondary-color cursor-pointer text-main-title"
+                        onClick={() => handleViewDetails(blog.translation_id)}
+                      >
+                        {blog.title}
+                      </h3>
+                      <p className="primary-color text-subtitle">
+                        {truncateText(blog.subtitle)}
+                      </p>
                     </div>
                     <div>
                       <button
-                        className="primary-bg rounded primary-bg shadow mt-3 text-white"
+                        className="primary-bg rounded primary-bg shadow mt-3 text-white p-0 py-1 px-4 text-subtitle"
                         onClick={() => handleViewDetails(blog.translation_id)}
                       >
                         {t("news.details")}
@@ -148,7 +172,7 @@ const Aktuelnosti = () => {
         <Row>
           <Col>
             <nav aria-label="Page navigation">
-              <ul className="pagination justify-content-center">
+              <ul className="pagination justify-content-center section-divider-large">
                 {/* Previous Button */}
                 <li
                   className={`page-item ${currentPage === 1 ? "disabled" : ""}`}

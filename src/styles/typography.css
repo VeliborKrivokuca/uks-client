@@ -21,3 +21,23 @@
 .text-xl {
   font-size: var(--font-size-xl);
 }
+
+.text-2xl {
+  font-size: var(--font-size-3xl);
+}
+
+.text-subtitle {
+  font-size: var(--font-size-subtitle);
+}
+
+.text-hero-title {
+  font-size: var(--font-size-hero-title);
+}
+
+.text-main-title {
+  font-size: var(--font-size-main-title);
+}
+
+.text-info-xs {
+  font-size: var(--font-size-info-xs);
+}

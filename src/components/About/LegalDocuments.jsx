@@ -18,7 +18,7 @@ export default function LegalDocuments() {
         {/* Title & Subtitle */}
         <Row className="mt-4">
           <Col>
-            <h1 className="text-start title-color border-bottom-primary pb-2">
+            <h1 className="text-start title-color border-bottom-primary pb-2 text-main-title fw-bold">
               {t("legalDocuments.title")}
             </h1>
           </Col>
@@ -27,7 +27,9 @@ export default function LegalDocuments() {
         {/* Description & Links */}
         <Row className="my-4">
           <Col>
-            <h2 className="primary-color mb-3">{t("legalDocuments.subtitle")}</h2>
+            <h2 className="primary-color mb-3">
+              {t("legalDocuments.subtitle")}
+            </h2>
             <p className="primary-color mb-0">
               {t("legalDocuments.description")}
             </p>

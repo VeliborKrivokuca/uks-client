@@ -18,7 +18,9 @@ export default function AboutAssociation() {
         {/* Title */}
         <Row className="my-4">
           <Col>
-            <h2 className="mb-4 title-color border-bottom-primary pb-3">{t("about.title")}</h2>
+            <h2 className="mb-4 title-color border-bottom-primary pb-3">
+              {t("about.title")}
+            </h2>
           </Col>
         </Row>
 
@@ -32,7 +34,9 @@ export default function AboutAssociation() {
             />
           </Col>
           <Col md={9} className="primary-color">
-            <h3 className="secondary-color mb-3">{t("about.subtitle")}</h3>
+            <h2 className="secondary-color mb-3 text-main-title">
+              {t("about.subtitle")}
+            </h2>
             <p>{t("about.description1")}</p>
           </Col>
         </Row>

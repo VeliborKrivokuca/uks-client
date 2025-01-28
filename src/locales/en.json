@@ -44,12 +44,6 @@
       },
       {
         "id": "18",
-        "name": "Contact",
-        "parentId": null,
-        "route": "kontakt"
-      },
-      {
-        "id": "18",
         "name": "About us",
         "parentId": "2",
         "route": "o-nama"
@@ -89,6 +83,7 @@
     "members": "Our Members",
     "news": "News",
     "tribunes": "Tribunes",
+    "allTribunes": "All tribunes",
     "talks": "Talks",
     "allTalks": "All Talks",
     "awards": "Awards",
@@ -251,7 +246,7 @@
     "back": "Go back gome"
   },
   "error": {
-    "blogDetails": "Not details found for this news"
+    "blogDetails": "Images or content is not added to this news"
   },
   "footer": {
     "contactTitle": "Contact Information",

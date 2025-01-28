@@ -18,14 +18,18 @@ const SliderTitle = () => {
     dispatch(fetchSlider());
   }, [dispatch]);
 
+  const activeSlides = slides.filter((slide) => slide.anStatus === "1");
+
   return (
-    <Container fluid>
+    <Container fluid className="section-divider-small">
       <Container className="dynamic-width-container">
         <Row className="justify-content-between">
           <Col lg={5} md={12} xs="auto">
             <div>
-              <h1 className="mb-4 title-color">{t("slider.supportTitle")}</h1>
-              <p className="support-description mt-5 title-color pe-5 me-3">
+              <h1 className="mb-4 title-color text-2xl fw-bold">
+                {t("slider.supportTitle")}
+              </h1>
+              <p className="support-description mt-5 title-color pe-5 me-3 text-subtitle">
                 {t("slider.supportDescription")}
               </p>
             </div>
@@ -38,22 +42,34 @@ const SliderTitle = () => {
             className="slider-title rounded align-self-center"
           >
             {loading ? (
-              <p>{t("loading.slider")}</p>
+              <p>{t("info.loading")}</p>
             ) : error ? (
-              <p>{t("error.slider", { error })}</p>
-            ) : slides.length > 0 ? (
+              <p>{t("info.error", { error })}</p>
+            ) : activeSlides.length > 0 ? (
               <Carousel>
-                {slides.map((slide, index) => (
+                {activeSlides.map((slide, index) => (
                   <Carousel.Item key={index}>
-                    <div className="slider-image-wrapper shadow rounded">
-                      <img
-                        src={`${API_BASE_URL}/images/${slide.acImage}`}
-                        alt={slide.acTitle}
-                        className="d-block w-100 slider-image rounded"
-                      />
-                      <div className="gradient-overlay rounded"></div>
+                    <div className="slider-image-wrapper shadow">
+                      {/* Wrap the image with a link */}
+                      <a
+                        href={
+                          slide.acLink.startsWith("http://") ||
+                          slide.acLink.startsWith("https://")
+                            ? slide.acLink
+                            : `https://${slide.acLink}` // Default to HTTPS if the protocol is missing
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src={`${API_BASE_URL}/images/${slide.acImage}`}
+                          alt={slide.acTitle}
+                          className="d-block w-100 slider-image rounded"
+                        />
+                        <div className="gradient-overlay rounded"></div>
+                      </a>
                       <Carousel.Caption>
-                        <h3 className="text-center text-white">
+                        <h3 className="text-center text-white text-hero-title fw-bold">
                           {slide.acTitle}
                         </h3>
                       </Carousel.Caption>

@@ -1,0 +1,54 @@
+@font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Black.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Thin.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Thin.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Regular.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Medium.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Light.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Merel";
+    src: url("../../public/fonts/Merel-Bold.woff2") format("woff2"),
+      url("../../public/fonts/Merel-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+  

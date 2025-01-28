@@ -22,6 +22,16 @@ const Aktuelnosti = () => {
     navigate(`/blog/${id}`);
   };
 
+  function formatDateToDDMMYYYY(dateInput) {
+    const date = new Date(dateInput);
+
+    const day = String(date.getDate()).padStart(2, "0"); // Ensures two digits
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Months are zero-based
+    const year = date.getFullYear();
+
+    return `${day}.${month}.${year}`;
+  }
+
   // Sort blogs by publish_time in descending order and take the latest 2
   const latestBlogs = blogs
     ? [...blogs]
@@ -30,7 +40,7 @@ const Aktuelnosti = () => {
     : [];
 
   return (
-    <Container className="my-4">
+    <Container>
       <Row>
         {loading && <p>{t("news.loading")}</p>}
         {error && <p>{t("news.error", { error })}</p>}
@@ -39,22 +49,28 @@ const Aktuelnosti = () => {
             <Col key={blog.anId} xs={12} className="mb-4">
               <div>
                 <Row className="g-0 flex-nowrap align-items-center mb-3">
-                  <Col xs="auto" className="blog-logo-container me-3">
+                  <Col
+                    xs="auto"
+                    className="blog-logo-container me-3 primary-border rounded-circle"
+                  >
                     <img src={image} alt="Logo" className="blog-logo-img" />
                   </Col>
 
-                  <Col className="blog-meta">
+                  <Col className="blog-meta text-subtitle primary-color">
                     <p>{t("news.composers")}</p>
-                    <p>{new Date(blog.publish_time).toLocaleDateString()}</p>
+                    <p>{formatDateToDDMMYYYY(blog.publish_time)}</p>
                   </Col>
                 </Row>
 
-                <h3 className="secondary-color">{blog.title}</h3>
-                <p className="blog-description primary-color">
-                  {blog.subtitle}
-                </p>
+                <h3
+                  onClick={() => handleViewDetails(blog.translation_id)}
+                  className="secondary-color cursor-pointer text-main-title"
+                >
+                  {blog.title}
+                </h3>
+                <p className="primary-color text-subtitle">{blog.subtitle}</p>
                 <button
-                  className="text-white rounded primary-bg"
+                  className="text-white rounded primary-bg py-1 shadow text-subtitle"
                   onClick={() => handleViewDetails(blog.translation_id)}
                 >
                   {t("news.details")}

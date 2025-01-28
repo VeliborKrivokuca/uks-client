@@ -1,5 +1,5 @@
 .logo-img {
-  height: 70px;
+  width: 300px;
 }
 
 .search-input-wrapper .form-control {
@@ -10,6 +10,36 @@
   border-radius: 0 20px 20px 0;
 }
 
-ul {
-  margin-left: 0 !important;
+.custom-navbar {
+  height: 50px;
+}
+
+.search-input {
+  padding: 0 !important;
+}
+
+.search-input::placeholder,
+.search-input-wrapper button .icon {
+  color: #1b16744b !important;
+  padding-left: 10px;
+  font-size: var(--font-size-sm);
+}
+
+.dropdown {
+  transform: translateX(-25%);
+  width: 200px;
+}
+
+.dropdown li {
+  padding: 0.7rem 0rem !important;
+  text-align: center !important;
+  font-weight: 400;
+}
+
+.dropdown li:not(:last-child) {
+  border-bottom: 1px solid #ffffff64;
+}
+
+header ul li {
+  padding-right: 42px !important;
 }

@@ -104,15 +104,33 @@ const TribineDetail = () => {
   };
 
   if (loading) {
-    return <p>{t("loading.tribineDetails")}</p>;
+    return (
+      <>
+        <Clients></Clients>
+        <Container>
+          <p className="mt-5">{t("info.loading")}</p>
+        </Container>
+      </>
+    );
   }
 
   if (error) {
-    return <p>{t("error.tribineDetails", { error })}</p>;
+    return (
+      <>
+        <Clients></Clients>
+        <Container>
+          <p className="mt-5">{t("info.error", { error })}</p>
+        </Container>
+      </>
+    );
   }
 
   if (!tribine) {
-    return <p>{t("tribine.noDetails")}</p>;
+    return (
+      <Container>
+        <p>{t("info.noData")}</p>
+      </Container>
+    );
   }
 
   return (

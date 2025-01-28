@@ -18,12 +18,12 @@ const Footer = () => {
   const pages = t("footer.pages", { returnObjects: true });
 
   return (
-    <footer className="light-blue  pt-5">
+    <footer className="light-blue pt-5 section-divider-large">
       <Container>
         <Row className="gy-4">
           {/* Contact Info Section */}
           <Col md={4}>
-            <h3 className="text-md mb-4 pb-2 fw-bold">
+            <h3 className="text-md mb-4 pb-2 fw-bold text-subtitle">
               {t("footer.contactTitle")}
             </h3>
             <p className="mb-1">{t("footer.address")}</p>
@@ -43,15 +43,15 @@ const Footer = () => {
 
           {/* Pages Section */}
           <Col md={4}>
-            <h3 className="text-md mb-4 pb-2 fw-bold">
+            <h3 className="text-md mb-4 pb-2 fw-bold text-subtitle">
               {t("footer.pagesTitle")}
             </h3>
-            <ul className="list-unstyled">
+            <ul className="list-unstyled ms-0">
               {pages.map((page, index) => (
                 <li key={index} className="mb-2">
                   <a
                     href={`/${page.route}`}
-                    className="text-decoration-none primary-color"
+                    className="text-decoration-none text-dark"
                   >
                     {page.name}
                   </a>
@@ -62,7 +62,7 @@ const Footer = () => {
 
           {/* Social Media Section */}
           <Col md={4} className="text-center text-md-start">
-            <h3 className="text-md mb-4 pb-2 fw-bold">
+            <h3 className="text-md mb-4 pb-2 fw-bold text-subtitle">
               {t("footer.socialMediaTitle")}
             </h3>
             <div className="d-flex justify-content-center justify-content-md-start gap-3 mt-3">

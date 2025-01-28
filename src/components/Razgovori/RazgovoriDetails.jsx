@@ -54,11 +54,11 @@ const RazgovoriDetail = () => {
     <>
       <Clients />
       {/* Title and Subtitle */}
-      <Container>
+      <Container className="section-divider">
         <Row className="mb-4">
           <Col>
             <h1 className="text-start title-color">{t("talks.title")}</h1>
-            <p className="text-start border-bottom pb-3 title-color">
+            <p className="text-start border-bottom-primary pb-3 title-color">
               {t("talks.subtitle")}
             </p>
           </Col>

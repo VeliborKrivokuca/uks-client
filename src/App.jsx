@@ -22,10 +22,9 @@ import NotFoundPage from "./components/NotFound/NotFound";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./i18n";
-import { Provider } from "react-redux";
-import store from "./store/store";
 
 import { fetchAllPages } from "./store/slices/pagesSlice";
+import Awards from "./components/Awards/Awards";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,6 +45,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/aktuelnosti" element={<AktuelnostiPreview />} />
         <Route path="/nagrade" element={<AwardsPage />} />
+        <Route path="/nagrade/:id" element={<AwardsPage />} /> {/* Dynamic route */}
         <Route path="/clanovi" element={<MembersPage />} />
         <Route path="/clanovi/:id" element={<MemberProfilePage />} />
         <Route path="/o-udruženju" element={<AboutAssociation />} />

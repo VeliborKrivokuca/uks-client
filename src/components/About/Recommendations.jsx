@@ -19,7 +19,7 @@ export default function Recommendations() {
         {/* Title & Subtitle */}
         <Row>
           <Col>
-            <h1 className="text-start title-color mt-4 pb-2 border-bottom-primary">
+            <h1 className="text-start title-color mt-4 pb-2 border-bottom-primary text-main-title fw-bold">
               {t("recommendations.title")}
             </h1>
           </Col>

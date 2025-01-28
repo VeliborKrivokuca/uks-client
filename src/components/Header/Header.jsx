@@ -105,8 +105,8 @@ const Header = () => {
       return (
         <li
           key={item.id}
-          className={`text-white pe-3 mb-0 py-1 text-center ${
-            isOpen ? "open" : ""
+          className={`text-white mb-0 py-1 text-start position-relative ${
+            isOpen ? "open navigation-divider" : ""
           }`}
         >
           {item.children && item.children.length > 0 ? (
@@ -123,7 +123,7 @@ const Header = () => {
               {isOpen && (
                 <ul
                   ref={dropdownRef}
-                  className="position-absolute primary-bg px-3 py-2 rounded-lg"
+                  className="position-absolute start-0 primary-bg px-3 py-2 dropdown z-3 shadow ms-0"
                 >
                   {renderMenu(item.children)}
                 </ul>
@@ -132,7 +132,7 @@ const Header = () => {
           ) : (
             <Link
               to={`/${item.route}`}
-              className="text-white text-sm text-decoration-none fw-normal"
+              className="text-white text-md text-decoration-none fw-normal"
               onClick={() => {
                 setOpenMenus({});
                 setIsMobileMenuOpen(false);
@@ -146,12 +146,12 @@ const Header = () => {
     });
 
   return (
-    <header className="shadow-sm">
+    <header className="shadow-sm bg-white">
       <Container className="py-3">
         <Row className="align-items-center">
           <Col lg={3} md={6} sm={8} xs={8}>
             <Link to="/">
-              <img src={logo} alt="Logo" className="w-100" />
+              <img src={logo} alt="Logo" className="logo-img" />
             </Link>
           </Col>
 
@@ -162,7 +162,7 @@ const Header = () => {
                 className="text-xl primary-color me-2"
               />
               <div>
-                <p className="text-uppercase mb-0 text-danger text-xxs">
+                <p className="text-uppercase mb-0 text-danger text-info-xs">
                   {t("header.emailLabel")}
                 </p>
                 <a
@@ -182,7 +182,7 @@ const Header = () => {
                 className="text-xl primary-color me-2"
               />
               <div>
-                <p className="text-uppercase mb-0 text-xxs text-danger">
+                <p className="text-uppercase mb-0 text-info-xs text-danger">
                   {t("header.callUsLabel")}
                 </p>
                 <a
@@ -212,8 +212,8 @@ const Header = () => {
 
       <Container
         fluid
-        className={`d-xl-block primary-bg py-2 ${
-          isMobileMenuOpen ? "d-block" : "d-none"
+        className={`custom-navbar d-xl-block primary-bg py-2 ${
+          isMobileMenuOpen ? "d-block h-100" : "d-none"
         }`}
       >
         <Container>
@@ -221,7 +221,7 @@ const Header = () => {
             <Col>
               <nav className="d-flex align-items-center">
                 <ul
-                  className={`text-sm d-flex flex-column flex-xl-row mb-0 ps-0 ms-0 ${
+                  className={`text-md d-flex flex-column flex-xl-row mb-0 ps-0 ms-0 ${
                     isMobileMenuOpen ? "d-flex" : ""
                   }`}
                 >
@@ -238,10 +238,13 @@ const Header = () => {
                       placeholder={t("header.searchPlaceholder")}
                       value={searchTerm}
                       onChange={handleSearchChange}
-                      className="form-control border-0"
+                      className="search-input form-control border-0"
                     />
-                    <button type="submit" className="btn bg-white border-0 ">
-                      <FontAwesomeIcon icon={faSearch} />
+                    <button
+                      type="submit"
+                      className="btn bg-white border-0 py-1 pe-3"
+                    >
+                      <FontAwesomeIcon className="icon" icon={faSearch} />
                     </button>
                   </form>
 
@@ -250,7 +253,7 @@ const Header = () => {
                       {filteredItems.map((item) => (
                         <li
                           key={item.id}
-                          className="py-1 px-2 cursor-pointer"
+                          className="py-1 navigation-divider cursor-pointer"
                           onClick={() => handleResultClick(item.route)}
                         >
                           {item.name}

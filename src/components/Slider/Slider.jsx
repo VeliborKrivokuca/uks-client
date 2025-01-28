@@ -4,34 +4,60 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchSlider } from "../../store/actions/sliderActions";
 import "./Slider.css";
 import { API_BASE_URL } from "../../services/api";
-import { Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
 const Slider = () => {
   const dispatch = useDispatch();
   const { slides, loading, error } = useSelector((state) => state.slider);
-  const {t} = useTranslation;
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchSlider());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  const activeSlides = slides.filter((slide) => slide.anStatus === "1");
+
+  if (loading)
+    return (
+      <Container>
+        <p>{t("info.loading")}</p>
+      </Container>
+    );
+  if (error)
+    return (
+      <Container>
+        <p>
+          {t("info.error")} {error}
+        </p>
+      </Container>
+    );
 
   return (
-    <Container>
-      {slides.length > 0 ? (
+    <Container className="section-divider-small">
+      {activeSlides.length > 0 ? (
         <Carousel>
-          {slides.map((slide, index) => (
+          {activeSlides.map((slide, index) => (
             <Carousel.Item key={index}>
-              <div className="slider-image-wrapper">
-                <img
-                  src={`${API_BASE_URL}/images/${slide.acImage}`}
-                  alt={slide.acTitle}
-                  className="d-block w-100 slider-image shadow"
-                />
-                <div className="gradient-overlay"></div>
+              <div className="slider-image-wrapper rounded">
+                {/* Wrap the image with an anchor tag */}
+                <a
+                  href={
+                    slide.acLink.startsWith("http://") ||
+                    slide.acLink.startsWith("https://")
+                      ? slide.acLink
+                      : `https://${slide.acLink}` // Default to HTTPS if the protocol is missing
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    src={`${API_BASE_URL}/images/${slide.acImage}`}
+                    alt={slide.acTitle}
+                    className="d-block w-100 slider-image rounded shadow"
+                  />
+                  <div className="gradient-overlay rounded"></div>
+                </a>
                 <Carousel.Caption>
                   <h3 className="text-center">{slide.acTitle}</h3>
                 </Carousel.Caption>
@@ -40,7 +66,7 @@ const Slider = () => {
           ))}
         </Carousel>
       ) : (
-        <p>No slides available</p>
+        <p>{t("slider.noSlides")}</p>
       )}
     </Container>
   );

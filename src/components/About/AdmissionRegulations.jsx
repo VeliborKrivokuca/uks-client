@@ -9,7 +9,7 @@ export default function AdmissionRegulations() {
   const { t } = useTranslation();
 
   return (
-    <Container fluid className="my-4">
+    <Container fluid>
       {/* Top Section: Clients & Slider */}
       <Row className="mb-4">
         <Col>
@@ -21,7 +21,7 @@ export default function AdmissionRegulations() {
         {/* Title & Subtitle */}
         <Row>
           <Col>
-            <h1 className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+            <h1 className="text-start border-bottom-primary pb-3 title-color font-weight-light text-main-title fw-bold">
               {t("admission.title")}
             </h1>
           </Col>

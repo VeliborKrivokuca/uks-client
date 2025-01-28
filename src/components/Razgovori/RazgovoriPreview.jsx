@@ -32,7 +32,9 @@ const RazgovoriPreview = () => {
   };
 
   // Filter only active razgovori (status === 1)
-  const activeRazgovori = razgovori.filter((razgovor) => razgovor.status === "1");
+  const activeRazgovori = razgovori.filter(
+    (razgovor) => razgovor.status === "1"
+  );
 
   // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -50,8 +52,10 @@ const RazgovoriPreview = () => {
       <Container>
         <Row className="my-4">
           <Col>
-            <h1 className="title-color">{t("talks.title")}</h1>
-            <p className="text-start border-bottom-primary pb-3 title-color font-weight-light">
+            <h1 className="px-1 title-color fw-bold text-main-title text-uppercase">
+              {t("talks.title")}
+            </h1>
+            <p className="px-1 text-start border-bottom-primary pb-3 title-color text-subtitle">
               {t("talks.subtitle")}
             </p>
           </Col>

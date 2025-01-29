@@ -19,8 +19,11 @@ function MembersList({ members, roles, onProfileClick }) {
     const nameMatch = m.acName
       ?.toLowerCase()
       .includes(searchName.trim().toLowerCase());
-    if (selectedSection === "all") return nameMatch;
-    return nameMatch && m.acPosition === selectedSection;
+
+    const statusMatch = m.anStatus === "1"; // Ensure only active members are shown
+
+    if (selectedSection === "all") return nameMatch && statusMatch;
+    return nameMatch && statusMatch && m.acPosition === selectedSection;
   });
 
   // ----- Pagination -----

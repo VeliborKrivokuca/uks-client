@@ -46,3 +46,18 @@
 .main-blog-item-bottom a {
     text-decoration: underline;
 }
+
+@media only screen and (max-width: 1024px) {
+    .main-blog-items-homepage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .main-blog-items-homepage {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

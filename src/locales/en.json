@@ -7,6 +7,12 @@
     "phone": "+381 11 3340 894",
     "menuItems": [
       {
+        "id": "0",
+        "name": "Home",
+        "parentId": null,
+        "route": ""
+      },
+      {
         "id": "1",
         "name": "News",
         "parentId": null,

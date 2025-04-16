@@ -26,7 +26,7 @@ const TribinePreview = () => {
   const { tribines, loading, error } = useSelector((state) => state.tribine);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6); // Default items per page
+  const [itemsPerPage] = useState(4); // Default items per page
 
   useEffect(() => {
     dispatch(fetchTribines(i18n.language));
@@ -113,13 +113,21 @@ const TribinePreview = () => {
         {currentTribines.map((tribine) => {
           const { day, month } = formatDate(tribine.date);
           return (
-            <div className="tribine-card-home-item">
+            <div className="tribine-card cursor-pointer position-relative shadow rounded overflow-hidden">
               <Link to={`/tribine/${tribine?.tribine_id}`}>
-                <h1>{tribine?.title}</h1>
                 <img
-                  src={`${API_BASE_URL}/${tribine?.thumbnail}`}
-                  alt={tribine?.title || t("tribine.noThumbnail")}
+                  src={
+                    tribine.thumbnail
+                      ? `${API_BASE_URL}/${tribine.thumbnail}`
+                      : noPhotoImage
+                  }
+                  alt={tribine.title || t("tribine.noThumbnail")}
+                  className="thumbnail-tribina"
                 />
+                <div className="gradient-overlay" />
+                <h3 className="tribine-title text-white fw-bold">
+                  {tribine.title}
+                </h3>
               </Link>
             </div>
           );

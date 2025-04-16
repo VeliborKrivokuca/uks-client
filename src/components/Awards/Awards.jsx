@@ -1,14 +1,15 @@
+import "./Awards.css";
+
+import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { fetchAwardById, fetchAwards } from "../../store/actions/awardsActions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchAwards, fetchAwardById } from "../../store/actions/awardsActions";
+
+import { API_BASE_URL } from "../../services/api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAward } from "@fortawesome/free-solid-svg-icons";
 import { useTranslation } from "react-i18next";
-import { API_BASE_URL } from "../../services/api";
-
-import "./Awards.css";
 
 const Awards = ({ isHomepage = false }) => {
   const [selectedAwardDetails, setSelectedAwardDetails] = useState(null);
@@ -45,6 +46,14 @@ const Awards = ({ isHomepage = false }) => {
   const handleViewMore = (award) => {
     console.log(award);
     navigate(`/nagrade/${award.id}`);
+  };
+
+  const addTargetBlankToLinks = (html) => {
+    if (!html) return "";
+    return html.replace(
+      /<a(?![^>]*\btarget=)([^>]*)>/g,
+      '<a target="_blank" rel="noopener noreferrer"$1>'
+    );
   };
 
   return (
@@ -109,7 +118,7 @@ const Awards = ({ isHomepage = false }) => {
           <div
             className="ck-editor-text"
             dangerouslySetInnerHTML={{
-              __html: selectedAwardDetails.description,
+              __html: addTargetBlankToLinks(selectedAwardDetails.description),
             }}
           />
         </Container>

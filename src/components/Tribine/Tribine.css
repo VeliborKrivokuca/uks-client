@@ -1,7 +1,5 @@
 .tribine-card {
   transition: transform 0.3s ease;
-  height: 330px;
-  height: 330px;
 }
 
 .tribine-card:hover {
@@ -12,6 +10,13 @@
   width: 100%;
   height: 330px;
   object-fit: cover;
+}
+
+
+
+.thumbnail-tribina {
+  width: 100%;
+  object-fit: contain;
 }
 
 .gradient-overlay {

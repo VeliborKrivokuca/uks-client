@@ -84,7 +84,7 @@ const TribineList = () => {
                       : noPhotoImage
                   }
                   alt={tribine.title || t("tribine.noThumbnail")}
-                  className="thumbnail"
+                  className="thumbnail-tribina"
                 />
                 <div className="gradient-overlay" />
                 <h3 className="tribine-title text-white fw-bold">

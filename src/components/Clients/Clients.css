@@ -1,4 +1,32 @@
 .client-image {
   /* width: 140px; */
   object-fit: contain;
+  width: 100%;
+}
+.client-holder-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.client-holder-item {
+  flex: 0 0 calc(16.66% - 12.5px); /* 6 u jednom redu */
+}
+
+@media (max-width: 1200px) {
+    .client-holder-item {
+      flex: 0 0 calc(25% - 11.25px); /* 2 po redu */
+  }
+}
+
+@media (max-width: 1024px) {
+    .client-holder-item {
+      flex: 0 0 calc(33.3333% - 10px); /* 2 po redu */
+  }
+}
+
+@media (max-width: 768px) {
+    .client-holder-item {
+      flex: 0 0 calc(50% - 7.5px); /* 2 po redu */
+  }
 }

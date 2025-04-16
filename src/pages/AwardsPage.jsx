@@ -1,9 +1,9 @@
-import React from "react";
-import Clients from "../components/Clients/Clients";
 import Awards from "../components/Awards/Awards";
+import Clients from "../components/Clients/Clients";
+import { Container } from "react-bootstrap";
+import React from "react";
 import Slider from "../components/Slider/Slider";
 import { useTranslation } from "react-i18next";
-import { Container } from "react-bootstrap";
 
 const AwardsPage = () => {
   const { t } = useTranslation();
@@ -11,7 +11,7 @@ const AwardsPage = () => {
   return (
     <Container fluid>
       <Clients></Clients>
-      <Slider></Slider>
+      {/* <Slider></Slider> */}
       <Container className="my-4 ">
         <h1 className="text-start title-color fw-bold text-main-title text-uppercase">
           {t("awards.pageTitle")}

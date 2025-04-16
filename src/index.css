@@ -103,7 +103,7 @@ ul {
 }
 
 .section-divider-large {
-  margin-top: 103px;
+  margin-top: 50px;
 }
 
 .section-divider-small {
@@ -130,4 +130,14 @@ ul {
 
 .tribine-card-home-holder h1 {
   font-size: 25px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .tribine-card-home-holder {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px 20px;
+  }
 }

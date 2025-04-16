@@ -1,6 +1,5 @@
 .detail-thumbnail {
   width: 100%;
-  border-radius: 5px;
   display: block;
 }
 
@@ -10,4 +9,17 @@
 
 .title-color {
   color: #2a5078;
+}
+
+.button-classic-color {
+  background-color: #EDF2FC !important;
+  color: #3D5A80 !important;
+  font-weight: bold !important;
+}
+.btn-primary-active {
+  background-color: #3D5A80 !important;
+  color: #fff !important;
+}
+.tab-content-detail-tribine {
+  padding-left: 20px;
 }

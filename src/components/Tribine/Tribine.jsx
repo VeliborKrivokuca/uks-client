@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchTribines } from "../../store/actions/tribineActions";
-import { Container, Row, Col } from "react-bootstrap";
+import "./Tribine.css";
 
+import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
+import Pagination from "../Pagination/Pagination";
+import { fetchTribines } from "../../store/actions/tribineActions";
 import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import Pagination from "../Pagination/Pagination";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { API_BASE_URL } from "../../services/api";
-
-import "./Tribine.css";
-import Clients from "../Clients/Clients";
 
 const TribineList = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const TribineList = () => {
   const { tribines, loading, error } = useSelector((state) => state.tribine);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(8); // Default items per page
+  const [itemsPerPage, setItemsPerPage] = useState(12); // Default items per page
 
   useEffect(() => {
     dispatch(fetchTribines(i18n.language));
@@ -71,8 +71,8 @@ const TribineList = () => {
             <Col
               xs={12}
               sm={6}
-              md={4}
-              lg={3}
+              md={6}
+              lg={6}
               key={tribine.id}
               onClick={() => handleTribineClick(tribine.tribine_id)}
             >

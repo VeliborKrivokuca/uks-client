@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
 import "./Aktuelnosti.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
 import image from "../../assets/logo-image.png";
 import { useTranslation } from "react-i18next";
-import { Col, Container, Row } from "react-bootstrap";
 
 const Aktuelnosti = () => {
   const navigate = useNavigate();
@@ -36,51 +38,37 @@ const Aktuelnosti = () => {
   const latestBlogs = blogs
     ? [...blogs]
         .sort((a, b) => new Date(b.publish_time) - new Date(a.publish_time))
-        .slice(0, 2)
+        .slice(0, 6)
     : [];
 
   return (
     <Container>
       <Row>
-        {loading && <p>{t("news.loading")}</p>}
-        {error && <p>{t("news.error", { error })}</p>}
-        {!loading && !error && latestBlogs.length > 0 ? (
-          latestBlogs.map((blog) => (
-            <Col key={blog.anId} xs={12} className="mb-4">
-              <div>
-                <Row className="g-0 flex-nowrap align-items-center mb-3">
-                  <Col
-                    xs="auto"
-                    className="blog-logo-container me-3 primary-border rounded-circle"
-                  >
-                    <img src={image} alt="Logo" className="blog-logo-img" />
-                  </Col>
+        <div className="main-blog-items-homepage">
+          {latestBlogs.length > 0 &&
+            latestBlogs.map((blog) => (
+              <div className="main-blog-item-homepage">
+                <div className="main-blog-item-top">
+                  <div className="main-blog-item-date-homepage">
+                    {/* {blog?.publish_time} */}
+                    <div className="main-blog-item-date-day">12</div>
+                    <div className="main-blog-item-date-month">Dec</div>
+                  </div>
+                  <div className="main-blog-item-content-homepage">
+                    <Link to={`/blog/${blog?.translation_id}`}>
+                      <h1>{blog?.title}</h1>
+                    </Link>
 
-                  <Col className="blog-meta text-subtitle primary-color">
-                    <p>{t("news.composers")}</p>
-                    <p>{formatDateToDDMMYYYY(blog.publish_time)}</p>
-                  </Col>
-                </Row>
-
-                <h3
-                  onClick={() => handleViewDetails(blog.translation_id)}
-                  className="secondary-color cursor-pointer text-main-title"
-                >
-                  {blog.title}
-                </h3>
-                <p className="primary-color text-subtitle">{blog.subtitle}</p>
-                <button
-                  className="text-white rounded primary-bg py-1 shadow text-subtitle"
-                  onClick={() => handleViewDetails(blog.translation_id)}
-                >
-                  {t("news.details")}
-                </button>
+                    <div className="main-blog-item-bottom">
+                      <Link to={`/blog/${blog?.translation_id}`}>
+                        <h3>Više informacija</h3>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </Col>
-          ))
-        ) : (
-          <p>{t("news.noBlogs")}</p>
-        )}
+            ))}
+        </div>
       </Row>
     </Container>
   );

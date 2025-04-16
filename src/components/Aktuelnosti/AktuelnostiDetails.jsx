@@ -1,19 +1,21 @@
+import "yet-another-react-lightbox/styles.css";
+import "./AktuelnostiDetails.css";
+
+import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import {
   fetchBlogDetails,
   fetchBlogImages,
 } from "../../store/actions/aktuelnostiActions";
-import { Container, Row, Col } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
 import Lightbox from "yet-another-react-lightbox";
-import "yet-another-react-lightbox/styles.css";
 import image from "../../assets/logo-image.png";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import "./AktuelnostiDetails.css";
-import { API_BASE_URL } from "../../services/api";
+import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Clients from "../Clients/Clients";
 
 const AktuelnostiDetails = () => {
   const { id } = useParams();
@@ -84,12 +86,14 @@ const AktuelnostiDetails = () => {
         {/* Title */}
         <Row>
           <Col>
-            <h1 className="secondary-color text-main-title fw-bold">{blog?.acTitle}</h1>
+            <h1 className="secondary-color text-main-title fw-bold mb-4">
+              {blog?.acTitle}
+            </h1>
           </Col>
         </Row>
 
         {/* Main Image */}
-        <Row className="my-3">
+        {/* <Row className="my-3">
           <Col>
             <img
               src={
@@ -101,7 +105,7 @@ const AktuelnostiDetails = () => {
               className="w-100 rounded shadow-sm"
             />
           </Col>
-        </Row>
+        </Row> */}
 
         {/* Description */}
         <Row className="mb-4">
@@ -133,7 +137,7 @@ const AktuelnostiDetails = () => {
         )}
 
         {/* Error message display */}
-        {error && (
+        {/* {error && (
           <Row className="mt-4">
             <Col>
               <div className="alert alert-primary" role="alert">
@@ -141,7 +145,7 @@ const AktuelnostiDetails = () => {
               </div>
             </Col>
           </Row>
-        )}
+        )} */}
       </Container>
 
       {lightboxOpen && (

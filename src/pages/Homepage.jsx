@@ -1,17 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import Clients from "../components/Clients/Clients";
-import SliderTitle from "../components/Slider/SliderTitle";
-import Navigation from "../components/Navigation/Navigation";
-import SectionHeader from "../components/SectionHeader/SectionHeader";
-import Awards from "../components/Awards/Awards";
-import Aktuelnosti from "../components/Aktuelnosti/Aktuelnosti";
-import RazgovoriList from "../components/Razgovori/Razgovori";
 import AboutAssociationPreview from "../components/About/AboutAssociationPreview";
-import StatsSection from "../components/Stats/StatsSection";
-import { useTranslation } from "react-i18next";
+import Aktuelnosti from "../components/Aktuelnosti/Aktuelnosti";
+import Awards from "../components/Awards/Awards";
+import Clients from "../components/Clients/Clients";
 import { Container } from "react-bootstrap";
+import Navigation from "../components/Navigation/Navigation";
+import RazgovoriList from "../components/Razgovori/Razgovori";
+import React from "react";
+import SectionHeader from "../components/SectionHeader/SectionHeader";
+import SliderTitle from "../components/Slider/SliderTitle";
+import StatsSection from "../components/Stats/StatsSection";
 import TribinePreview from "../components/Tribine/TribinePreview";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -30,11 +30,19 @@ const HomePage = () => {
         <Navigation />
 
         <SectionHeader
+          title={t("home.news")}
+          buttonText={t("home.allNews")}
+          onButtonClick={handleNavigationAktuelnosti}
+        />
+        <Aktuelnosti />
+
+        <SectionHeader
           title={t("home.tribunes")}
           buttonText={t("home.allTribunes")}
           onButtonClick={handleNavigationTribine}
         />
         <TribinePreview />
+        <AboutAssociationPreview />
 
         <SectionHeader
           title={t("home.awards")}
@@ -43,14 +51,6 @@ const HomePage = () => {
         />
         <Awards isHomepage={true} />
 
-        <SectionHeader
-          title={t("home.news")}
-          buttonText={t("home.allNews")}
-          onButtonClick={handleNavigationAktuelnosti}
-        />
-        <Aktuelnosti />
-
-        <AboutAssociationPreview />
         <StatsSection />
         <SectionHeader
           title={t("home.talks")}

@@ -113,3 +113,21 @@ ul {
 .section-divider-xs {
   margin-top: 25px;
 }
+.tribine-card-home-holder {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 20px;
+}
+.tribine-card-home-holder img {
+  width: 100%;
+  object-fit: contain
+}
+
+.tribine-card-home-holder a {
+  color: #00296b;
+  text-decoration: none;
+}
+
+.tribine-card-home-holder h1 {
+  font-size: 25px;
+}

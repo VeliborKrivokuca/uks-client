@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
-import { useTranslation } from "react-i18next";
-import { API_BASE_URL } from "../../services/api";
-import { Container, Row, Col } from "react-bootstrap";
+import "./AktuelnostiPreview.css";
 
+import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Slider from "../Slider/Slider";
+import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
 import image from "../../assets/logo-image.png";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import Clients from "../Clients/Clients";
-import Slider from "../Slider/Slider";
-
-import "./AktuelnostiPreview.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Aktuelnosti = () => {
   const { t, i18n } = useTranslation();
@@ -24,7 +24,7 @@ const Aktuelnosti = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
 
   const truncateText = (text, maxLength = 50) => {
     if (!text) return "";
@@ -101,7 +101,7 @@ const Aktuelnosti = () => {
                   className="mb-4 px-4 flex-column-reverse flex-lg-row align-items-stretch mt-4"
                 >
                   {/* Image Column */}
-                  <Col
+                  {/* <Col
                     xs={12}
                     lg={6}
                     className="d-flex justify-content-center align-items-center py-3 py-lg-0 blog-image-wrapper"
@@ -115,12 +115,12 @@ const Aktuelnosti = () => {
                       alt={blog.title}
                       className="shadow blog-img w-100 h-100 rounded"
                     />
-                  </Col>
+                  </Col> */}
 
                   {/* Text Column */}
                   <Col
                     xs={12}
-                    lg={6}
+                    lg={12}
                     className="d-flex flex-column justify-content-between ps-0 ps-lg-4"
                   >
                     <div>
@@ -147,9 +147,15 @@ const Aktuelnosti = () => {
                       >
                         {blog.title}
                       </h3>
-                      <p className="primary-color text-subtitle">
-                        {truncateText(blog.subtitle)}
-                      </p>
+                      <p
+                        className="primary-color text-subtitle"
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            blog.description.length > 400
+                              ? `${blog.description.slice(0, 400)}...`
+                              : blog.description,
+                        }}
+                      ></p>
                     </div>
                     <div>
                       <button

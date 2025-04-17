@@ -23,3 +23,17 @@
 .tab-content-detail-tribine {
   padding-left: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  
+.tab-content-detail-tribine {
+  padding-left: 0;
+}
+}
+
+.tab-content-detail-tribine ul {
+  list-style: disc !important;
+}
+.tab-content-detail-tribine h3 {
+  margin-bottom: 20px;
+}

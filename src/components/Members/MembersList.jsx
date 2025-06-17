@@ -1,10 +1,12 @@
+import "./Members.css";
+
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import React, { useState } from "react";
-import { Container, Row, Col, Table, Form, Button } from "react-bootstrap";
+
+import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
 import Pagination from "../Pagination/Pagination";
 import { useTranslation } from "react-i18next";
-import { API_BASE_URL } from "../../services/api";
-import "./Members.css";
 
 function MembersList({ members, roles, onProfileClick }) {
   const [searchName, setSearchName] = useState("");
@@ -111,9 +113,17 @@ function MembersList({ members, roles, onProfileClick }) {
                     <tr key={member.anId}>
                       <td className="secondary-color">
                         <img
-                          src={`${API_BASE_URL}/images/${member.acImage}`}
+                          src={
+                            member.acImage
+                              ? `${API_BASE_URL}/images/${member.acImage}`
+                              : "/src/assets/uks-logo-mala.png"
+                          }
                           alt={member.acName}
                           className="rounded-circle member-photo shadow"
+                          onError={(e) => {
+                            e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
+                            e.target.src = "/src/assets/uks-logo-mala.png";
+                          }}
                         />
                       </td>
                       <td className="secondary-color fw-bold">

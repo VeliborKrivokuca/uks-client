@@ -43,7 +43,7 @@ const TribinePreview = () => {
   );
 
   const handleTribineClick = (id) => {
-    navigate(`/tribine/${id}`);
+    navigate(`/festivali/${id}`);
   };
   const formatDate = (dateString, language) => {
     const date = new Date(dateString);

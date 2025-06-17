@@ -38,9 +38,21 @@
             },
             {
                 "id": "5",
-                "name": "Tribine",
+                "name": "Festivali",
                 "parentId": null,
-                "route": "tribine"
+                "route": "festivali"
+            },
+            {
+                "id": "50",
+                "name": "Tribina kompozitora",
+                "parentId": 5,
+                "route": "tribina-kompozitora"
+            },
+            {
+                "id": "51",
+                "name": "RIMUS",
+                "parentId": 5,
+                "route": "rimus"
             },
             {
                 "id": "17",
@@ -88,8 +100,8 @@
     "home": {
         "members": "Naši članovi",
         "news": "Aktuelnosti",
-        "tribunes": "Tribine",
-        "allTribunes": "Sve tribine",
+        "tribunes": "Festivali",
+        "allTribunes": "Svi festivali",
         "talks": "Razgovori",
         "allTalks": "Svi razgovori",
         "awards": "Nagrade",
@@ -147,8 +159,10 @@
         "viewText": "Ceo tekst"
     },
     "tribine": {
-        "title": "Tribine",
-        "noTribines": "Nema dostupnih tribina za izabrani jezik.",
+        "title": "Festivali",
+        "title2": "Tribina Kompozitora",
+        "title3": "RIMUS",
+        "noTribines": "Nema dostupnih festivala za izabrani jezik.",
         "noThumbnail": "Nema dostupnog thumbnail-a"
     },
     "about": {
@@ -265,8 +279,8 @@
                 "route": "razgovori"
             },
             {
-                "name": "Tribine",
-                "route": "tribine"
+                "name": "Festivali",
+                "route": "festivali"
             },
             {
                 "name": "Nagrade",

@@ -13,7 +13,7 @@ import noPhotoImage from "../../assets/no-photo.jpg";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const TribineList = () => {
+const TribinaKompozitora = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -24,7 +24,7 @@ const TribineList = () => {
   const [itemsPerPage, setItemsPerPage] = useState(12); // Default items per page
 
   useEffect(() => {
-    dispatch(fetchTribines(i18n.language));
+    dispatch(fetchTribines(i18n.language, 1));
   }, [dispatch, i18n.language]);
 
   const handleTribineClick = (id) => {
@@ -51,7 +51,7 @@ const TribineList = () => {
         <Row className="my-4">
           <Col>
             <h1 className="title-color border-bottom-primary pb-3 fw-bold text-uppercase text-main-title">
-              {t("tribine.title")}
+              {t("tribine.title2")}
             </h1>
             {loading && <p>{t("info.loading")}</p>}
             {error && <p>{t("info.error", { error })}</p>}
@@ -108,4 +108,4 @@ const TribineList = () => {
   );
 };
 
-export default TribineList;
+export default TribinaKompozitora;

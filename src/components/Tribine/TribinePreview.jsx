@@ -29,7 +29,7 @@ const TribinePreview = () => {
   const [itemsPerPage] = useState(4); // Default items per page
 
   useEffect(() => {
-    dispatch(fetchTribines(i18n.language));
+    dispatch(fetchTribines(i18n.language, 0));
   }, [dispatch, i18n.language]);
 
   // Filter only active tribines
@@ -44,7 +44,7 @@ const TribinePreview = () => {
   );
 
   const handleTribineClick = (id) => {
-    navigate(`/tribine/${id}`);
+    navigate(`/festivali/${id}`);
   };
   const formatDate = (dateString, language) => {
     const date = new Date(dateString);
@@ -114,7 +114,7 @@ const TribinePreview = () => {
           const { day, month } = formatDate(tribine.date);
           return (
             <div className="tribine-card cursor-pointer position-relative shadow rounded overflow-hidden">
-              <Link to={`/tribine/${tribine?.tribine_id}`}>
+              <Link to={`/festivali/${tribine?.tribine_id}`}>
                 <img
                   src={
                     tribine.thumbnail

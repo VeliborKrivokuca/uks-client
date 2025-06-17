@@ -18,7 +18,7 @@ const HomePage = () => {
   const { t } = useTranslation();
 
   const handleNavigationNagrade = () => navigate("/nagrade");
-  const handleNavigationTribine = () => navigate("/tribine");
+  const handleNavigationTribine = () => navigate("/festivali");
   const handleNavigationRazgovori = () => navigate("/razgovori");
   const handleNavigationAktuelnosti = () => navigate("/aktuelnosti");
 

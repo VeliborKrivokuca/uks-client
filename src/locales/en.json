@@ -141,6 +141,8 @@
   },
   "tribine": {
     "title": "Panels",
+    "title2": "Composers Panel",
+    "title3": "RIMUS",
     "noTribines": "No panels available for the selected language.",
     "noThumbnail": "No Thumbnail Available",
     "date": "Date"

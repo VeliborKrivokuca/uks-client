@@ -12,6 +12,7 @@ import AktuelnostiDetails from "./components/Aktuelnosti/AktuelnostiDetails";
 import AktuelnostiPreview from "./components/Aktuelnosti/AktuelnostiPreview";
 import Awards from "./components/Awards/Awards";
 import AwardsPage from "./pages/AwardsPage";
+import Calendar from "./pages/Calendar";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import HomePage from "./pages/Homepage";
@@ -59,6 +60,7 @@ const App = () => {
         <Route path="/blog/:id" element={<AktuelnostiDetails />} />
         <Route path="/tribina-kompozitora" element={<TribinaKompozitora />} />
         <Route path="/rimus" element={<Rimus />} />
+        <Route path="/dogadjaji" element={<Calendar />} />
         <Route path="/festivali" element={<TribineList />} />
         <Route path="/festivali/:id" element={<TribineDetail />} />
         <Route path="/razgovori" element={<RazgovoriPreview />} />

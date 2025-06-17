@@ -43,6 +43,12 @@
                 "route": "festivali"
             },
             {
+                "id": "6",
+                "name": "Dogadjaji",
+                "parentId": null,
+                "route": "dogadjaji"
+            },
+            {
                 "id": "50",
                 "name": "Tribina kompozitora",
                 "parentId": 5,

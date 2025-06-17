@@ -1,4 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import apiClient from "../../services/api";
 
 export const fetchAllPages = createAsyncThunk("pages/fetchAll", async () => {
@@ -6,16 +7,28 @@ export const fetchAllPages = createAsyncThunk("pages/fetchAll", async () => {
   return response.data; // Automatically handled as `fulfilled`
 });
 
-export const fetchAllClients = createAsyncThunk("clients/fetchAll", async () => {
-  const response = await apiClient.get("/api/clients/get/all");
-  return response.data;
-});
+export const fetchAllClients = createAsyncThunk(
+  "clients/fetchAll",
+  async () => {
+    const response = await apiClient.get("/api/clients/get/all");
+    return response.data;
+  }
+);
+
+export const fetchAllCalendar = createAsyncThunk(
+  "calendar/fetchAll",
+  async () => {
+    const response = await apiClient.get("/api/calendar/get/all");
+    return response.data;
+  }
+);
 
 const pagesSlice = createSlice({
   name: "pages",
   initialState: {
     pages: [],
     clients: [],
+    calendar: [],
     loading: false,
     error: null,
   },
@@ -45,6 +58,19 @@ const pagesSlice = createSlice({
         state.clients = action.payload;
       })
       .addCase(fetchAllClients.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // calendar
+      .addCase(fetchAllCalendar.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllCalendar.fulfilled, (state, action) => {
+        state.loading = false;
+        state.calendar = action.payload;
+      })
+      .addCase(fetchAllCalendar.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

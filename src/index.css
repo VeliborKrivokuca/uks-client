@@ -141,3 +141,14 @@ ul {
       gap: 30px 20px;
   }
 }
+.calendar-full-custom {
+  margin-top: 50px;
+}
+
+.calendar-full-custom a {
+  text-decoration: none;
+  color: #00296b;
+}
+.calendar-full-custom .fc-daygrid-event-harness {
+  cursor: pointer;
+}

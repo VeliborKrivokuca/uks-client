@@ -116,13 +116,13 @@ function MembersList({ members, roles, onProfileClick }) {
                           src={
                             member.acImage
                               ? `${API_BASE_URL}/images/${member.acImage}`
-                              : "/src/assets/uks-logo-mala.png"
+                              : "/assets/uks-logo-mala.png"
                           }
                           alt={member.acName}
                           className="rounded-circle member-photo shadow"
                           onError={(e) => {
                             e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
-                            e.target.src = "/src/assets/uks-logo-mala.png";
+                            e.target.src = "/assets/uks-logo-mala.png";
                           }}
                         />
                       </td>

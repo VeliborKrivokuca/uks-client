@@ -6,79 +6,97 @@
     "mail": "composas@gmail.com",
     "phone": "+381 11 3340 894",
     "menuItems": [
-      {
-        "id": "0",
-        "name": "Home",
-        "parentId": null,
-        "route": ""
-      },
-      {
-        "id": "1",
-        "name": "News",
-        "parentId": null,
-        "route": "aktuelnosti"
-      },
-      {
-        "id": "2",
-        "name": "About the Association",
-        "parentId": null,
-        "route": "o-udruženju"
-      },
-      {
-        "id": "3",
-        "name": "Members",
-        "parentId": null,
-        "route": "clanovi"
-      },
-      {
-        "id": "4",
-        "name": "Conversations",
-        "parentId": null,
-        "route": "razgovori"
-      },
-      {
-        "id": "5",
-        "name": "Tribunes",
-        "parentId": null,
-        "route": "tribine"
-      },
-      {
-        "id": "17",
-        "name": "Awards",
-        "parentId": null,
-        "route": "nagrade"
-      },
-      {
-        "id": "18",
-        "name": "About us",
-        "parentId": "2",
-        "route": "o-nama"
-      },
-      {
-        "id": "19",
-        "name": "Legal documents",
-        "parentId": "2",
-        "route": "pravni-dokumenti"
-      },
-      {
-        "id": "20",
-        "name": "Rules of admission",
-        "parentId": "2",
-        "route": "pravilnik-o-prijemu"
-      },
-      {
-        "id": "21",
-        "name": "About association",
-        "parentId": "2",
-        "route": "o-udruženju"
-      },
-      {
-        "id": "22",
-        "name": "Recommendations",
-        "parentId": "2",
-        "route": "preporuke"
-      }
-    ]
+            {
+                "id": "0",
+                "name": "Home",
+                "parentId": null,
+                "route": ""
+            },
+            {
+                "id": "1",
+                "name": "News",
+                "parentId": null,
+                "route": "aktuelnosti"
+            },
+            {
+                "id": "2",
+                "name": "About the Association",
+                "parentId": null,
+                "route": "o-udruženju"
+            },
+            {
+                "id": "3",
+                "name": "Members",
+                "parentId": null,
+                "route": "clanovi"
+            },
+            {
+                "id": "4",
+                "name": "Talks",
+                "parentId": null,
+                "route": "razgovori"
+            },
+            {
+                "id": "5",
+                "name": "Festivals",
+                "parentId": null,
+                "route": "festivali"
+            },
+            {
+                "id": "6",
+                "name": "Events",
+                "parentId": null,
+                "route": "dogadjaji"
+            },
+            {
+                "id": "50",
+                "name": "Composers Forum",
+                "parentId": 5,
+                "route": "tribina-kompozitora"
+            },
+            {
+                "id": "51",
+                "name": "RIMUS",
+                "parentId": 5,
+                "route": "rimus"
+            },
+            {
+                "id": "17",
+                "name": "Awards",
+                "parentId": null,
+                "route": "nagrade"
+            },
+            {
+                "id": "18",
+                "name": "About Us",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "19",
+                "name": "Legal Documents",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
+            },
+            {
+                "id": "20",
+                "name": "Admission Rules",
+                "parentId": "2",
+                "route": "pravilnik-o-prijemu"
+            },
+            {
+                "id": "21",
+                "name": "About the Association",
+                "parentId": "2",
+                "route": "o-udruženju"
+            },
+            {
+                "id": "22",
+                "name": "Recommendations",
+                "parentId": "2",
+                "route": "preporuke"
+            }
+        ]
   },
   "info": {
     "loading": "Loading...",

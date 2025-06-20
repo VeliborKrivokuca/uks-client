@@ -71,13 +71,13 @@ const MemberProfilePage = () => {
               src={
                 acImage
                   ? `${API_BASE_URL}/images/${acImage}`
-                  : "/src/assets/uks-logo-mala.png"
+                  : "/assets/uks-logo-mala.png"
               }
               alt={acName}
               className="rounded shadow profile-photo w-100"
               onError={(e) => {
                 e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
-                e.target.src = "/src/assets/uks-logo-mala.png";
+                e.target.src = "/assets/uks-logo-mala.png";
               }}
             />
           </Col>

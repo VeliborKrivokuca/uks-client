@@ -3,6 +3,7 @@ import Aktuelnosti from "../components/Aktuelnosti/Aktuelnosti";
 import Awards from "../components/Awards/Awards";
 import Clients from "../components/Clients/Clients";
 import { Container } from "react-bootstrap";
+import KalendarList from "../components/KalendarList";
 import Navigation from "../components/Navigation/Navigation";
 import RazgovoriList from "../components/Razgovori/Razgovori";
 import React from "react";
@@ -21,6 +22,7 @@ const HomePage = () => {
   const handleNavigationTribine = () => navigate("/festivali");
   const handleNavigationRazgovori = () => navigate("/razgovori");
   const handleNavigationAktuelnosti = () => navigate("/aktuelnosti");
+  const handleNavigationKalendar = () => navigate("/dogadjaji");
 
   return (
     <Container fluid className="px-0">
@@ -58,6 +60,12 @@ const HomePage = () => {
           onButtonClick={handleNavigationRazgovori}
         />
         <RazgovoriList />
+        <SectionHeader
+          title={t("home.calendar")}
+          buttonText={t("home.calendar_all")}
+          onButtonClick={handleNavigationKalendar}
+        />
+        <KalendarList />
       </div>
     </Container>
   );

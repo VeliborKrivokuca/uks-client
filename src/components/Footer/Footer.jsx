@@ -123,7 +123,10 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="footer-bg text-white text-center py-3 mt-4">
         <Container>
-          <p className="mb-0 text-white">{t("footer.copyright")}</p>
+          <p
+            className="mb-0 text-white"
+            dangerouslySetInnerHTML={{ __html: t("footer.copyright") }}
+          ></p>
         </Container>
       </div>
     </footer>

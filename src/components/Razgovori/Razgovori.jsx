@@ -1,13 +1,15 @@
+import "./RazgovoriPreview.css";
+
+import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import noPhotoImage from "../../assets/no-photo.jpg";
-import { API_BASE_URL } from "../../services/api";
-import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
 import { fetchRazgovori } from "../../store/actions/razgovoriActions";
 import { mapLanguageCodeToId } from "../../services/languageUtils";
-import { Container, Row, Col } from "react-bootstrap";
-import "./RazgovoriPreview.css";
+import noPhotoImage from "../../assets/no-photo.jpg";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const RazgovoriList = () => {
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ const RazgovoriList = () => {
   return (
     <Container>
       {razgovori.length === 0 ? (
-        <p>{t("razgovori.noTalks")}</p>
+        <p>{t("talks.noTalks")}</p>
       ) : (
         <Row className="gy-4">
           {razgovori.map((razgovor) => (

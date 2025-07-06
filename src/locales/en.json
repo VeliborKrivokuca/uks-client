@@ -7,12 +7,6 @@
     "phone": "+381 11 3340 894",
     "menuItems": [
             {
-                "id": "0",
-                "name": "Home",
-                "parentId": null,
-                "route": ""
-            },
-            {
                 "id": "1",
                 "name": "News",
                 "parentId": null,
@@ -31,20 +25,26 @@
                 "route": "clanovi"
             },
             {
-                "id": "4",
-                "name": "Talks",
-                "parentId": null,
-                "route": "razgovori"
-            },
-            {
                 "id": "5",
                 "name": "Festivals",
                 "parentId": null,
                 "route": "festivali"
             },
             {
+                "id": "17",
+                "name": "Awards",
+                "parentId": null,
+                "route": "nagrade"
+            },
+            {
+                "id": "4",
+                "name": "Written Word",
+                "parentId": null,
+                "route": "razgovori"
+            },
+            {
                 "id": "6",
-                "name": "Events",
+                "name": "Calendar events",
                 "parentId": null,
                 "route": "dogadjaji"
             },
@@ -59,12 +59,6 @@
                 "name": "RIMUS",
                 "parentId": 5,
                 "route": "rimus"
-            },
-            {
-                "id": "17",
-                "name": "Awards",
-                "parentId": null,
-                "route": "nagrade"
             },
             {
                 "id": "18",
@@ -104,12 +98,15 @@
     "noData": "No data to show"
   },
   "home": {
+    "calendar": "Calendar of Events",
+    "calendar_all": "View all events",
+    "calendar_detail": "More Details",
     "members": "Our Members",
     "news": "News",
     "tribunes": "Tribunes",
     "allTribunes": "All tribunes",
-    "talks": "Talks",
-    "allTalks": "All Talks",
+    "talks": "Written Word",
+    "allTalks": "All Written Words",
     "awards": "Awards",
     "allAwards": "All Awards",
     "allNews": "All News"
@@ -166,9 +163,9 @@
     "date": "Date"
   },
   "talks": {
-    "title": "Talks",
+    "title": "Written Word",
     "subtitle": "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-    "noTalks": "No talks available at the moment.",
+    "noTalks": "No Written Word available at the moment.",
     "noImage": "No Image Available",
     "viewText": "View text"
   },
@@ -283,7 +280,7 @@
     "fax": "Fax",
     "pagesTitle": "Pages",
     "socialMediaTitle": "Social Media",
-    "copyright": "Copyright © 2024. Association of Composers of Serbia. All rights reserved by UKS",
+    "copyright": "©2025 www.composers.rs, Association of Composers of Serbia. Created by <a href='https://www.developers.rs' target='_blank' style='color:#fff'>Developers.rs</a>. All rights reserved.",
     "pages": [
       {
         "name": "News",
@@ -298,12 +295,12 @@
         "route": "clanovi"
       },
       {
-        "name": "Conversations",
+        "name": "Written Word",
         "route": "razgovori"
       },
       {
-        "name": "Talks",
-        "route": "tribine"
+        "name": "Festivals",
+        "route": "festivali"
       },
       {
         "name": "Awards",

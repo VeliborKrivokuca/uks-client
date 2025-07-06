@@ -12,6 +12,7 @@ import AktuelnostiDetails from "./components/Aktuelnosti/AktuelnostiDetails";
 import AktuelnostiPreview from "./components/Aktuelnosti/AktuelnostiPreview";
 import Awards from "./components/Awards/Awards";
 import AwardsPage from "./pages/AwardsPage";
+import Biblioteka from "./pages/Biblioteka";
 import Calendar from "./pages/Calendar";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -20,6 +21,8 @@ import LegalDocuments from "./components/About/LegalDocuments";
 import MemberProfilePage from "./components/Members/MemberProfile";
 import MembersPage from "./components/Members/Members";
 import NotFoundPage from "./components/NotFound/NotFound";
+import NotnaIzdanja from "./pages/NotnaIzdanja";
+import OstalaIzdanja from "./pages/OstalaIzdanja";
 import RazgovoriDetail from "./components/Razgovori/RazgovoriDetails";
 import RazgovoriPreview from "./components/Razgovori/RazgovoriPreview";
 import Recommendations from "./components/About/Recommendations";
@@ -47,6 +50,9 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aktuelnosti" element={<AktuelnostiPreview />} />
+        <Route path="/biblioteka" element={<Biblioteka />} />
+        <Route path="/notna-izdanja" element={<NotnaIzdanja />} />
+        <Route path="/ostala-izdanja" element={<OstalaIzdanja />} />
         <Route path="/nagrade" element={<AwardsPage />} />
         <Route path="/nagrade/:id" element={<AwardsPage />} />{" "}
         {/* Dynamic route */}

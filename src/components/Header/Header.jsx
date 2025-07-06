@@ -102,7 +102,6 @@ const Header = () => {
   const renderMenu = (items) =>
     items.map((item) => {
       const isOpen = openMenus[item.id] || false;
-
       return (
         <li
           key={item.id}

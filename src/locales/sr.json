@@ -7,12 +7,6 @@
         "phone": "+381 11 3340 894",
         "menuItems": [
             {
-                "id": "0",
-                "name": "Početna",
-                "parentId": null,
-                "route": ""
-            },
-            {
                 "id": "1",
                 "name": "Aktuelnosti",
                 "parentId": null,
@@ -32,39 +26,33 @@
             },
             {
                 "id": "4",
-                "name": "Razgovori",
-                "parentId": null,
-                "route": "razgovori"
-            },
-            {
-                "id": "5",
                 "name": "Festivali",
                 "parentId": null,
                 "route": "festivali"
-            },
-            {
-                "id": "6",
-                "name": "Dogadjaji",
-                "parentId": null,
-                "route": "dogadjaji"
-            },
-            {
-                "id": "50",
-                "name": "Tribina kompozitora",
-                "parentId": 5,
-                "route": "tribina-kompozitora"
-            },
-            {
-                "id": "51",
-                "name": "RIMUS",
-                "parentId": 5,
-                "route": "rimus"
             },
             {
                 "id": "17",
                 "name": "Nagrade",
                 "parentId": null,
                 "route": "nagrade"
+            },
+            {
+                "id": "5",
+                "name": "Pisana reč",
+                "parentId": null,
+                "route": "razgovori"
+            },
+            {
+                "id": "50",
+                "name": "Tribina kompozitora",
+                "parentId": 4,
+                "route": "tribina-kompozitora"
+            },
+            {
+                "id": "51",
+                "name": "RIMUS",
+                "parentId": 4,
+                "route": "rimus"
             },
             {
                 "id": "18",
@@ -95,6 +83,36 @@
                 "name": "Preporuke",
                 "parentId": "2",
                 "route": "preporuke"
+            },
+            {
+                "id": "551",
+                "name": "Izdavačka delatnost",
+                "parentId": 0,
+                "route": ""
+            },
+            {
+                "id": "552",
+                "name": "Notna izdanja",
+                "parentId": 551,
+                "route": "notna-izdanja"
+            },
+            {
+                "id": "553",
+                "name": "Ostala izdanja",
+                "parentId": 551,
+                "route": "ostala-izdanja"
+            },
+            {
+                "id": "554",
+                "name": "Biblioteka",
+                "parentId": 551,
+                "route": "biblioteka"
+            },
+            {
+                "id": "555",
+                "name": "Kalendar događaja",
+                "parentId": null,
+                "route": "dogadjaji"
             }
         ]
     },
@@ -104,12 +122,15 @@
         "noData": "Nema informacija za prikazivanje"
     },
     "home": {
+        "calendar": "Kalendar događaja",
+        "calendar_all": "Pogledaj sve događaje",
+        "calendar_detail": "Detaljno",
         "members": "Naši članovi",
         "news": "Aktuelnosti",
         "tribunes": "Festivali",
         "allTribunes": "Svi festivali",
-        "talks": "Razgovori",
-        "allTalks": "Svi razgovori",
+        "talks": "Pisana reč",
+        "allTalks": "Sve pisane reči",
         "awards": "Nagrade",
         "allAwards": "Sve nagrade",
         "allNews": "Sve aktuelnosti"
@@ -158,9 +179,9 @@
         "profileButton": "Profil"
     },
     "talks": {
-        "title": "Razgovori",
+        "title": "Pisana reč",
         "subtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-        "noTalks": "Trenutno nema dostupnih razgovora.",
+        "noTalks": "Trenutno nema dostupnih pisanih reči.",
         "noImage": "Nema dostupne slike",
         "viewText": "Ceo tekst"
     },
@@ -266,7 +287,7 @@
         "fax": "Fax",
         "pagesTitle": "Stranice",
         "socialMediaTitle": "Socijalne mreže",
-        "copyright": "Copyright © 2024. Udruženje kompozitora Srbije. Sva prava zadržava UKS",
+        "copyright": "©2025 www.composers.rs, Udruženje kompozitora Srbije. Izrada <a href='https://www.developers.rs' target='_blank' style='color:#fff'>Developers.rs</a>. Sva prava zadržana.",
         "pages": [
             {
                 "name": "Aktuelnosti",
@@ -281,7 +302,7 @@
                 "route": "clanovi"
             },
             {
-                "name": "Razgovori",
+                "name": "Pisana reč",
                 "route": "razgovori"
             },
             {

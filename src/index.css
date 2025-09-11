@@ -120,7 +120,8 @@ ul {
 }
 .tribine-card-home-holder img {
   width: 100%;
-  object-fit: contain
+  object-fit: cover;
+  height: 156px;
 }
 
 .tribine-card-home-holder a {

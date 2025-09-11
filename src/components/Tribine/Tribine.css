@@ -16,7 +16,8 @@
 
 .thumbnail-tribina {
   width: 100%;
-  object-fit: contain;
+  object-fit: cover;
+  height: 156px;
 }
 
 .gradient-overlay {

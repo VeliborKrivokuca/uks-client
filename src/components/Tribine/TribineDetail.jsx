@@ -133,6 +133,8 @@ const TribineDetail = () => {
     );
   }
 
+  console.log(tribine);
+
   return (
     <Container fluid className="my-4">
       <Clients />
@@ -142,7 +144,7 @@ const TribineDetail = () => {
             {getThumbnailUrl() ? (
               <img
                 src={getThumbnailUrl()}
-                alt={tribine.tribine?.title}
+                alt={tribine.translation?.title}
                 className="detail-thumbnail mb-3"
               />
             ) : (
@@ -150,7 +152,9 @@ const TribineDetail = () => {
             )}
             <Row className="border-bottom-primary mx-0">
               <Col xs={12} lg="auto" className="px-0">
-                <h1 className="secondary-color">{tribine.tribine?.title}</h1>
+                <h1 className="secondary-color">
+                  {tribine.translation?.title}
+                </h1>
               </Col>
               <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
                 <h1 className="secondary-color">{monthAndYear}</h1>

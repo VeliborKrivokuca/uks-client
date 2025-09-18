@@ -41,25 +41,19 @@ const KalendarList = () => {
       color: (() => {
         switch (event.typeEvent) {
           case "1":
-            return "#388e3c";
+            return "#ff0000";
           case "2":
-            return "#0288d1";
+            return "#800080";
           case "3":
-            return "#0097a7";
+            return "#0000ff";
           case "4":
-            return "#8bc34a";
+            return "#4d4d4d";
           case "5":
-            return "#673ab7";
+            return "#008000";
           case "6":
-            return "#e91e63";
+            return "#ff8c00";
           case "7":
-            return "#9c27b0";
-          case "8":
-            return "#03a9f4";
-          case "9":
-            return "#ffc107";
-          case "10":
-            return "#ff9800";
+            return "#000000";
           default:
             return "#d32f2f"; // neaktivan
         }

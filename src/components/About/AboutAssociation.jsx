@@ -1,10 +1,12 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import Clients from "../Clients/Clients";
-import Slider from "../Slider/Slider";
-import { useTranslation } from "react-i18next";
-import about from "../../assets/about.png";
 import "./AboutAssociation.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+
+import Clients from "../Clients/Clients";
+import React from "react";
+import Slider from "../Slider/Slider";
+import about from "../../assets/about.png";
+import { useTranslation } from "react-i18next";
 
 export default function AboutAssociation() {
   const { t } = useTranslation();
@@ -13,19 +15,34 @@ export default function AboutAssociation() {
     <Container fluidclassName="my-4">
       {/* Top Section: Clients & Slider */}
       <Clients />
-      <Slider />
+      {/* <Slider /> */}
       <Container>
         {/* Title */}
         <Row className="my-4">
           <Col>
             <h2 className="mb-4 title-color border-bottom-primary pb-3">
-              {t("about.title")}
+              {t("about.subtitle")}
             </h2>
           </Col>
         </Row>
 
-        {/* Image and Description */}
         <Row className="mb-4">
+          <Col lg={2}>
+            <img
+              src={about}
+              alt={t("about.subtitle")}
+              className="img-fluid rounded shadow pe-4 py-3"
+            />
+          </Col>
+          <Col>
+            <p
+              dangerouslySetInnerHTML={{ __html: t("about.description1") }}
+            ></p>
+          </Col>
+        </Row>
+
+        {/* Image and Description */}
+        {/* <Row className="mb-4">
           <Col md={3}>
             <img
               src={about}
@@ -39,10 +56,10 @@ export default function AboutAssociation() {
             </h2>
             <p>{t("about.description1")}</p>
           </Col>
-        </Row>
+        </Row> */}
 
         {/* Additional Details */}
-        <Row className="mb-4 primary-color">
+        {/* <Row className="mb-4 primary-color">
           <Col>
             <p>{t("about.members")}</p>
             <ul className="list-style">
@@ -59,7 +76,7 @@ export default function AboutAssociation() {
 
             <p>{t("about.conclusion")}</p>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Container>
   );

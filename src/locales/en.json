@@ -25,7 +25,7 @@
                 "route": "clanovi"
             },
             {
-                "id": "5",
+                "id": "4",
                 "name": "Festivals",
                 "parentId": null,
                 "route": "festivali"
@@ -37,16 +37,10 @@
                 "route": "nagrade"
             },
             {
-                "id": "4",
-                "name": "Written Word",
+                "id": "5",
+                "name": "Words on Writing",
                 "parentId": null,
                 "route": "razgovori"
-            },
-            {
-                "id": "6",
-                "name": "Calendar events",
-                "parentId": null,
-                "route": "dogadjaji"
             },
             {
                 "id": "50",
@@ -61,34 +55,64 @@
                 "route": "rimus"
             },
             {
-                "id": "18",
-                "name": "About Us",
-                "parentId": "2",
-                "route": "o-nama"
-            },
-            {
-                "id": "19",
-                "name": "Legal Documents",
-                "parentId": "2",
-                "route": "pravni-dokumenti"
-            },
-            {
-                "id": "20",
-                "name": "Admission Rules",
-                "parentId": "2",
-                "route": "pravilnik-o-prijemu"
-            },
-            {
                 "id": "21",
                 "name": "About the Association",
                 "parentId": "2",
                 "route": "o-udruženju"
             },
             {
+                "id": "18",
+                "name": "History",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "20",
+                "name": "Committees",
+                "parentId": "2",
+                "route": "pravilnik-o-prijemu"
+            },
+            {
+                "id": "19",
+                "name": "Documents",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
+            },
+            {
                 "id": "22",
                 "name": "Recommendations",
                 "parentId": "2",
                 "route": "preporuke"
+            },
+            {
+                "id": "551",
+                "name": "Publications",
+                "parentId": 0,
+                "route": ""
+            },
+            {
+                "id": "552",
+                "name": "Noted Editions",
+                "parentId": 551,
+                "route": "noted-editions"
+            },
+            {
+                "id": "553",
+                "name": "Other Editions",
+                "parentId": 551,
+                "route": "other-editions"
+            },
+            {
+                "id": "554",
+                "name": "Library",
+                "parentId": 551,
+                "route": "library"
+            },
+            {
+                "id": "600",
+                "name": "Event Calendar",
+                "parentId": null,
+                "route": "dogadjaji"
             }
         ]
   },
@@ -156,7 +180,8 @@
   },
   "tribine": {
     "title": "Panels",
-    "title2": "Composers Panel",
+    "desc": "<p>The International Review of Composers is the biggest and most important festival of contemporary art music in Serbia, held annually at the beginning of October in Belgrade. Founded and produced by the Composers' Association in Serbia, the festival features 10-12 concerts every year, along with other events, such as meetings with composers, presentations of music periodicals, sheet music, and CD editions, panel discussions, and workshops.</p><p>The majority of the concert program consists of works created over the past five years, submitted via a public call for scores, and selected by the festival curator. The rest of the program encompasses a broader time frame of contemporary music through thematic segments, concerts of anthological works, and programs proposed by festival soloists or ensembles.</p><p>The members of the Composers' Association of Serbia, composers Ivana Stefanović, Milan Mihajlović, and Srđan Hofman, first initiated the International Review of Composers in 1992. Towns Sremski Karlovci and Novi Sad hosted the first two editions of the festival. From 1994, the International Review of Composers relocated to Belgrade.</p><p>You can find the programs of all previous editions of the festival here.</p>",
+    "title2": "International Review of Composers",
     "title3": "RIMUS",
     "noTribines": "No panels available for the selected language.",
     "noThumbnail": "No Thumbnail Available",
@@ -187,7 +212,7 @@
     "president": "Rade Radivojević, President",
     "vicePresident": "Svetlana Savić, Vice President",
     "executiveBoard": "Executive Board Members:",
-    "description1": "The Association of Composers of Serbia represents a prominent and productive organization that, since its founding in 1945, has been dedicated to fostering and preserving Serbian cultural heritage and promoting contemporary musical creativity, both in the realm of classical music and popular genres.",
+    "description1": "<p>The Composers' Association of Serbia is a representative and fruitful organization that, since its foundation in 1945, has been dedicated to nurturing and preserving Serbian cultural heritage as well as promoting contemporary musical artistry in both serious music and popular music genres.</p><p>The Association of Composers of Serbia has 330 members, divided into three sections: Composers of serious music, Composers of jazz and popular music, and Music writers (musicologists, ethnomusicologists, and music theorists).</p><p>The Association of Composers of Serbia works hard to make Serbian music:</p><ul><li><strong>VISIBLE</strong>, by promoting the works of its members, organizing various concerts, cultural and publicity events, and media appearances;</li><li><strong>ACCESSIBLE</strong>, by publishing sheet music, CDs, DVDs, and offering its editions to interested parties: music schools, music institutions, and individuals in the country and abroad...</li><li><strong>PRESENT</strong> in daily cultural life, by doing everything to ensure that the works of Serbian composers are in the repertoire of symphony orchestras, chamber ensembles, and soloists, that their music lives on the concert stages and is recorded and broadcast on radio and television, covered in professional publications, and included as much as possible in the system of music and general education;</li><li><strong>RECOGNIZED</strong>, by producing festivals, thematic concerts, author's evenings, concerts of anthology works, maintaining a constant presence of its members at competitions and festivals around the world, fostering international cooperation, following and participating in international gatherings.</li></ul><p>Some of the significant activities of the Composers' Association of Serbia:</p><ul><li>For 34 years, the Association has been organizing the International Review of Composers, the largest and most significant new music festival in Serbia, where composers of art music can present their artistic achievements.</li><li>The Review of Instrumental Music of Serbia - RIMUS was launched in 2022, as an encouragement for composers of popular music to create instrumentals, „songs without words“, in which their skill comes to the fore.</li><li>The Association gives out prestigious yearly awards in four categories:<ul><li>„Stevan Mokranjac“ award for the best work of serious music premiered in the previous calendar year</li><li>„Darko Kraljić“ award for musical creativity in the field of popular music</li><li>„Pavle Stefanović“ award for music essays and criticism</li><li>„Aleksandar Pavlović“ award presented to musicians, for the promotion of Serbian music in the country and abroad.</li></ul></li><li>Through publishing activity, the Association brings the wealth of Serbian composers' artistry closer to the public.</li></ul><p>The Composers' Association of Serbia is a member of international organizations: the International Society for Contemporary Music - ISCM and the European Composer & Songwriter Alliance - ECSA.</p>",
     "members": "The Association of Composers of Serbia has 330 members divided into three sections: Composers of Classical Music, Composers of Jazz and Popular Music, and Music Writers (musicologists and ethnomusicologists). The Association of Composers of Serbia invests significant effort to make Serbian music:",
     "visible": "VISIBLE",
     "accessible": "ACCESSIBLE",
@@ -227,8 +252,8 @@
   },
   "legalDocuments": {
     "title": "Legal Documents",
-    "subtitle": "Association of Composers of Serbia",
-    "description": "Click the desired link below to download the latest versions of legal documents of the Association of Composers of Serbia:",
+    "subtitle": "Legal documents",
+    "description": "By clicking on the desired link below, you can download the current versions of the legal documents of the Composers' Association of Serbia.",
     "links": [
       {
         "text": "Association of Composers of Serbia – Statute 25.10.2022. (PDF)",
@@ -241,9 +266,9 @@
     ]
   },
   "admission": {
-    "title": "Admission Regulations",
-    "subtitle": "Association of Composers of Serbia",
-    "description": "By clicking on the link below, you can download the rules for membership of the Association of Composers of Serbia.",
+    "title": "Admission regulations",
+    "subtitle": "Admission regulations",
+    "description": "By clicking on the link below, you can download the rules of membership of the Composers' Association of Serbia.",
     "links": [
       {
         "text": "Rules of admission to membership - UKS",

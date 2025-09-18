@@ -46,13 +46,19 @@ const TribinaKompozitora = () => {
     <>
       <Clients></Clients>
       <Container className="my-5 section-divider-small">
-        <img className="w-100 rounded" src={image}></img>
+        {/* <img className="w-100 rounded" src={image}></img> */}
         {/* Title */}
         <Row className="my-4">
           <Col>
-            <h1 className="title-color border-bottom-primary pb-3 fw-bold text-uppercase text-main-title">
+            <h2 className="text-start title-color text-main-title fw-bold text-uppercase px-2">
               {t("tribine.title2")}
-            </h1>
+            </h2>
+            <p
+              className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2"
+              dangerouslySetInnerHTML={{
+                __html: t("tribine.desc", { returnObjects: true }),
+              }}
+            ></p>
             {loading && <p>{t("info.loading")}</p>}
             {error && <p>{t("info.error", { error })}</p>}
           </Col>

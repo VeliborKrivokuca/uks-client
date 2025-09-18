@@ -74,7 +74,7 @@ const Aktuelnosti = () => {
   return (
     <Container className="my-4">
       <Clients />
-      <Slider />
+      {/* <Slider /> */}
 
       {/* Title & Subtitle */}
       <Row>
@@ -82,9 +82,7 @@ const Aktuelnosti = () => {
           <h2 className="text-start title-color text-main-title fw-bold text-uppercase px-2">
             {t("news.title")}
           </h2>
-          <p className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2">
-            {t("news.subtitle")}
-          </p>
+          <p className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2"></p>
         </Col>
       </Row>
 

@@ -44,7 +44,7 @@
             },
             {
                 "id": "50",
-                "name": "Tribina kompozitora",
+                "name": "Međunarodna tribina kompozitora",
                 "parentId": 4,
                 "route": "tribina-kompozitora"
             },
@@ -55,28 +55,28 @@
                 "route": "rimus"
             },
             {
-                "id": "18",
-                "name": "O nama",
-                "parentId": "2",
-                "route": "o-nama"
-            },
-            {
-                "id": "19",
-                "name": "Pravni dokumenti",
-                "parentId": "2",
-                "route": "pravni-dokumenti"
-            },
-            {
-                "id": "20",
-                "name": "Pravilnik o prijemu",
-                "parentId": "2",
-                "route": "pravilnik-o-prijemu"
-            },
-            {
                 "id": "21",
                 "name": "O udruženju",
                 "parentId": "2",
                 "route": "o-udruženju"
+            },
+            {
+                "id": "18",
+                "name": "Istorija",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "20",
+                "name": "Radna tela",
+                "parentId": "2",
+                "route": "pravilnik-o-prijemu"
+            },
+            {
+                "id": "19",
+                "name": "Dokumenti",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
             },
             {
                 "id": "22",
@@ -187,7 +187,8 @@
     },
     "tribine": {
         "title": "Festivali",
-        "title2": "Tribina Kompozitora",
+        "desc": "<p>Međunarodna tribina kompozitora je najveći i najznačajniji festival savremene umetničke muzike u Srbiji, koji se održava svake godine početkom oktobra u Beogradu. Osnovan i organizovan od strane Udruženja kompozitora Srbije, festival svake godine uključuje 10-12 koncerata, kao i druge događaje, poput susreta sa kompozitorima, prezentacija muzičkih časopisa, notnih i CD izdanja, panel diskusija i radionica.</p><p>Veći deo koncertnog programa čine dela nastala tokom poslednjih pet godina, prijavljena putem javnog poziva za kompozicije, i odabrana od strane selektora festivala. Ostatak programa obuhvata širi vremenski okvir savremene muzike, kroz tematske segmente, koncerte antologijskih dela, programe koje predlažu solisti i ansambli na festivalu.</p><p>Članovi Udruženja kompozitora Srbije, kompozitori Ivana Stefanović, Milan Mihajlović i Srđan Hofman, pokrenuli su Međunarodnu tribinu kompozitora 1992. godine. Prve dve godine gradovi domaćini festivala bili su Sremski Karlovci i Novi Sad. Od 1994. godine, Međunarodna tribina kompozitora...</p><p>Ovde možete pronaći programe svih prethodnih izdanja festivala.</p>",
+        "title2": "Međunarodna tribina kompozitora",
         "title3": "RIMUS",
         "noTribines": "Nema dostupnih festivala za izabrani jezik.",
         "noThumbnail": "Nema dostupnog thumbnail-a"
@@ -197,7 +198,7 @@
         "subtitle": "Udruženje kompozitora Srbije",
         "boardTitle": "Udruženje kompozitora Srbije",
         "president": "Rade Radivojević, predsednik",
-        "description1": "Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja –1945. godine, do sada, predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u oblasti popularnog žanra.",
+        "description1": "<p>Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja 1945. godine predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u popularnim žanrovima.</p><p>Udruženje kompozitora Srbije ima 330 članova podeljenih u tri sekcije: Kompozitori ozbiljne muzike, Kompozitori džez i popularne muzike, Muzički pisci (muzikolozi, etnomuzikolozi i teoretičari muzike).</p><p>Udruženje kompozitora Srbije ulaže veliku energiju da srpsku muziku učini:</p><ul><li><strong>VIDLЈIVOM</strong>, tako što promoviše dela svojih članova, organizuje raznovrsne koncerte, kulturne i promotivne događaje i medijsku prezentaciju svog delovanja;</li><li><strong>DOSTUPNOM</strong>, tako što objavljuje partiture, CD i DVD izdanja i svoje publikacije nudi zainteresovanim muzičkim školama, institucijama kulture i pojedincima u zemlji i inostranstvu…</li><li><strong>PRISUTNOM</strong>, tako što čini sve da dela srpskih kompozitora budu na repertoaru simfonijskih orkestara, kamernih ansambala i solista, da njihova muzika živi na koncertnim podijumima i bude snimljena i emitovana na radiju i televiziji, pominjana u profesionalnim publikacijama, uključena što više u sistem muzičkog i opšteg obrazovanja;</li><li><strong>PREPOZNATLjIVOM</strong>, tako što organizuje festivale, tematske koncerte, autorske večeri, koncerte antologijskih dela, osigurava redovno prisustvo svojih članova na takmičenjima i festivalima širom sveta, neguje međunarodnu saradnju, učestvuje na internacionalnim skupovima.</li></ul><p>Neke od značajnih aktivnosti Udruženja kompozitora Srbije:</p><ul><li>Već 34 godine Udruženje organizujeme Međunarodnu tribinu kompozora, najveći i najznačajniji festival savremene umetničke muzike u Srbiji, gde kompozitori seriozne muzike mogu da prezentuju svoje stvaralaštvo;</li><li>Revija instrumentalne muzike Srbije – RIMUS pokrenuta je 2022. godine, kao podstrek kompozitorima popularne muzike da stvaraju instrumentale, „pesme bez reči“, u kojima kompozitorsko umeće dolazi do izražaja.</li><li>UKS dodeljuje četiri prestižne godišnje nagrade:<ul><li>Nagradu „Stevan Mokranjac“ za najbolje muzičko delo iz oblasti seriozne muzike koje je premijerno izvedeno u prethodnoj kalendarskoj godini;</li><li>Nagradu „Darko Kraljić“ za muzičko stvaralštvo u domenu popularne muzike;</li><li>Nagradu „Pavle Stefanović“ za muzičku esejistiku i kritiku;</li><li>Nagradu „Aleksandar Pavlović“, muzičarima, za promociju srpske muzike u zemlji i inostranstvu.</li></ul></li><li>Izdavačkom delatnošću Udruženje približava javnosti riznicu srpskog umetničkog stvaralaštva.</li></ul><p>Udruženje kompozitora Srbije član je međunarodnih organizacija: Međunarodno društva za savremenu muziku – ISCM i Evropsko udruženje kompozitora i tekstopisaca – ECSA.</p>",
         "vicePresident": "Svetlana Savić, potpredsednik",
         "executiveBoard": "Članovi Upravnog odbora:",
         "members": "Udruženje kompozitora Srbije ima 330 članova podeljenih u tri sekcije: Kompozitori ozbiljne muzike, Kompozitori džeza i popularne muzike, Muzički pisci (muzikolozi i etnomuzikolozi). Udruženje kompozitora Srbije ulaže veliku energiju da srpsku muziku učini:",
@@ -222,8 +223,8 @@
         "coordinator": "Predstavnik UKS-a u Koordinacionom odboru umetničkih udruženja je Dragomir Milenković."
     },
     "legalDocuments": {
-        "title": "Pravni dokumenti",
-        "subtitle": "Udruženje kompozitora Srbije",
+        "title": "Dokumenti ",
+        "subtitle": "Pravni dokumenti",
         "description": "Klikom na željeni link ispod možete preuzeti aktuelne verzije pravnih dokumenata Udruženja kompozitora Srbije:",
         "links": [
             {
@@ -238,12 +239,12 @@
     },
     "admission": {
         "title": "Pravilnik o prijemu",
-        "subtitle": "Udruženje kompozitora Srbije",
-        "description": "Klikom na link ispod možete preuzeti pravilnik u članstvo Udruženja kompozitora Srbije.",
+        "subtitle": "Pravilnik o prijemu",
+        "description": "Klikom na link ispod možete preuzeti Pravilnik prijema u članstvo Udruženja kompozitora Srbije.",
         "links": [
             {
                 "text": "Pravilnik prijema u članstvo - UKS",
-                "href": "#"
+                "href": "/festivali/83"
             }
         ]
     },

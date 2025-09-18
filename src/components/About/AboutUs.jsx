@@ -1,9 +1,11 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import "./AboutAssociation.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+
 import Clients from "../Clients/Clients";
+import React from "react";
 import Slider from "../Slider/Slider";
 import { useTranslation } from "react-i18next";
-import "./AboutAssociation.css";
 
 export default function AboutUs() {
   const { t } = useTranslation();

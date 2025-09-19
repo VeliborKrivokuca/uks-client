@@ -94,7 +94,7 @@ const Footer = () => {
               </a>
               <a
                 target="_blank"
-                href="https://www.youtube.com/channel/UCIo2x4lsZwUA9O4YXa0uPGQ"
+                href="https://www.youtube.com/@composersassociationofserb7457"
                 className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
               >
                 <FontAwesomeIcon className="text-lg" icon={faYoutube} />

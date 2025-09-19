@@ -1,9 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
+import { API_BASE_URL } from "../services/api";
 import Clients from "../components/Clients/Clients";
 import Slider from "../components/Slider/Slider";
+import { fetchDocuments } from "../store/slices/pagesSlice";
+import { useEffect } from "react";
 
 const NotnaIzdanja = () => {
+  const dispatch = useDispatch();
+  const { documents, loading, error } = useSelector((state) => state.pages);
+
+  useEffect(() => {
+    dispatch(fetchDocuments("notnaIzdanja"));
+  }, [dispatch]);
   return (
     <>
       <Clients />
@@ -18,8 +28,20 @@ const NotnaIzdanja = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col md={12}></Col>
+        <Row className="mt-2">
+          <Col>
+            {documents?.map((link, index) => (
+              <a
+                href={API_BASE_URL + "/uploads/" + link.acDocument}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none primary-color text-decoration-underline d-block"
+              >
+                {link.acName}
+              </a>
+            ))}
+          </Col>
         </Row>
       </Container>
     </>

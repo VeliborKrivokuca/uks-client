@@ -1,14 +1,26 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import "./AboutAssociation.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
 import Slider from "../Slider/Slider";
-
-import "./AboutAssociation.css";
+import { fetchDocuments } from "../../store/slices/pagesSlice";
 import { useTranslation } from "react-i18next";
 
 export default function Recommendations() {
   const { t } = useTranslation();
   const links = t("recommendations.links", { returnObjects: true });
+
+  const dispatch = useDispatch();
+
+  const { documents, loading, error } = useSelector((state) => state.pages);
+
+  useEffect(() => {
+    dispatch(fetchDocuments("Preporuke"));
+  }, [dispatch]);
 
   return (
     <>
@@ -31,18 +43,19 @@ export default function Recommendations() {
             <h2 className="primary-color mb-3">
               {t("recommendations.subtitle")}
             </h2>
-            {links.map((link, index) => (
+            <p className="mb-3">{t("recommendations.description")}</p>
+
+            {documents?.map((link, index) => (
               <a
+                href={API_BASE_URL + "/uploads/" + link.acDocument}
                 key={index}
-                href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-decoration-none primary-color text-decoration-underline d-block"
               >
-                {link.text}
+                {link.acName}
               </a>
             ))}
-            <p>{t("recommendations.description")}</p>
           </Col>
         </Row>
       </Container>

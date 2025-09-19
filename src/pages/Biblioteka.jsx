@@ -1,9 +1,19 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 
+import { API_BASE_URL } from "../services/api";
 import Clients from "../components/Clients/Clients";
 import Slider from "../components/Slider/Slider";
+import { fetchDocuments } from "../store/slices/pagesSlice";
+import { useEffect } from "react";
 
 const Biblioteka = () => {
+  const dispatch = useDispatch();
+  const { documents, loading, error } = useSelector((state) => state.pages);
+
+  useEffect(() => {
+    dispatch(fetchDocuments("Biblioteka"));
+  }, [dispatch]);
   return (
     <>
       <Clients />
@@ -24,20 +34,27 @@ const Biblioteka = () => {
               <p>
                 U Udruženju kompozitora Srbije nalazi se veliki broj partitura:
                 od onih za solo instrumente do onih za simfonijski orkestar.
-                Kompletan spisak u PDF formatu možete preuzeti ovde.{" "}
-                <a
-                  href="https://uks-server.developers.rs/uploads/fa569472-ef3d-4846-8cad-88a613bed69a.pdf"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  LINK
-                </a>{" "}
                 <br />
                 <br />
                 Ove note i partiture možete pozajmiti ili fotokopirati, a neke
                 od njih i kupiti, u zavisnosti od broja preostalih primeraka.
               </p>
             </div>
+          </Col>
+        </Row>
+        <Row className="mt-2">
+          <Col>
+            {documents?.map((link, index) => (
+              <a
+                href={API_BASE_URL + "/uploads/" + link.acDocument}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none primary-color text-decoration-underline d-block"
+              >
+                {link.acName}
+              </a>
+            ))}
           </Col>
         </Row>
       </Container>

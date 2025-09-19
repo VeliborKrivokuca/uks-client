@@ -23,12 +23,21 @@ export const fetchAllCalendar = createAsyncThunk(
   }
 );
 
+export const fetchDocuments = createAsyncThunk(
+  "documents/getDocuments",
+  async (namePage) => {
+    const response = await apiClient.get(`/api/documents/list/get/${namePage}`);
+    return response.data;
+  }
+);
+
 const pagesSlice = createSlice({
   name: "pages",
   initialState: {
     pages: [],
     clients: [],
     calendar: [],
+    documents: [],
     loading: false,
     error: null,
   },
@@ -71,6 +80,19 @@ const pagesSlice = createSlice({
         state.calendar = action.payload;
       })
       .addCase(fetchAllCalendar.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // documents
+      .addCase(fetchDocuments.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchDocuments.fulfilled, (state, action) => {
+        state.loading = false;
+        state.documents = action.payload;
+      })
+      .addCase(fetchDocuments.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

@@ -112,19 +112,21 @@ function MembersList({ members, roles, onProfileClick }) {
                   {currentMembers.map((member) => (
                     <tr key={member.anId}>
                       <td className="secondary-color">
-                        <img
-                          src={
-                            member.acImage
-                              ? `${API_BASE_URL}/images/${member.acImage}`
-                              : "/assets/uks-logo-mala.png"
-                          }
-                          alt={member.acName}
-                          className="rounded-circle member-photo shadow"
-                          onError={(e) => {
-                            e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
-                            e.target.src = "/assets/uks-logo-mala.png";
-                          }}
-                        />
+                        {member?.acImage && (
+                          <img
+                            src={
+                              member.acImage
+                                ? `${API_BASE_URL}/images/${member.acImage}`
+                                : "/assets/uks-logo-mala.png"
+                            }
+                            alt={member.acName}
+                            className="rounded-circle member-photo shadow"
+                            onError={(e) => {
+                              e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
+                              e.target.src = "/assets/uks-logo-mala.png";
+                            }}
+                          />
+                        )}
                       </td>
                       <td className="secondary-color fw-bold">
                         {member.acName}

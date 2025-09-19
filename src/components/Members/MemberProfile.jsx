@@ -66,21 +66,23 @@ const MemberProfilePage = () => {
         </Row>
 
         <Row>
-          <Col md={3} className="mb-3">
-            <img
-              src={
-                acImage
-                  ? `${API_BASE_URL}/images/${acImage}`
-                  : "/assets/uks-logo-mala.png"
-              }
-              alt={acName}
-              className="rounded shadow profile-photo w-100"
-              onError={(e) => {
-                e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
-                e.target.src = "/assets/uks-logo-mala.png";
-              }}
-            />
-          </Col>
+          {acImage && (
+            <Col md={3} className="mb-3">
+              <img
+                src={
+                  acImage
+                    ? `${API_BASE_URL}/images/${acImage}`
+                    : "/assets/uks-logo-mala.png"
+                }
+                alt={acName}
+                className="rounded shadow profile-photo w-100"
+                onError={(e) => {
+                  e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
+                  e.target.src = "/assets/uks-logo-mala.png";
+                }}
+              />
+            </Col>
+          )}
           <Col>
             <h2 className="secondary-color mb-3 text-main-title fw-bold">
               {acName}

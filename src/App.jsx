@@ -61,7 +61,7 @@ const App = () => {
         <Route path="/o-udruženju" element={<AboutAssociation />} />
         <Route path="/o-nama" element={<AboutUs />} />
         <Route path="/pravni-dokumenti" element={<LegalDocuments />} />
-        <Route path="/pravilnik-o-prijemu" element={<AdmissionRegulations />} />
+        <Route path="/radna-tela" element={<AdmissionRegulations />} />
         <Route path="/preporuke" element={<Recommendations />} />
         <Route path="/blog/:id" element={<AktuelnostiDetails />} />
         <Route path="/tribina-kompozitora" element={<TribinaKompozitora />} />

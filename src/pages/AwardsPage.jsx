@@ -10,7 +10,7 @@ const AwardsPage = () => {
 
   return (
     <Container fluid>
-      <Clients></Clients>
+      <Clients />
       {/* <Slider></Slider> */}
       <Container className="my-4 ">
         <h1 className="text-start title-color fw-bold text-main-title text-uppercase">
@@ -20,7 +20,7 @@ const AwardsPage = () => {
           {t("awards.pageSubtitle")}
         </p>
       </Container>
-      <Awards></Awards>
+      <Awards />
     </Container>
   );
 };

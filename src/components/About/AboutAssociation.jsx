@@ -1,15 +1,25 @@
 import "./AboutAssociation.css";
 
 import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
-import React from "react";
 import Slider from "../Slider/Slider";
 import about from "../../assets/about.png";
+import { fetchDocuments } from "../../store/slices/pagesSlice";
+import { use } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function AboutAssociation() {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { documents, loading, error } = useSelector((state) => state.pages);
+
+  useEffect(() => {
+    dispatch(fetchDocuments("oUdruzenju"));
+  }, [dispatch]);
 
   return (
     <Container fluidclassName="my-4">
@@ -38,6 +48,22 @@ export default function AboutAssociation() {
             <p
               dangerouslySetInnerHTML={{ __html: t("about.description1") }}
             ></p>
+          </Col>
+        </Row>
+
+        <Row className="mt-2">
+          <Col>
+            {documents?.map((link, index) => (
+              <a
+                href={API_BASE_URL + "/uploads/" + link.acDocument}
+                key={index}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-decoration-none primary-color text-decoration-underline d-block"
+              >
+                {link.acName}
+              </a>
+            ))}
           </Col>
         </Row>
 

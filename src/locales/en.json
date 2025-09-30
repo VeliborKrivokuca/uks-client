@@ -1,5 +1,8 @@
 {
   "header": {
+    "tribinaKompozitora": "Composers Forum",
+    "fesitval": "Festivals",
+    "rimus": "Rimus",
     "emailLabel": "Send us an email",
     "callUsLabel": "Call us Now",
     "searchPlaceholder": "Search...",
@@ -45,13 +48,13 @@
             {
                 "id": "50",
                 "name": "Composers Forum",
-                "parentId": 5,
+                "parentId": 4,
                 "route": "tribina-kompozitora"
             },
             {
                 "id": "51",
                 "name": "RIMUS",
-                "parentId": 5,
+                "parentId": 4,
                 "route": "rimus"
             },
             {
@@ -168,7 +171,7 @@
     "loading": "Loading members...",
     "errorLoading": "Failed to load data. Please try again.",
     "sectionTitle": "OUR MEMBERS",
-    "sectionDescription": "The section for association members provides insight into the profiles of our composers, their biographies, works, and contributions to the Serbian music scene, highlighting the importance of their creativity and role in preserving our musical tradition.",
+    "sectionDescription": "",
     "chooseSection": "Choose section",
     "chooseName": "Enter name and last name",
     "chooseNamePlaceholder": "Enter name",
@@ -189,7 +192,7 @@
   },
   "talks": {
     "title": "Written Word",
-    "subtitle": "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
+    "subtitle": "",
     "noTalks": "No Written Word available at the moment.",
     "noImage": "No Image Available",
     "viewText": "View text"
@@ -198,16 +201,16 @@
     "awardTitle": "Award",
     "pageTitle": "Awards",
     "moreInfo": "More information",
-    "pageSubtitle": "Follow the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art."
+    "pageSubtitle": "<p>The Association gives out prestigious yearly awards in four categories:</p><ul><li><strong>&quot;Stevan Mokranjac&quot;</strong> award for the best work of serious music premiered in the previous calendar year</li><li><strong>&quot;Darko Kraljić&quot;</strong> award for musical creativity in the field of popular music</li><li><strong>&quot;Pavle Stefanović&quot;</strong> award for music essays and criticism</li><li><strong>&quot;Aleksandar Pavlović&quot;</strong> award presented to musicians, for the promotion of Serbian music in the country and abroad</li></ul>"
   },
   "slider": {
-    "supportTitle": "Support for the Compositional Art of Serbia",
-    "supportDescription": "We are dedicated to preserving, promoting, and developing the compositional art in Serbia, providing support to our creators and safeguarding musical traditions.",
+    "supportTitle": "Composers' Association of Serbia - since 1945",
+    "supportDescription": "We are dedicated to nurturing and preserving Serbian cultural heritage and promoting contemporary musical artistry.",
     "noSlides": "No slides available"
   },
   "about": {
-    "title": "About Us",
-    "subtitle": "Association of Composers of Serbia",
+    "title": "History",
+    "subtitle": "Composers' Association of Serbia",
     "boardTitle": "Association of Composers of Serbia",
     "president": "Rade Radivojević, President",
     "vicePresident": "Svetlana Savić, Vice President",

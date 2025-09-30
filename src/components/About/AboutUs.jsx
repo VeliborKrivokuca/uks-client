@@ -1,14 +1,24 @@
 import "./AboutAssociation.css";
 
 import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import Clients from "../Clients/Clients";
-import React from "react";
 import Slider from "../Slider/Slider";
+import { fetchPageDetail } from "../../store/slices/pagesSlice";
 import { useTranslation } from "react-i18next";
 
 export default function AboutUs() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+  const { pagesList } = useSelector((state) => state.pages);
+
+  useEffect(() => {
+    // ID zavisi od trenutnog jezika
+    const pageId = i18n.language === "sr" ? 2 : 5;
+    dispatch(fetchPageDetail(pageId));
+  }, [dispatch, i18n.language]); // <-- prati promenu jezika
 
   return (
     <Container fluid>
@@ -24,13 +34,18 @@ export default function AboutUs() {
         <Row>
           <Col>
             <p className="text-start title-color border-bottom-primary pb-3 text-main-title fw-bold">
-              {t("about.title")}
+              {pagesList?.naslov}
             </p>
+          </Col>
+        </Row>
+        <Row className="mb-4">
+          <Col>
+            <p dangerouslySetInnerHTML={{ __html: pagesList?.opis }}></p>
           </Col>
         </Row>
 
         {/* Board Section */}
-        <Row className="my-4 primary-color">
+        {/* <Row className="my-4 primary-color">
           <Col>
             <h2 className="mb-4">{t("about.boardTitle")}</h2>
 
@@ -65,7 +80,7 @@ export default function AboutUs() {
 
             <p className="mb-0">{t("about.coordinator")}</p>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </Container>
   );

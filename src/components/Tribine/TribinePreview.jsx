@@ -108,7 +108,10 @@ const TribinePreview = () => {
           {error && <p>{t("info.error", { error })}</p>}
         </Col>
       </Row>
-
+      {/* <div className="festivals-list-links">
+        <Link to="/tribina-kompozitora">{t("header.tribinaKompozitora")}</Link>
+        <Link to="/tribina-kompozitora">{t("header.fesitval")}</Link>
+      </div> */}
       <div className="tribine-card-home-holder">
         {currentTribines.map((tribine) => {
           const { day, month } = formatDate(tribine.date);

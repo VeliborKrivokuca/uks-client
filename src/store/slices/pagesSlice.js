@@ -31,13 +31,22 @@ export const fetchDocuments = createAsyncThunk(
   }
 );
 
+export const fetchPageDetail = createAsyncThunk(
+  "pagesList/getPages",
+  async (id) => {
+    const response = await apiClient.get(`/api/pages/get/items/${id}`);
+    return response.data;
+  }
+);
+
 const pagesSlice = createSlice({
   name: "pages",
   initialState: {
-    pages: [],
+    pagesList: [],
     clients: [],
     calendar: [],
     documents: [],
+    pages: [],
     loading: false,
     error: null,
   },
@@ -93,6 +102,19 @@ const pagesSlice = createSlice({
         state.documents = action.payload;
       })
       .addCase(fetchDocuments.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // pages
+      .addCase(fetchPageDetail.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchPageDetail.fulfilled, (state, action) => {
+        state.loading = false;
+        state.pagesList = action.payload;
+      })
+      .addCase(fetchPageDetail.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

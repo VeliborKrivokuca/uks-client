@@ -55,7 +55,7 @@ const Awards = ({ isHomepage = false }) => {
   };
 
   return (
-    <Container className="pt-1 mt-0">
+    <Container className="pt-1 mt-4">
       {/* Awards Grid */}
       {loading && <p>{t("loading.general")}</p>}
       {error && (
@@ -95,9 +95,9 @@ const Awards = ({ isHomepage = false }) => {
                             className="h3 text-center w-100 text-light"
                             icon={faAward}
                           />
-                          <p className="text-center m-0 text-light text-sm">
+                          {/* <p className="text-center m-0 text-light text-sm">
                             {formatDateToDDMMYYYY(award.created_at)}
-                          </p>
+                          </p> */}
                           <p
                             className="text-light text-center w-100 text-decoration-underline fw-light cursor-pointer text-subtitle"
                             onClick={() => handleViewMore(award)}
@@ -142,9 +142,9 @@ const Awards = ({ isHomepage = false }) => {
                           className="h3 text-center w-100 text-light"
                           icon={faAward}
                         />
-                        <p className="text-center m-0 text-light text-sm mb-4">
+                        {/* <p className="text-center m-0 text-light text-sm mb-4">
                           {formatDateToDDMMYYYY(award.created_at)}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </Col>

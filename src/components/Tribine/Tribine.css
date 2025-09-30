@@ -44,3 +44,8 @@
     margin-bottom: 40px;
   }
 }
+.festivals-list-links a {
+    font-size: 20px;
+    color: #3D5A80;
+    text-decoration: underline;
+}

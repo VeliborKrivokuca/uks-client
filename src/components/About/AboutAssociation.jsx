@@ -2,24 +2,31 @@ import "./AboutAssociation.css";
 
 import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect } from "react";
+import { fetchDocuments, fetchPageDetail } from "../../store/slices/pagesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
 import Slider from "../Slider/Slider";
 import about from "../../assets/about.png";
-import { fetchDocuments } from "../../store/slices/pagesSlice";
 import { use } from "react";
 import { useTranslation } from "react-i18next";
 
 export default function AboutAssociation() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-  const { documents, loading, error } = useSelector((state) => state.pages);
+  const { documents, loading, error, pagesList } = useSelector(
+    (state) => state.pages
+  );
 
   useEffect(() => {
+    // Uvek povuci dokumente (nezavisno od jezika)
     dispatch(fetchDocuments("oUdruzenju"));
-  }, [dispatch]);
+
+    // ID zavisi od trenutnog jezika
+    const pageId = i18n.language === "sr" ? 1 : 4;
+    dispatch(fetchPageDetail(pageId));
+  }, [dispatch, i18n.language]); // <-- prati promenu jezika
 
   return (
     <Container fluidclassName="my-4">
@@ -31,7 +38,7 @@ export default function AboutAssociation() {
         <Row className="my-4">
           <Col>
             <h2 className="mb-4 title-color border-bottom-primary pb-3">
-              {t("about.subtitle")}
+              {pagesList?.naslov}
             </h2>
           </Col>
         </Row>
@@ -45,9 +52,7 @@ export default function AboutAssociation() {
             />
           </Col>
           <Col>
-            <p
-              dangerouslySetInnerHTML={{ __html: t("about.description1") }}
-            ></p>
+            <p dangerouslySetInnerHTML={{ __html: pagesList?.opis }}></p>
           </Col>
         </Row>
 

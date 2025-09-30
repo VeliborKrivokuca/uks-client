@@ -19,6 +19,7 @@ import Header from "./components/Header/Header";
 import HomePage from "./pages/Homepage";
 import LegalDocuments from "./components/About/LegalDocuments";
 import MemberProfilePage from "./components/Members/MemberProfile";
+import MemberProfilePage2 from "./components/Members/MemberProfile2";
 import MembersPage from "./components/Members/Members";
 import NotFoundPage from "./components/NotFound/NotFound";
 import NotnaIzdanja from "./pages/NotnaIzdanja";
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="/nagrade" element={<AwardsPage />} />
         <Route path="/nagrade/:id" element={<AwardsPage />} />{" "}
         {/* Dynamic route */}
+        <Route path="/korisnik/:id" element={<MemberProfilePage2 />} />
         <Route path="/clanovi" element={<MembersPage />} />
         <Route path="/clanovi/:id" element={<MemberProfilePage />} />
         <Route path="/o-udruženju" element={<AboutAssociation />} />

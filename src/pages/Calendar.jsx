@@ -11,6 +11,66 @@ import listPlugin from "@fullcalendar/list";
 import srLocale from "@fullcalendar/core/locales/sr";
 import timeGridPlugin from "@fullcalendar/timegrid";
 
+const srLatinLocale = {
+  code: "sr-latin",
+  week: {
+    dow: 1, // ponedeljak prvi dan
+    doy: 7,
+  },
+  buttonText: {
+    prev: "Nazad",
+    next: "Napred",
+    today: "Danas",
+    month: "Mesec",
+    week: "Nedelja",
+    day: "Dan",
+    list: "Lista",
+  },
+  weekText: "Sed",
+  allDayText: "Ceo dan",
+  moreLinkText: (n) => `+${n} više`,
+  noEventsText: "Nema događaja za prikaz",
+
+  monthNames: [
+    "januar",
+    "februar",
+    "mart",
+    "april",
+    "maj",
+    "jun",
+    "jul",
+    "avgust",
+    "septembar",
+    "oktobar",
+    "novembar",
+    "decembar",
+  ],
+  monthNamesShort: [
+    "jan",
+    "feb",
+    "mar",
+    "apr",
+    "maj",
+    "jun",
+    "jul",
+    "avg",
+    "sep",
+    "okt",
+    "nov",
+    "dec",
+  ],
+  dayNames: [
+    "nedelja",
+    "ponedeljak",
+    "utorak",
+    "sreda",
+    "četvrtak",
+    "petak",
+    "subota",
+  ],
+  dayNamesShort: ["ned", "pon", "uto", "sre", "čet", "pet", "sub"],
+};
+
 const Calendar = () => {
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [show, setShow] = useState(false);
@@ -44,7 +104,7 @@ const Calendar = () => {
       color: (() => {
         switch (event.typeEvent) {
           case "1":
-            return "#388e3c";
+            return "#81c784";
           case "2":
             return "#0288d1";
           case "3":
@@ -76,7 +136,7 @@ const Calendar = () => {
         <div className="col-12">
           <div className="calendar-full-custom">
             <FullCalendar
-              locale={srLocale}
+              locale={srLatinLocale}
               plugins={[
                 dayGridPlugin,
                 timeGridPlugin,
@@ -113,7 +173,7 @@ const Calendar = () => {
 
               <Typography gutterBottom>
                 <strong>Početak:</strong>{" "}
-                {new Date(selectedEvent.start).toLocaleString("sr-RS", {
+                {new Date(selectedEvent.start).toLocaleString("sr-Latn-RS", {
                   dateStyle: "short",
                   timeStyle: "short",
                   hour12: false,
@@ -123,7 +183,7 @@ const Calendar = () => {
               <Typography gutterBottom>
                 <strong>Kraj:</strong>{" "}
                 {selectedEvent.end
-                  ? new Date(selectedEvent.end).toLocaleString("sr-RS", {
+                  ? new Date(selectedEvent.end).toLocaleString("sr-Latn-RS", {
                       dateStyle: "short",
                       timeStyle: "short",
                       hour12: false,

@@ -3,6 +3,7 @@ import "./Tribine.css";
 import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
@@ -10,13 +11,13 @@ import Pagination from "../Pagination/Pagination";
 import { fetchTribines } from "../../store/actions/tribineActions";
 import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const TribinaKompozitora = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
+  const { pathname } = useLocation();
 
   const { tribines, loading, error } = useSelector((state) => state.tribine);
 
@@ -30,6 +31,10 @@ const TribinaKompozitora = () => {
   const handleTribineClick = (id) => {
     navigate(`/festivali/${id}`);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   // Filter only active tribines
   const activeTribines = tribines.filter((tribine) => tribine.status === "1");

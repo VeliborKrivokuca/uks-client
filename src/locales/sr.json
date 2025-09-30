@@ -1,5 +1,8 @@
 {
     "header": {
+        "tribinaKompozitora": "Međunarodna tribina kompozitora",
+        "fesitval": "Festivali",
+        "rimus": "Rimus",
         "emailLabel": "Pošaljite nam email",
         "callUsLabel": "Pozovite nas",
         "searchPlaceholder": "Pretraga...",
@@ -168,7 +171,7 @@
         "loading": "Učitavanje članova...",
         "errorLoading": "Greška prilikom učitavanja podataka. Molimo pokušajte ponovo.",
         "sectionTitle": "NAŠI ČLANOVI",
-        "sectionDescription": "Sekcija za članove udruženja pruža uvid u profile naših kompozitora, njihove biografije, dela i doprinose srpskoj muzičkoj sceni, ističući značaj njihovog stvaralaštva i uloge u očuvanju naše muzičke tradicije.",
+        "sectionDescription": "",
         "chooseSection": "Odaberite sekciju",
         "chooseName": "Upišite ime i prezime",
         "chooseNamePlaceholder": "Upišite ime",
@@ -180,21 +183,21 @@
     },
     "talks": {
         "title": "Pisana reč",
-        "subtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
+        "subtitle": "",
         "noTalks": "Trenutno nema dostupnih pisanih reči.",
         "noImage": "Nema dostupne slike",
         "viewText": "Ceo tekst"
     },
     "tribine": {
         "title": "Festivali",
-        "desc": "<p>Međunarodna tribina kompozitora je najveći i najznačajniji festival savremene umetničke muzike u Srbiji, koji se održava svake godine početkom oktobra u Beogradu. Osnovan i organizovan od strane Udruženja kompozitora Srbije, festival svake godine uključuje 10-12 koncerata, kao i druge događaje, poput susreta sa kompozitorima, prezentacija muzičkih časopisa, notnih i CD izdanja, panel diskusija i radionica.</p><p>Veći deo koncertnog programa čine dela nastala tokom poslednjih pet godina, prijavljena putem javnog poziva za kompozicije, i odabrana od strane selektora festivala. Ostatak programa obuhvata širi vremenski okvir savremene muzike, kroz tematske segmente, koncerte antologijskih dela, programe koje predlažu solisti i ansambli na festivalu.</p><p>Članovi Udruženja kompozitora Srbije, kompozitori Ivana Stefanović, Milan Mihajlović i Srđan Hofman, pokrenuli su Međunarodnu tribinu kompozitora 1992. godine. Prve dve godine gradovi domaćini festivala bili su Sremski Karlovci i Novi Sad. Od 1994. godine, Međunarodna tribina kompozitora...</p><p>Ovde možete pronaći programe svih prethodnih izdanja festivala.</p>",
+        "desc": "<p>Međunarodna tribina kompozitora je najveći i najznačajniji festival savremene umetničke muzike u Srbiji, koji se održava svake godine početkom oktobra u Beogradu. Osnovan i organizovan od strane Udruženja kompozitora Srbije, festival svake godine uključuje 10-12 koncerata, kao i druge događaje, poput susreta sa kompozitorima, prezentacija muzičkih časopisa, notnih i CD izdanja, panel diskusija i radionica.</p><p>Veći deo koncertnog programa čine dela nastala tokom poslednjih pet godina, prijavljena putem javnog poziva za kompozicije, i odabrana od strane selektora festivala. Ostatak programa obuhvata širi vremenski okvir savremene muzike, kroz tematske segmente, koncerte antologijskih dela, programe koje predlažu solisti i ansambli na festivalu.</p><p>Članovi Udruženja kompozitora Srbije, kompozitori Ivana Stefanović, Milan Mihajlović i Srđan Hofman, pokrenuli su Međunarodnu tribinu kompozitora 1992. godine. Prve dve godine gradovi domaćini festivala bili su Sremski Karlovci i Novi Sad. Od 1994. godine, Međunardna tribina kompozitora premešta se u Beograd.</p><p>Ovde možete pronaći programe svih prethodnih izdanja festivala.</p>",
         "title2": "Međunarodna tribina kompozitora",
         "title3": "RIMUS",
         "noTribines": "Nema dostupnih festivala za izabrani jezik.",
         "noThumbnail": "Nema dostupnog thumbnail-a"
     },
     "about": {
-        "title": "O nama",
+        "title": "Istorija",
         "subtitle": "Udruženje kompozitora Srbije",
         "boardTitle": "Udruženje kompozitora Srbije",
         "president": "Rade Radivojević, predsednik",
@@ -264,11 +267,11 @@
         "awardTitle": "Nagrada",
         "pageTitle": "Nagrade",
         "moreInfo": "Više informacija",
-        "pageSubtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti."
+        "pageSubtitle": "<p>Udruženje kompozitora Srbije dodeljuje četiri prestižne godišnje nagrade:</p><ul><li><strong>Nagrada „Stevan Mokranjac“</strong> – za najbolje muzičko delo iz oblasti ozbiljne/seriozne muzike koje je premijerno izvedeno u prethodnoj kalendarskoj godini</li><li><strong>Nagrada „Darko Kraljić“</strong> – za muzičko stvaralaštvo u domenu popularne muzike</li><li><strong>Nagrada „Pavle Stefanović“</strong> – za muzičku esejistiku i kritiku</li><li><strong>Nagrada „Aleksandar Pavlović“</strong> – za promociju srpske muzike u zemlji i inostranstvu</li></ul>"
     },
     "slider": {
-        "supportTitle": "Podrška kompozitorskoj umetnosti Srbije",
-        "supportDescription": "Posvećeni smo očuvanju, promociji i razvoju kompozitorske umetnosti u Srbiji, pružajući podršku našim stvaraocima i čuvajući muzičku tradiciju.",
+        "supportTitle": "Udruženje kompozitora Srbije - od 1945. godine",
+        "supportDescription": "Negujemo i čuvamo srpsku kulturnu baštinu i promovišemo savremeno muzičko stvaralaštvo.",
         "noSlides": "Nema dostupnih slajdera"
     },
     "aboutAssociation": {

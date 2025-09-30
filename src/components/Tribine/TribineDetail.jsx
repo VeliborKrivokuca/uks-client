@@ -156,9 +156,9 @@ const TribineDetail = () => {
                   {tribine.translation?.title}
                 </h1>
               </Col>
-              <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
+              {/* <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
                 <h1 className="secondary-color">{monthAndYear}</h1>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>

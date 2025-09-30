@@ -42,6 +42,7 @@ const HomePage = () => {
           title={t("home.tribunes")}
           buttonText={t("home.allTribunes")}
           onButtonClick={handleNavigationTribine}
+          moreButtons={true}
         />
         <TribinePreview />
         <AboutAssociationPreview />
@@ -53,7 +54,7 @@ const HomePage = () => {
         />
         <Awards isHomepage={true} />
 
-        <StatsSection />
+        {/* <StatsSection /> */}
         <SectionHeader
           title={t("home.talks")}
           buttonText={t("home.allTalks")}

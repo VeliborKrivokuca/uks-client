@@ -1,0 +1,132 @@
+import { Col, Container, Row } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
+import React, { useEffect } from "react";
+import { faAt, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fetchMemberDetail } from "../../store/actions/membersActions";
+import { useTranslation } from "react-i18next";
+
+const MemberProfilePage = () => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+
+  const { memberDetail, loading, error } = useSelector(
+    (state) => state.members
+  );
+
+  useEffect(() => {
+    dispatch(fetchMemberDetail(id));
+  }, [dispatch, id]);
+
+  if (loading) {
+    return (
+      <Container>
+        <p>{t("members.loading")}</p>
+      </Container>
+    );
+  }
+
+  if (error) {
+    return (
+      <Container>
+        <p>{error}</p>
+      </Container>
+    );
+  }
+
+  if (!memberDetail) {
+    return (
+      <Container>
+        <p>{t("members.noDetails")}</p>
+      </Container>
+    );
+  }
+
+  const { acName, acImage, acPosition, acDescription, acMail, acWebsite } =
+    memberDetail;
+
+  return (
+    <>
+      <Clients />
+      <Container className="section-divider">
+        <Row>
+          {acImage && (
+            <Col md={3} className="mb-3">
+              <img
+                src={
+                  acImage
+                    ? `${API_BASE_URL}/images/${acImage}`
+                    : "/assets/uks-logo-mala.png"
+                }
+                alt={acName}
+                className="rounded shadow profile-photo w-100"
+                onError={(e) => {
+                  e.target.onerror = null; // sprečava beskonačnu petlju ako logo.png ne postoji
+                  e.target.src = "/assets/uks-logo-mala.png";
+                }}
+              />
+            </Col>
+          )}
+          <Col>
+            <h2 className="secondary-color mb-3 text-main-title fw-bold">
+              {acName}
+            </h2>
+            <p className="fw-bold secondary-color mb-3 text-hero-title">
+              {acPosition}
+            </p>
+            <Row>
+              {acWebsite && (
+                <Col md="auto">
+                  <a
+                    href={
+                      acWebsite.startsWith("http://") ||
+                      acWebsite.startsWith("https://")
+                        ? acWebsite
+                        : `https://${acWebsite}`
+                    }
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="fw-normal secondary-color mb-3 text-hero-title text-decoration-none"
+                  >
+                    {acWebsite && (
+                      <FontAwesomeIcon
+                        icon={faGlobe}
+                        className="pe-2 pt-2"
+                      ></FontAwesomeIcon>
+                    )}
+                    {acWebsite}
+                  </a>
+                </Col>
+              )}
+              {acMail && (
+                <Col md="auto">
+                  <p className="fw-normal secondary-color mb-3 text-hero-title">
+                    <FontAwesomeIcon
+                      icon={faAt}
+                      className="pe-2 pt-2"
+                    ></FontAwesomeIcon>
+                    {acMail}
+                  </p>
+                </Col>
+              )}
+            </Row>
+          </Col>
+        </Row>
+
+        <Col md={12}>
+          <div
+            className="ck-editor-text"
+            dangerouslySetInnerHTML={{ __html: acDescription }}
+          ></div>
+        </Col>
+      </Container>
+    </>
+  );
+};
+
+export default MemberProfilePage;

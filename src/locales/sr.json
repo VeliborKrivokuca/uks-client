@@ -330,5 +330,17 @@
                 "route": "nagrade"
             }
         ]
+    },
+    "notnaIzdanja": {
+        "title": "Notna izdanja",
+        "subtitle": "Udruženje kompozitora Srbije promoviše sprsku muziku objavljivanjem partitura, književno-publicističkih i diskografskih izdanja. U stalnoj saradnji sa muzičkim školama, univerzitetima i institucijama kulture u zemlji i inostranstvu, činimo dela naših autora vidljivijim i dostupnim javnosti. <br/><br/>Sva prodajna izdanja dostupna su u prostorijama Udruženja kompozitora Srbije. <br/><br/>Cenovnik dostupnih notnih izdanja možete pronaći ovde. Pogledajte neka od naših novijih izdanja."
+    },
+    "ostalaIzdanja": {
+        "title": "OSTALA IZDANJA",
+        "subtitle": "Udruženje kompozitora Srbije promoviše sprsku muziku objavljivanjem partitura, književno-publicističkih i diskografskih izdanja. U stalnoj saradnji sa muzičkim školama, univerzitetima i institucijama kulture u zemlji i inostranstvu, činimo dela naših autora vidljivijim i dostupnim javnosti. <br/><br/>Sva prodajna izdanja dostupna su u prostorijama Udruženja kompozitora Srbije. Cenovnik dostupnih književno-publicističkih i diskografskih izdanja možete pronaći ovde. <br/><br/>Pogledajte neka od naših novijih izdanja."
+    },
+    "biblioteka": {
+        "title": "Biblioteka",
+        "subtitle": "U Udruženju kompozitora Srbije nalazi se veliki broj partitura: od onih za solo instrumente do onih za simfonijski orkestar. Dostupne partiture možete pozajmiti ili fotokopirati u prostorijama Udruženja kompozitora Srbije. <br/><br/>Deo našeg bibliotečkog fonda čini i bogata arhiva tonskih i video zapisa sa koncerata održanih u okviru Međunarodne tribine kompozitora."
     }
-}
+    }

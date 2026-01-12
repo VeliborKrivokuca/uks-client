@@ -347,5 +347,17 @@
         "route": "nagrade"
       }
     ]
+  },
+  "notnaIzdanja": {
+      "title": "SHEET MUSIC",
+      "subtitle": "The Composers' Association of Serbia promotes Serbian music by publishing scores, literary and journalistic publications, and discographic publications. In constant cooperation with music schools, universities, and cultural institutions in the country and abroad, we make the works of our authors more visible and accessible to the public. <br/><br/>You can purchase all of our publications at the premises of the Composers' Association of Serbia. Find the price list of available sheet music publications here. <br/><br/>Check out some of our recent publications."
+  },
+  "ostalaIzdanja": {
+      "title": "OTHER PUBLICATIONS",
+      "subtitle": "The Composers' Association of Serbia promotes Serbian music by publishing scores, literary and journalistic publications, and discographic publications. In constant cooperation with music schools, universities, and cultural institutions in the country and abroad, we make the works of our authors more visible and accessible to the public. <br><br>You can purchase all of our publications at the premises of the Composers' Association of Serbia. Find the price list of available CDs and literary publications here.<br><br>Check out some of our recent publications."
+  },
+  "biblioteka": {
+      "title": "LIBRARY",
+      "subtitle": "The Serbian Composers' Association holds a large number of scores: from those for solo instruments to those for symphony orchestra. You can borrow or photocopy the available scores at the premises of the Serbian Composers' Association. <br/><br/>Part of our library fund is also a rich archive of audio and video recordings from concerts held within the International Review of Composers."
   }
 }

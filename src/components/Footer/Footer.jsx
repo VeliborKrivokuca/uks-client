@@ -1,15 +1,19 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Footer.css";
+
+import { Col, Container, Row } from "react-bootstrap";
 import {
   faFacebook,
   faInstagram,
-  faTwitter,
   faLinkedin,
+  faTwitter,
+  faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import React from "react";
 import logo from "../../assets/logo.png";
 import { useTranslation } from "react-i18next";
-import "./Footer.css";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -37,8 +41,16 @@ const Footer = () => {
                 {t("header.mail")}
               </a>
             </p>
-            <p className="mb-1">{t("footer.phone")}: +381 11 3340 894</p>
-            <p className="mb-1">{t("footer.fax")}: +381 11 3340 894</p>
+            <p className="mb-1">
+              {t("footer.phone")}:{" "}
+              <a
+                href="tel:+381113340894"
+                className="text-decoration-none primary-color"
+              >
+                +381 11 3340 894
+              </a>
+            </p>
+            <p className="mb-1">{t("footer.fax")}: +381 11 3238 637</p>
           </Col>
 
           {/* Pages Section */}
@@ -49,12 +61,12 @@ const Footer = () => {
             <ul className="list-unstyled ms-0">
               {pages.map((page, index) => (
                 <li key={index} className="mb-2">
-                  <a
-                    href={`/${page.route}`}
+                  <Link
+                    to={`/${page.route}`}
                     className="text-decoration-none text-dark"
                   >
                     {page.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -67,28 +79,32 @@ const Footer = () => {
             </h3>
             <div className="d-flex justify-content-center justify-content-md-start gap-3 mt-3">
               <a
-                href="#"
+                target="_blank"
+                href="https://www.facebook.com/udruzenjekompozitora"
                 className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
               >
                 <FontAwesomeIcon className="text-lg" icon={faFacebook} />
               </a>
               <a
-                href="#"
+                target="_blank"
+                href="https://www.facebook.com/TribinaKompozitora"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faFacebook} />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.youtube.com/@composersassociationofserb7457"
+                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
+              >
+                <FontAwesomeIcon className="text-lg" icon={faYoutube} />
+              </a>
+              <a
+                target="_blank"
+                href="https://www.instagram.com/udruzenje_kompozitora_srbije/"
                 className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
               >
                 <FontAwesomeIcon className="text-lg" icon={faInstagram} />
-              </a>
-              <a
-                href="#"
-                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
-              >
-                <FontAwesomeIcon className="text-lg" icon={faTwitter} />
-              </a>
-              <a
-                href="#"
-                className="footer-icon primary-color d-flex align-items-center justify-content-center rounded-circle bg-white"
-              >
-                <FontAwesomeIcon className="text-lg" icon={faLinkedin} />
               </a>
             </div>
 
@@ -107,7 +123,10 @@ const Footer = () => {
       {/* Footer Bottom */}
       <div className="footer-bg text-white text-center py-3 mt-4">
         <Container>
-          <p className="mb-0 text-white">{t("footer.copyright")}</p>
+          <p
+            className="mb-0 text-white"
+            dangerouslySetInnerHTML={{ __html: t("footer.copyright") }}
+          ></p>
         </Container>
       </div>
     </footer>

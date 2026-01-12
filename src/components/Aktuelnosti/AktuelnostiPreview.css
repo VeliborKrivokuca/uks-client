@@ -35,3 +35,12 @@
 .blog-img {
   object-fit: cover;
 }
+
+
+@media (max-width: 768px) {
+  .text-main-title {
+      font-size: 29px;
+      margin-bottom: 20px;
+      line-height: 34px;
+  }
+}

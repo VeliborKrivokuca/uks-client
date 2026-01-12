@@ -1,30 +1,37 @@
-import React, { useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import Header from "./components/Header/Header";
-import HomePage from "./pages/Homepage";
-import Footer from "./components/Footer/Footer";
-import AwardsPage from "./pages/AwardsPage";
-import MembersPage from "./components/Members/Members";
-import AboutAssociation from "./components/About/AboutAssociation";
-import AboutUs from "./components/About/AboutUs";
-import AktuelnostiDetails from "./components/Aktuelnosti/AktuelnostiDetails";
-import TribineList from "./components/Tribine/Tribine";
-import TribineDetail from "./components/Tribine/TribineDetail";
-import AktuelnostiPreview from "./components/Aktuelnosti/AktuelnostiPreview";
-import RazgovoriPreview from "./components/Razgovori/RazgovoriPreview";
-import RazgovoriDetail from "./components/Razgovori/RazgovoriDetails";
-import LegalDocuments from "./components/About/LegalDocuments";
-import AdmissionRegulations from "./components/About/AdmissionRegulations";
-import Recommendations from "./components/About/Recommendations";
-import MemberProfilePage from "./components/Members/MemberProfile";
-import NotFoundPage from "./components/NotFound/NotFound";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./i18n";
 
-import { fetchAllPages } from "./store/slices/pagesSlice";
+import React, { useEffect } from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import AboutAssociation from "./components/About/AboutAssociation";
+import AboutUs from "./components/About/AboutUs";
+import AdmissionRegulations from "./components/About/AdmissionRegulations";
+import AktuelnostiDetails from "./components/Aktuelnosti/AktuelnostiDetails";
+import AktuelnostiPreview from "./components/Aktuelnosti/AktuelnostiPreview";
 import Awards from "./components/Awards/Awards";
+import AwardsPage from "./pages/AwardsPage";
+import Biblioteka from "./pages/Biblioteka";
+import Calendar from "./pages/Calendar";
+import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header";
+import HomePage from "./pages/Homepage";
+import LegalDocuments from "./components/About/LegalDocuments";
+import MemberProfilePage from "./components/Members/MemberProfile";
+import MemberProfilePage2 from "./components/Members/MemberProfile2";
+import MembersPage from "./components/Members/Members";
+import NotFoundPage from "./components/NotFound/NotFound";
+import NotnaIzdanja from "./pages/NotnaIzdanja";
+import OstalaIzdanja from "./pages/OstalaIzdanja";
+import RazgovoriDetail from "./components/Razgovori/RazgovoriDetails";
+import RazgovoriPreview from "./components/Razgovori/RazgovoriPreview";
+import Recommendations from "./components/About/Recommendations";
+import Rimus from "./components/Tribine/Rimus";
+import TribinaKompozitora from "./components/Tribine/TribinaKompozitora";
+import TribineDetail from "./components/Tribine/TribineDetail";
+import TribineList from "./components/Tribine/Tribine";
+import { fetchAllPages } from "./store/slices/pagesSlice";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -44,18 +51,26 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/aktuelnosti" element={<AktuelnostiPreview />} />
+        <Route path="/biblioteka" element={<Biblioteka />} />
+        <Route path="/notna-izdanja" element={<NotnaIzdanja />} />
+        <Route path="/ostala-izdanja" element={<OstalaIzdanja />} />
         <Route path="/nagrade" element={<AwardsPage />} />
-        <Route path="/nagrade/:id" element={<AwardsPage />} /> {/* Dynamic route */}
+        <Route path="/nagrade/:id" element={<AwardsPage />} />{" "}
+        {/* Dynamic route */}
+        <Route path="/korisnik/:id" element={<MemberProfilePage2 />} />
         <Route path="/clanovi" element={<MembersPage />} />
         <Route path="/clanovi/:id" element={<MemberProfilePage />} />
         <Route path="/o-udruženju" element={<AboutAssociation />} />
         <Route path="/o-nama" element={<AboutUs />} />
         <Route path="/pravni-dokumenti" element={<LegalDocuments />} />
-        <Route path="/pravilnik-o-prijemu" element={<AdmissionRegulations />} />
+        <Route path="/radna-tela" element={<AdmissionRegulations />} />
         <Route path="/preporuke" element={<Recommendations />} />
         <Route path="/blog/:id" element={<AktuelnostiDetails />} />
-        <Route path="/tribine" element={<TribineList />} />
-        <Route path="/tribine/:id" element={<TribineDetail />} />
+        <Route path="/tribina-kompozitora" element={<TribinaKompozitora />} />
+        <Route path="/rimus" element={<Rimus />} />
+        <Route path="/dogadjaji" element={<Calendar />} />
+        <Route path="/festivali" element={<TribineList />} />
+        <Route path="/festivali/:id" element={<TribineDetail />} />
         <Route path="/razgovori" element={<RazgovoriPreview />} />
         <Route path="/razgovori/:id" element={<RazgovoriDetail />} />
         <Route path="*" element={<NotFoundPage />} />

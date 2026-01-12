@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchTribines } from "../../store/actions/tribineActions";
-import { Container, Row, Col, Card } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 import "./Tribine.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { Card, Col, Container, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import {
   faCalendar,
   faCalendarTimes,
@@ -14,6 +11,12 @@ import {
   faMap,
   faMapPin,
 } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fetchTribines } from "../../store/actions/tribineActions";
+import { useTranslation } from "react-i18next";
 
 const TribinePreview = () => {
   const dispatch = useDispatch();
@@ -23,10 +26,10 @@ const TribinePreview = () => {
   const { tribines, loading, error } = useSelector((state) => state.tribine);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(6); // Default items per page
+  const [itemsPerPage] = useState(4); // Default items per page
 
   useEffect(() => {
-    dispatch(fetchTribines(i18n.language));
+    dispatch(fetchTribines(i18n.language, 0));
   }, [dispatch, i18n.language]);
 
   // Filter only active tribines
@@ -41,7 +44,7 @@ const TribinePreview = () => {
   );
 
   const handleTribineClick = (id) => {
-    navigate(`/tribine/${id}`);
+    navigate(`/festivali/${id}`);
   };
   const formatDate = (dateString, language) => {
     const date = new Date(dateString);
@@ -105,93 +108,34 @@ const TribinePreview = () => {
           {error && <p>{t("info.error", { error })}</p>}
         </Col>
       </Row>
-
-      <Row className="g-4">
-        {!loading && !error && activeTribines.length === 0 && (
-          <Col>
-            <p className="text-center">{t("info.noData")}</p>
-          </Col>
-        )}
-
+      {/* <div className="festivals-list-links">
+        <Link to="/tribina-kompozitora">{t("header.tribinaKompozitora")}</Link>
+        <Link to="/tribina-kompozitora">{t("header.fesitval")}</Link>
+      </div> */}
+      <div className="tribine-card-home-holder">
         {currentTribines.map((tribine) => {
           const { day, month } = formatDate(tribine.date);
           return (
-            <Col xs={12} lg={12} xl={4} key={tribine.id} className="tribine-card-column">
-              <div className="border-0 bg-transparent">
-                <Row className="flex-column tribine-row">
-                  <Col xs={4} className="align-items-center text-white w-auto">
-                    <div className="text-center">
-                      <Row>
-                        <Col md={3}>
-                          <Col md={9} className="d-md-none d-block">
-                            <div
-                              className="primary-color text-md fw-bold text-start text-subtitle"
-                              onClick={() =>
-                                handleTribineClick(tribine.tribine_id)
-                              }
-                            >
-                              {tribine.title}
-                            </div>
-                          </Col>
-                          <h2 className="mb-0 light-blue primary-color py-4 fw-bold px-4 ps-3">
-                            {day}
-                          </h2>
-                        </Col>
-                        <Col md={9} className="d-md-block d-none px-0">
-                          <div
-                            className="primary-color text-md fw-bold text-start text-subtitle w-75 cursor-pointer"
-                            onClick={() =>
-                              handleTribineClick(tribine.tribine_id)
-                            }
-                          >
-                            {tribine.title}
-                          </div>
-                        </Col>
-                      </Row>
-                      <Row className="align-items-start">
-                        <Col md={3}>
-                          <p className="mb-0 primary-bg py-3 text-uppercase fw-bold px-4">
-                            {month}
-                          </p>
-                        </Col>
-                        <Col md={9} className="px-0 align-self-end">
-                          <div className="primary-background mb-1 ps-3 ps-md-0">
-                            <div className="text-start">
-                              <FontAwesomeIcon
-                                className="primary-color text-sm"
-                                icon={faCalendar}
-                              ></FontAwesomeIcon>
-                              <p className="d-inline ps-1 text-sm primary-color">
-                                {formatDateToDDMMYYYY(tribine.date)}
-                              </p>
-                            </div>
-                            <div className="text-start col-12">
-                              <FontAwesomeIcon
-                                className="primary-color text-sm"
-                                icon={faMapPin}
-                              ></FontAwesomeIcon>
-                              <p className="d-inline ps-1 text-sm primary-color">
-                                {tribine?.location}
-                              </p>
-                            </div>
-                          </div>
-                        </Col>
-                      </Row>
-                    </div>
-                  </Col>
-                </Row>
-                <div
-                  href="#"
-                  className="text-decoration-none fw-bold text-decoration-underline primary-color cursor-pointer mt-2"
-                  onClick={() => handleTribineClick(tribine.tribine_id)}
-                >
-                  {t("awards.moreInfo")}
-                </div>
-              </div>
-            </Col>
+            <div className="tribine-card cursor-pointer position-relative shadow rounded overflow-hidden">
+              <Link to={`/festivali/${tribine?.tribine_id}`}>
+                <img
+                  src={
+                    tribine.thumbnail
+                      ? `${API_BASE_URL}/${tribine.thumbnail}`
+                      : noPhotoImage
+                  }
+                  alt={tribine.title || t("tribine.noThumbnail")}
+                  className="thumbnail-tribina"
+                />
+                <div className="gradient-overlay" />
+                <h3 className="tribine-title text-white fw-bold">
+                  {tribine.title}
+                </h3>
+              </Link>
+            </div>
           );
         })}
-      </Row>
+      </div>
     </Container>
   );
 };

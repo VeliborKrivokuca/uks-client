@@ -1,78 +1,123 @@
 {
   "header": {
+    "tribinaKompozitora": "Composers Forum",
+    "fesitval": "Festivals",
+    "rimus": "Rimus",
     "emailLabel": "Send us an email",
     "callUsLabel": "Call us Now",
     "searchPlaceholder": "Search...",
     "mail": "composas@gmail.com",
-    "phone": "800-123-4567",
+    "phone": "+381 11 3340 894",
     "menuItems": [
-      {
-        "id": "1",
-        "name": "News",
-        "parentId": null,
-        "route": "aktuelnosti"
-      },
-      {
-        "id": "2",
-        "name": "About the Association",
-        "parentId": null,
-        "route": "o-udruženju"
-      },
-      {
-        "id": "3",
-        "name": "Members",
-        "parentId": null,
-        "route": "clanovi"
-      },
-      {
-        "id": "4",
-        "name": "Conversations",
-        "parentId": null,
-        "route": "razgovori"
-      },
-      {
-        "id": "5",
-        "name": "Tribunes",
-        "parentId": null,
-        "route": "tribine"
-      },
-      {
-        "id": "17",
-        "name": "Awards",
-        "parentId": null,
-        "route": "nagrade"
-      },
-      {
-        "id": "18",
-        "name": "About us",
-        "parentId": "2",
-        "route": "o-nama"
-      },
-      {
-        "id": "19",
-        "name": "Legal documents",
-        "parentId": "2",
-        "route": "pravni-dokumenti"
-      },
-      {
-        "id": "20",
-        "name": "Rules of admission",
-        "parentId": "2",
-        "route": "pravilnik-o-prijemu"
-      },
-      {
-        "id": "21",
-        "name": "About association",
-        "parentId": "2",
-        "route": "o-udruženju"
-      },
-      {
-        "id": "22",
-        "name": "Recommendations",
-        "parentId": "2",
-        "route": "preporuke"
-      }
-    ]
+            {
+                "id": "1",
+                "name": "News",
+                "parentId": null,
+                "route": "aktuelnosti"
+            },
+            {
+                "id": "2",
+                "name": "About the Association",
+                "parentId": null,
+                "route": "o-udruženju"
+            },
+            {
+                "id": "3",
+                "name": "Members",
+                "parentId": null,
+                "route": "clanovi"
+            },
+            {
+                "id": "4",
+                "name": "Festivals",
+                "parentId": null,
+                "route": "festivali"
+            },
+            {
+                "id": "17",
+                "name": "Awards",
+                "parentId": null,
+                "route": "nagrade"
+            },
+            {
+                "id": "5",
+                "name": "Words on Writing",
+                "parentId": null,
+                "route": "razgovori"
+            },
+            {
+                "id": "50",
+                "name": "Composers Forum",
+                "parentId": 4,
+                "route": "tribina-kompozitora"
+            },
+            {
+                "id": "51",
+                "name": "RIMUS",
+                "parentId": 4,
+                "route": "rimus"
+            },
+            {
+                "id": "21",
+                "name": "About the Association",
+                "parentId": "2",
+                "route": "o-udruženju"
+            },
+            {
+                "id": "18",
+                "name": "History",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "20",
+                "name": "Committees",
+                "parentId": "2",
+                "route": "radna-tela"
+            },
+            {
+                "id": "19",
+                "name": "Documents",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
+            },
+            {
+                "id": "22",
+                "name": "Recommendations",
+                "parentId": "2",
+                "route": "preporuke"
+            },
+            {
+                "id": "551",
+                "name": "Publications",
+                "parentId": 0,
+                "route": ""
+            },
+            {
+                "id": "552",
+                "name": "Noted Editions",
+                "parentId": 551,
+                "route": "noted-editions"
+            },
+            {
+                "id": "553",
+                "name": "Other Editions",
+                "parentId": 551,
+                "route": "other-editions"
+            },
+            {
+                "id": "554",
+                "name": "Library",
+                "parentId": 551,
+                "route": "library"
+            },
+            {
+                "id": "600",
+                "name": "Event Calendar",
+                "parentId": null,
+                "route": "dogadjaji"
+            }
+        ]
   },
   "info": {
     "loading": "Loading...",
@@ -80,12 +125,15 @@
     "noData": "No data to show"
   },
   "home": {
+    "calendar": "Calendar of Events",
+    "calendar_all": "View all events",
+    "calendar_detail": "More Details",
     "members": "Our Members",
     "news": "News",
     "tribunes": "Tribunes",
     "allTribunes": "All tribunes",
-    "talks": "Talks",
-    "allTalks": "All Talks",
+    "talks": "Written Word",
+    "allTalks": "All Written Words",
     "awards": "Awards",
     "allAwards": "All Awards",
     "allNews": "All News"
@@ -123,7 +171,7 @@
     "loading": "Loading members...",
     "errorLoading": "Failed to load data. Please try again.",
     "sectionTitle": "OUR MEMBERS",
-    "sectionDescription": "The section for association members provides insight into the profiles of our composers, their biographies, works, and contributions to the Serbian music scene, highlighting the importance of their creativity and role in preserving our musical tradition.",
+    "sectionDescription": "",
     "chooseSection": "Choose section",
     "chooseName": "Enter name and last name",
     "chooseNamePlaceholder": "Enter name",
@@ -135,14 +183,17 @@
   },
   "tribine": {
     "title": "Panels",
+    "desc": "<p>The International Review of Composers is the biggest and most important festival of contemporary art music in Serbia, held annually at the beginning of October in Belgrade. Founded and produced by the Composers' Association in Serbia, the festival features 10-12 concerts every year, along with other events, such as meetings with composers, presentations of music periodicals, sheet music, and CD editions, panel discussions, and workshops.</p><p>The majority of the concert program consists of works created over the past five years, submitted via a public call for scores, and selected by the festival curator. The rest of the program encompasses a broader time frame of contemporary music through thematic segments, concerts of anthological works, and programs proposed by festival soloists or ensembles.</p><p>The members of the Composers' Association of Serbia, composers Ivana Stefanović, Milan Mihajlović, and Srđan Hofman, first initiated the International Review of Composers in 1992. Towns Sremski Karlovci and Novi Sad hosted the first two editions of the festival. From 1994, the International Review of Composers relocated to Belgrade.</p><p>You can find the programs of all previous editions of the festival here.</p>",
+    "title2": "International Review of Composers",
+    "title3": "RIMUS",
     "noTribines": "No panels available for the selected language.",
     "noThumbnail": "No Thumbnail Available",
     "date": "Date"
   },
   "talks": {
-    "title": "Talks",
-    "subtitle": "Stay updated with the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art.",
-    "noTalks": "No talks available at the moment.",
+    "title": "Written Word",
+    "subtitle": "",
+    "noTalks": "No Written Word available at the moment.",
     "noImage": "No Image Available",
     "viewText": "View text"
   },
@@ -150,21 +201,21 @@
     "awardTitle": "Award",
     "pageTitle": "Awards",
     "moreInfo": "More information",
-    "pageSubtitle": "Follow the most important news, events, concerts, and happenings shaping the world of Serbian music and compositional art."
+    "pageSubtitle": "<p>The Association gives out prestigious yearly awards in four categories:</p><ul><li><strong>&quot;Stevan Mokranjac&quot;</strong> award for the best work of serious music premiered in the previous calendar year</li><li><strong>&quot;Darko Kraljić&quot;</strong> award for musical creativity in the field of popular music</li><li><strong>&quot;Pavle Stefanović&quot;</strong> award for music essays and criticism</li><li><strong>&quot;Aleksandar Pavlović&quot;</strong> award presented to musicians, for the promotion of Serbian music in the country and abroad</li></ul>"
   },
   "slider": {
-    "supportTitle": "Support for the Compositional Art of Serbia",
-    "supportDescription": "We are dedicated to preserving, promoting, and developing the compositional art in Serbia, providing support to our creators and safeguarding musical traditions.",
+    "supportTitle": "Composers' Association of Serbia - since 1945",
+    "supportDescription": "We are dedicated to nurturing and preserving Serbian cultural heritage and promoting contemporary musical artistry.",
     "noSlides": "No slides available"
   },
   "about": {
-    "title": "About Us",
-    "subtitle": "Association of Composers of Serbia",
+    "title": "History",
+    "subtitle": "Composers' Association of Serbia",
     "boardTitle": "Association of Composers of Serbia",
     "president": "Rade Radivojević, President",
     "vicePresident": "Svetlana Savić, Vice President",
     "executiveBoard": "Executive Board Members:",
-    "description1": "The Association of Composers of Serbia represents a prominent and productive organization that, since its founding in 1945, has been dedicated to fostering and preserving Serbian cultural heritage and promoting contemporary musical creativity, both in the realm of classical music and popular genres.",
+    "description1": "<p>The Composers' Association of Serbia is a representative and fruitful organization that, since its foundation in 1945, has been dedicated to nurturing and preserving Serbian cultural heritage as well as promoting contemporary musical artistry in both serious music and popular music genres.</p><p>The Association of Composers of Serbia has 330 members, divided into three sections: Composers of serious music, Composers of jazz and popular music, and Music writers (musicologists, ethnomusicologists, and music theorists).</p><p>The Association of Composers of Serbia works hard to make Serbian music:</p><ul><li><strong>VISIBLE</strong>, by promoting the works of its members, organizing various concerts, cultural and publicity events, and media appearances;</li><li><strong>ACCESSIBLE</strong>, by publishing sheet music, CDs, DVDs, and offering its editions to interested parties: music schools, music institutions, and individuals in the country and abroad...</li><li><strong>PRESENT</strong> in daily cultural life, by doing everything to ensure that the works of Serbian composers are in the repertoire of symphony orchestras, chamber ensembles, and soloists, that their music lives on the concert stages and is recorded and broadcast on radio and television, covered in professional publications, and included as much as possible in the system of music and general education;</li><li><strong>RECOGNIZED</strong>, by producing festivals, thematic concerts, author's evenings, concerts of anthology works, maintaining a constant presence of its members at competitions and festivals around the world, fostering international cooperation, following and participating in international gatherings.</li></ul><p>Some of the significant activities of the Composers' Association of Serbia:</p><ul><li>For 34 years, the Association has been organizing the International Review of Composers, the largest and most significant new music festival in Serbia, where composers of art music can present their artistic achievements.</li><li>The Review of Instrumental Music of Serbia - RIMUS was launched in 2022, as an encouragement for composers of popular music to create instrumentals, „songs without words“, in which their skill comes to the fore.</li><li>The Association gives out prestigious yearly awards in four categories:<ul><li>„Stevan Mokranjac“ award for the best work of serious music premiered in the previous calendar year</li><li>„Darko Kraljić“ award for musical creativity in the field of popular music</li><li>„Pavle Stefanović“ award for music essays and criticism</li><li>„Aleksandar Pavlović“ award presented to musicians, for the promotion of Serbian music in the country and abroad.</li></ul></li><li>Through publishing activity, the Association brings the wealth of Serbian composers' artistry closer to the public.</li></ul><p>The Composers' Association of Serbia is a member of international organizations: the International Society for Contemporary Music - <a href='https://iscm.org/' target='_blank'>ISCM</a> and the European Composer & Songwriter Alliance - <a href='https://composeralliance.org/' target='_blank'>ECSA</a>.</p>",
     "members": "The Association of Composers of Serbia has 330 members divided into three sections: Composers of Classical Music, Composers of Jazz and Popular Music, and Music Writers (musicologists and ethnomusicologists). The Association of Composers of Serbia invests significant effort to make Serbian music:",
     "visible": "VISIBLE",
     "accessible": "ACCESSIBLE",
@@ -204,8 +255,8 @@
   },
   "legalDocuments": {
     "title": "Legal Documents",
-    "subtitle": "Association of Composers of Serbia",
-    "description": "Click the desired link below to download the latest versions of legal documents of the Association of Composers of Serbia:",
+    "subtitle": "Legal documents",
+    "description": "By clicking on the desired link below, you can download the current versions of the legal documents of the Composers' Association of Serbia.",
     "links": [
       {
         "text": "Association of Composers of Serbia – Statute 25.10.2022. (PDF)",
@@ -218,9 +269,21 @@
     ]
   },
   "admission": {
-    "title": "Admission Regulations",
-    "subtitle": "Association of Composers of Serbia",
-    "description": "By clicking on the link below, you can download the rules for membership of the Association of Composers of Serbia.",
+    "title": "Admission regulations",
+    "subtitle": "Admission regulations",
+    "description": "By clicking on the link below, you can download the rules of membership of the Composers' Association of Serbia.",
+    "links": [
+      {
+        "text": "Rules of admission to membership - UKS",
+        "href": "#"
+      }
+    ]
+  },
+  
+  "admissionPage": {
+    "title": "Committees",
+    "subtitle": "Committees",
+    "description": "<p>Rade Radivojević, president<br>Ana Gnjatović, vice-president</p><p><strong>Members of the Executive Board:</strong></p><ul><li>Rade Radivojević</li><li>Ana Gnjatović</li><li>Vladimir Korać</li><li>Tatjana Milošević Mijanović</li><li>Svetlana Savić</li><li>Aleksandar Filipović</li><li>Dragoljub Ilić</li><li>Nevenka Leković</li><li>Biljana Leković</li><li>Sonja Marinković</li><li>Stefan Cvetković</li></ul><p><strong>Members of the Supervisory Board:</strong></p><ul><li>Milorad Marinković</li><li>Damjan Jovičin</li><li>Vladan Vučković Paja</li></ul><p><strong>Members of the Statutory Committee:</strong></p><ul><li>Rade Radivojević</li><li>Miroslav Miša Savić</li><li>Katarina Lazarević</li><li>Vladan Vučković Paja</li><li>Dragomir Milenković</li></ul>",
     "links": [
       {
         "text": "Rules of admission to membership - UKS",
@@ -257,7 +320,7 @@
     "fax": "Fax",
     "pagesTitle": "Pages",
     "socialMediaTitle": "Social Media",
-    "copyright": "Copyright © 2024. Association of Composers of Serbia. All rights reserved by UKS",
+    "copyright": "©2025 www.composers.rs, Association of Composers of Serbia. Created by <a href='https://www.developers.rs' target='_blank' style='color:#fff'>Developers.rs</a>. All rights reserved.",
     "pages": [
       {
         "name": "News",
@@ -272,12 +335,12 @@
         "route": "clanovi"
       },
       {
-        "name": "Conversations",
+        "name": "Written Word",
         "route": "razgovori"
       },
       {
-        "name": "Talks",
-        "route": "tribine"
+        "name": "Festivals",
+        "route": "festivali"
       },
       {
         "name": "Awards",

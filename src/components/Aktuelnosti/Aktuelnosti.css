@@ -1,1 +1,63 @@
 /* Aktuelnosti */
+.main-blog-items-homepage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+}
+
+.main-blog-item-top {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    text-align: center;
+}
+.main-blog-item-date-day {
+    background-color: #EDF2FC;
+    color: #3D5A80;
+    font-size: 36px;
+    padding: 8px 20px;
+}
+.main-blog-item-date-month {
+    background-color: #3D5A80;
+    color: #EDF2FC;
+    font-size: 30px;
+    padding: 8px 10px;
+}
+.main-blog-item-content-homepage {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 10px 0;
+}
+.main-blog-item-content-homepage h1{
+    font-size: 20px;
+    color: #3D5A80;
+    font-weight: bold;
+}
+.main-blog-item-content-homepage h3{
+    font-size: 20px;
+    color: #3D5A80;
+}
+.main-blog-item-content-homepage a{
+    color: #3D5A80;
+    text-decoration: none;
+}
+.main-blog-item-bottom a {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 1024px) {
+    .main-blog-items-homepage {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+@media only screen and (max-width: 600px) {
+    .main-blog-items-homepage {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}

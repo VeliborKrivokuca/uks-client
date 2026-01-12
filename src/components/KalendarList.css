@@ -1,0 +1,50 @@
+.calendar-list-content-compontent {
+    margin-top: 50px;
+}
+
+.calendar-list-content-compontent-item {
+    padding: 10px;
+    background: #3d5a80;
+    margin: 5px;
+    text-align: left;
+  }
+
+  .calendar-list-content-compontent-item svg {
+    width: 16px;
+  }
+  .calendar-list-content-compontent-item-location {
+    font-size: 16px;
+    text-transform: uppercase;
+    line-height: 16px;
+    color: #ccc;
+  }
+  .calendar-list-content-compontent-item-title {
+    font-size: 18px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #fff;
+  }
+  .calendar-list-content-compontent-item-start-date {
+    margin-bottom: 5px;
+  }
+  .calendar-list-content-compontent-item-date {
+    background-color: #ccc;
+    border-radius: 5px;
+    padding-left: 5px;
+  }
+  .calendar-list-content-compontent-item-button button {
+    background-color: #eef2fc;
+    color: #3D5A80;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  .calendar-list-content-compontent-item-description {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 100;
+  }

@@ -1,7 +1,5 @@
 .tribine-card {
   transition: transform 0.3s ease;
-  height: 330px;
-  height: 330px;
 }
 
 .tribine-card:hover {
@@ -12,6 +10,14 @@
   width: 100%;
   height: 330px;
   object-fit: cover;
+}
+
+
+
+.thumbnail-tribina {
+  width: 100%;
+  object-fit: cover;
+  height: 156px;
 }
 
 .gradient-overlay {
@@ -37,4 +43,9 @@
   .tribine-card-column:nth-child(-n + 3) {
     margin-bottom: 40px;
   }
+}
+.festivals-list-links a {
+    font-size: 20px;
+    color: #3D5A80;
+    text-decoration: underline;
 }

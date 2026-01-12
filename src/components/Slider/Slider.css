@@ -1,1 +1,6 @@
 /* Slider */
+.slider-image-wrapper {
+  max-height: 300px;
+  position: relative;
+  overflow: hidden;
+}

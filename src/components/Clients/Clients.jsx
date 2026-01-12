@@ -1,9 +1,11 @@
-import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchAllClients } from "../../store/slices/pagesSlice";
-import { API_BASE_URL } from "../../services/api";
 import "./Clients.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import { fetchAllClients } from "../../store/slices/pagesSlice";
 import { useTranslation } from "react-i18next";
 
 const Clients = () => {
@@ -35,11 +37,11 @@ const Clients = () => {
 
   return (
     <Container className="section-divider-xs">
-      <Row className="gx-0 justify-content-between">
+      <div className="client-holder-items">
         {clients
           .filter((client) => client.anStatus === "1") // Filter clients with anStatus = "1"
           .map((client, index) => (
-            <Col key={index} xs="auto" className="gy-3">
+            <div key={index} className="client-holder-item">
               <a
                 href={
                   client.acLink.startsWith("http://") ||
@@ -56,9 +58,9 @@ const Clients = () => {
                   className="client-image d-block"
                 />
               </a>
-            </Col>
+            </div>
           ))}
-      </Row>
+      </div>
     </Container>
   );
 };

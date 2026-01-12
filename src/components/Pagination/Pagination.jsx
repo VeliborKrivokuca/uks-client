@@ -1,7 +1,8 @@
-import React from "react";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 import { Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 
 const Pagination = ({
   currentPage,
@@ -28,7 +29,7 @@ const Pagination = ({
     <div className="d-flex justify-content-between align-items-center mt-4">
       {/* Pagination Controls */}
       <nav aria-label="Page navigation" className="mx-auto">
-        <ul className="pagination justify-content-center mb-0">
+        <ul className="pagination justify-content-center mb-0 navigation-numbers-special d-flex flex-wrap">
           {/* Previous Button */}
           <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
             <Button

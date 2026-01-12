@@ -1,12 +1,14 @@
-import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom";
 import "./Navigation.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+
+import React from "react";
 import tabsBlue from "../../assets/tabs/1.png";
-import tabsOrange from "../../assets/tabs/2.png";
 import tabsDarkBlue from "../../assets/tabs/3.png";
 import tabsLightBlue from "../../assets/tabs/4.png";
+import tabsOrange from "../../assets/tabs/2.png";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Navigation = () => {
   const { t } = useTranslation();
@@ -42,7 +44,7 @@ const Navigation = () => {
         <Col xs={12} lg={6} xl={3} className="px-2 px-sm-0 my-0 my-sm-0">
           <div
             className="tabs tabs-darkblue w-100"
-            onClick={() => navigate("/tribine")}
+            onClick={() => navigate("/festivali")}
           >
             <h2 className="text-white py-3 ps-3 text-main-title fw-bold">
               {t("home.tribunes")}

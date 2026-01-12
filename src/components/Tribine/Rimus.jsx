@@ -3,6 +3,7 @@ import "./Tribine.css";
 import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { API_BASE_URL } from "../../services/api";
 import Clients from "../Clients/Clients";
@@ -10,12 +11,12 @@ import Pagination from "../Pagination/Pagination";
 import { fetchTribines } from "../../store/actions/tribineActions";
 import image from "../../assets/tribina.jpg";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const TribineList = () => {
+const Rimus = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { t, i18n } = useTranslation();
 
   const { tribines, loading, error } = useSelector((state) => state.tribine);
@@ -24,7 +25,11 @@ const TribineList = () => {
   const [itemsPerPage, setItemsPerPage] = useState(12); // Default items per page
 
   useEffect(() => {
-    dispatch(fetchTribines(i18n.language));
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  useEffect(() => {
+    dispatch(fetchTribines(i18n.language, 2));
   }, [dispatch, i18n.language]);
 
   const handleTribineClick = (id) => {
@@ -51,7 +56,7 @@ const TribineList = () => {
         <Row className="my-4">
           <Col>
             <h1 className="title-color border-bottom-primary pb-3 fw-bold text-uppercase text-main-title">
-              {t("tribine.title")}
+              {t("tribine.title3")}
             </h1>
             {loading && <p>{t("info.loading")}</p>}
             {error && <p>{t("info.error", { error })}</p>}
@@ -108,4 +113,4 @@ const TribineList = () => {
   );
 };
 
-export default TribineList;
+export default Rimus;

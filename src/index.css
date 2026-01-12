@@ -103,7 +103,7 @@ ul {
 }
 
 .section-divider-large {
-  margin-top: 103px;
+  margin-top: 50px;
 }
 
 .section-divider-small {
@@ -112,4 +112,44 @@ ul {
 
 .section-divider-xs {
   margin-top: 25px;
+}
+.tribine-card-home-holder {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px 20px;
+}
+.tribine-card-home-holder img {
+  width: 100%;
+  object-fit: cover;
+  height: 156px;
+}
+
+.tribine-card-home-holder a {
+  color: #00296b;
+  text-decoration: none;
+}
+
+.tribine-card-home-holder h1 {
+  font-size: 25px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .tribine-card-home-holder {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 30px 20px;
+  }
+}
+.calendar-full-custom {
+  margin-top: 50px;
+}
+
+.calendar-full-custom a {
+  text-decoration: none;
+  color: #00296b;
+}
+.calendar-full-custom .fc-daygrid-event-harness {
+  cursor: pointer;
 }

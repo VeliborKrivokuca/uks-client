@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
-import { useTranslation } from "react-i18next";
-import { API_BASE_URL } from "../../services/api";
-import { Container, Row, Col } from "react-bootstrap";
+import "./AktuelnostiPreview.css";
 
+import { Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Slider from "../Slider/Slider";
+import { fetchBlogs } from "../../store/actions/aktuelnostiActions";
 import image from "../../assets/logo-image.png";
 import noPhotoImage from "../../assets/no-photo.jpg";
-import Clients from "../Clients/Clients";
-import Slider from "../Slider/Slider";
-
-import "./AktuelnostiPreview.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Aktuelnosti = () => {
   const { t, i18n } = useTranslation();
@@ -24,7 +24,7 @@ const Aktuelnosti = () => {
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 4;
+  const itemsPerPage = 10;
 
   const truncateText = (text, maxLength = 50) => {
     if (!text) return "";
@@ -74,7 +74,7 @@ const Aktuelnosti = () => {
   return (
     <Container className="my-4">
       <Clients />
-      <Slider />
+      {/* <Slider /> */}
 
       {/* Title & Subtitle */}
       <Row>
@@ -82,85 +82,58 @@ const Aktuelnosti = () => {
           <h2 className="text-start title-color text-main-title fw-bold text-uppercase px-2">
             {t("news.title")}
           </h2>
-          <p className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2">
-            {t("news.subtitle")}
-          </p>
+          <p className="text-start border-bottom-primary pb-3 title-color fw-normal text-subtitle px-2"></p>
         </Col>
       </Row>
 
       {/* Blog List */}
       <Row>
-        <Col className="p-0">
+        <Col>
           {loading && <p>{t("news.loading")}</p>}
           {error && <p>{t("news.error", { error })}</p>}
 
           {!loading && !error && currentBlogs.length > 0
             ? currentBlogs.map((blog) => (
-                <Row
-                  key={blog.anId}
-                  className="mb-4 px-4 flex-column-reverse flex-lg-row align-items-stretch mt-4"
-                >
-                  {/* Image Column */}
-                  <Col
-                    xs={12}
-                    lg={6}
-                    className="d-flex justify-content-center align-items-center py-3 py-lg-0 blog-image-wrapper"
-                  >
-                    <img
-                      src={
-                        blog.image
-                          ? `${API_BASE_URL}/images/${blog.image}`
-                          : noPhotoImage
-                      }
-                      alt={blog.title}
-                      className="shadow blog-img w-100 h-100 rounded"
-                    />
-                  </Col>
-
-                  {/* Text Column */}
-                  <Col
-                    xs={12}
-                    lg={6}
-                    className="d-flex flex-column justify-content-between ps-0 ps-lg-4"
-                  >
-                    <div>
-                      <div className="blog-header d-flex align-items-center mb-3">
-                        <div className="blog-logo rounded-circle border me-3">
-                          <img
-                            src={image}
-                            alt="Logo"
-                            className="blog-logo-img"
-                          />
-                        </div>
-                        <div className="blog-meta text-subtitle">
-                          <p className="primary-color mb-0">
-                            {t("news.metaAuthor")}
-                          </p>
-                          <p className="primary-color mb-0">
-                            {formatDateToDDMMYYYY(blog.publish_time)}
-                          </p>
-                        </div>
+                <div className="mb-4 pb-4">
+                  <div>
+                    <div className="blog-header d-flex align-items-center mb-3">
+                      <div className="blog-logo rounded-circle border me-3">
+                        <img src={image} alt="Logo" className="blog-logo-img" />
                       </div>
-                      <h3
-                        className="secondary-color cursor-pointer text-main-title"
-                        onClick={() => handleViewDetails(blog.translation_id)}
-                      >
-                        {blog.title}
-                      </h3>
-                      <p className="primary-color text-subtitle">
-                        {truncateText(blog.subtitle)}
-                      </p>
+                      <div className="blog-meta text-subtitle">
+                        <p className="primary-color mb-0">
+                          {t("news.metaAuthor")}
+                        </p>
+                        <p className="primary-color mb-0">
+                          {formatDateToDDMMYYYY(blog.publish_time)}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <button
-                        className="primary-bg rounded primary-bg shadow mt-3 text-white p-0 py-1 px-4 text-subtitle"
-                        onClick={() => handleViewDetails(blog.translation_id)}
-                      >
-                        {t("news.details")}
-                      </button>
-                    </div>
-                  </Col>
-                </Row>
+                    <h3
+                      className="secondary-color cursor-pointer text-main-title"
+                      onClick={() => handleViewDetails(blog.translation_id)}
+                    >
+                      {blog.title}
+                    </h3>
+                    <p
+                      className="primary-color text-subtitle"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          blog.description.length > 400
+                            ? `${blog.description.slice(0, 400)}...`
+                            : blog.description,
+                      }}
+                    ></p>
+                  </div>
+                  <div>
+                    <button
+                      className="primary-bg rounded primary-bg shadow mt-3 text-white p-0 py-1 px-4 text-subtitle"
+                      onClick={() => handleViewDetails(blog.translation_id)}
+                    >
+                      {t("news.details")}
+                    </button>
+                  </div>
+                </div>
               ))
             : /* Show this if not loading/error but no blogs */
               !loading && !error && <p>{t("news.noBlogs")}</p>}
@@ -172,7 +145,7 @@ const Aktuelnosti = () => {
         <Row>
           <Col>
             <nav aria-label="Page navigation">
-              <ul className="pagination justify-content-center section-divider-large">
+              <ul className="pagination justify-content-center section-divider-large d-flex flex-wrap">
                 {/* Previous Button */}
                 <li
                   className={`page-item ${currentPage === 1 ? "disabled" : ""}`}

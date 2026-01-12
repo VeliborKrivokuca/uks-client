@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { Container, Row, Col, Button } from "react-bootstrap";
-import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
-
-import { fetchTribineDetail } from "../../store/actions/tribineActions";
-import Clients from "../Clients/Clients";
-import { API_BASE_URL } from "../../services/api";
-import { useTranslation } from "react-i18next";
-
 import "./TribineDetail.css";
+
+import { Button, Col, Container, Row } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { API_BASE_URL } from "../../services/api";
+import Clients from "../Clients/Clients";
+import Lightbox from "yet-another-react-lightbox";
+import { fetchTribineDetail } from "../../store/actions/tribineActions";
+import { useParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const TribineDetail = () => {
   const { id } = useParams();
@@ -133,6 +133,8 @@ const TribineDetail = () => {
     );
   }
 
+  console.log(tribine);
+
   return (
     <Container fluid className="my-4">
       <Clients />
@@ -142,7 +144,7 @@ const TribineDetail = () => {
             {getThumbnailUrl() ? (
               <img
                 src={getThumbnailUrl()}
-                alt={tribine.tribine?.title}
+                alt={tribine.translation?.title}
                 className="detail-thumbnail mb-3"
               />
             ) : (
@@ -150,11 +152,13 @@ const TribineDetail = () => {
             )}
             <Row className="border-bottom-primary mx-0">
               <Col xs={12} lg="auto" className="px-0">
-                <h1 className="secondary-color">{tribine.tribine?.title}</h1>
+                <h1 className="secondary-color">
+                  {tribine.translation?.title}
+                </h1>
               </Col>
-              <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
+              {/* <Col xs={12} lg="auto" className="ps-0 ps-lg-3">
                 <h1 className="secondary-color">{monthAndYear}</h1>
-              </Col>
+              </Col> */}
             </Row>
           </Col>
         </Row>
@@ -172,8 +176,8 @@ const TribineDetail = () => {
               return (
                 <Button
                   key={`section-${index}`}
-                  variant={isActive ? "primary" : ""}
-                  className="w-100 text-start mb-2 primary-bg py-3 text-white"
+                  variant={isActive ? "primary-active" : ""}
+                  className="w-100 text-start mb-2 primary-bg py-3  button-classic-color"
                   onClick={() => handleTabClick(index)}
                 >
                   {content.name}
@@ -186,8 +190,8 @@ const TribineDetail = () => {
               return (
                 <Button
                   key={`gallery-${gallery.id}`}
-                  variant={isActive ? "primary" : ""}
-                  className="w-100 text-start mb-2 primary-bg py-3 text-white"
+                  variant={isActive ? "primary-active" : ""}
+                  className="w-100 text-start mb-2 primary-bg py-3  button-classic-color"
                   onClick={() =>
                     dispatch({
                       type: "SET_ACTIVE_TAB",
@@ -206,7 +210,7 @@ const TribineDetail = () => {
               activeTab === `section-${index}` ? (
                 <div
                   key={index}
-                  className="tab-content p-3 rounded shadow-sm mb-4"
+                  className="tab-content tab-content-detail-tribine mb-4"
                 >
                   <h3 className="secondary-color">{content.name}</h3>
                   <div

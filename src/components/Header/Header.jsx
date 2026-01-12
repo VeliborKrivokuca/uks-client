@@ -1,18 +1,19 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Header.css";
+
+import { Col, Container, Row } from "react-bootstrap";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import {
+  faBars,
   faEnvelope,
   faPhone,
   faSearch,
-  faBars,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link, useNavigate } from "react-router-dom";
-import LanguageSwitcher from "../LanguageSwitcher/LanuageSwitcher";
-import { useTranslation } from "react-i18next";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import LanguageSwitcher from "../LanguageSwitcher/LanuageSwitcher";
 import logo from "../../assets/logo.png";
-import "./Header.css";
+import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -101,7 +102,6 @@ const Header = () => {
   const renderMenu = (items) =>
     items.map((item) => {
       const isOpen = openMenus[item.id] || false;
-
       return (
         <li
           key={item.id}
@@ -146,7 +146,7 @@ const Header = () => {
     });
 
   return (
-    <header className="shadow-sm bg-white">
+    <header className="bg-white">
       <Container className="py-3">
         <Row className="align-items-center">
           <Col lg={3} md={6} sm={8} xs={8}>
@@ -228,7 +228,7 @@ const Header = () => {
                   {renderMenu(menuItems)}
                 </ul>
 
-                <div className="d-xxl-block d-none ms-auto">
+                {/* <div className="d-xxl-block d-none ms-auto">
                   <form
                     onSubmit={handleSearchSubmit}
                     className="input-group search-input-wrapper"
@@ -261,7 +261,7 @@ const Header = () => {
                       ))}
                     </ul>
                   )}
-                </div>
+                </div> */}
               </nav>
             </Col>
           </Row>

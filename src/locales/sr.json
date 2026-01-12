@@ -1,10 +1,13 @@
 {
     "header": {
+        "tribinaKompozitora": "Međunarodna tribina kompozitora",
+        "fesitval": "Festivali",
+        "rimus": "Rimus",
         "emailLabel": "Pošaljite nam email",
         "callUsLabel": "Pozovite nas",
         "searchPlaceholder": "Pretraga...",
         "mail": "composas@gmail.com",
-        "phone": "800-123-4567",
+        "phone": "+381 11 3340 894",
         "menuItems": [
             {
                 "id": "1",
@@ -26,15 +29,9 @@
             },
             {
                 "id": "4",
-                "name": "Razgovori",
+                "name": "Festivali",
                 "parentId": null,
-                "route": "razgovori"
-            },
-            {
-                "id": "5",
-                "name": "Tribine",
-                "parentId": null,
-                "route": "tribine"
+                "route": "festivali"
             },
             {
                 "id": "17",
@@ -43,22 +40,22 @@
                 "route": "nagrade"
             },
             {
-                "id": "18",
-                "name": "O nama",
-                "parentId": "2",
-                "route": "o-nama"
+                "id": "5",
+                "name": "Pisana reč",
+                "parentId": null,
+                "route": "razgovori"
             },
             {
-                "id": "19",
-                "name": "Pravni dokumenti",
-                "parentId": "2",
-                "route": "pravni-dokumenti"
+                "id": "50",
+                "name": "Međunarodna tribina kompozitora",
+                "parentId": 4,
+                "route": "tribina-kompozitora"
             },
             {
-                "id": "20",
-                "name": "Pravilnik o prijemu",
-                "parentId": "2",
-                "route": "pravilnik-o-prijemu"
+                "id": "51",
+                "name": "RIMUS",
+                "parentId": 4,
+                "route": "rimus"
             },
             {
                 "id": "21",
@@ -67,10 +64,58 @@
                 "route": "o-udruženju"
             },
             {
+                "id": "18",
+                "name": "Istorija",
+                "parentId": "2",
+                "route": "o-nama"
+            },
+            {
+                "id": "20",
+                "name": "Radna tela",
+                "parentId": "2",
+                "route": "radna-tela"
+            },
+            {
+                "id": "19",
+                "name": "Dokumenti",
+                "parentId": "2",
+                "route": "pravni-dokumenti"
+            },
+            {
                 "id": "22",
                 "name": "Preporuke",
                 "parentId": "2",
                 "route": "preporuke"
+            },
+            {
+                "id": "551",
+                "name": "Izdavačka delatnost",
+                "parentId": 0,
+                "route": ""
+            },
+            {
+                "id": "552",
+                "name": "Notna izdanja",
+                "parentId": 551,
+                "route": "notna-izdanja"
+            },
+            {
+                "id": "553",
+                "name": "Ostala izdanja",
+                "parentId": 551,
+                "route": "ostala-izdanja"
+            },
+            {
+                "id": "554",
+                "name": "Biblioteka",
+                "parentId": 551,
+                "route": "biblioteka"
+            },
+            {
+                "id": "555",
+                "name": "Kalendar događaja",
+                "parentId": null,
+                "route": "dogadjaji"
             }
         ]
     },
@@ -80,12 +125,15 @@
         "noData": "Nema informacija za prikazivanje"
     },
     "home": {
+        "calendar": "Kalendar događaja",
+        "calendar_all": "Pogledaj sve događaje",
+        "calendar_detail": "Detaljno",
         "members": "Naši članovi",
         "news": "Aktuelnosti",
-        "tribunes": "Tribine",
-        "allTribunes": "Sve tribine",
-        "talks": "Razgovori",
-        "allTalks": "Svi razgovori",
+        "tribunes": "Festivali",
+        "allTribunes": "Svi festivali",
+        "talks": "Pisana reč",
+        "allTalks": "Sve pisane reči",
         "awards": "Nagrade",
         "allAwards": "Sve nagrade",
         "allNews": "Sve aktuelnosti"
@@ -123,7 +171,7 @@
         "loading": "Učitavanje članova...",
         "errorLoading": "Greška prilikom učitavanja podataka. Molimo pokušajte ponovo.",
         "sectionTitle": "NAŠI ČLANOVI",
-        "sectionDescription": "Sekcija za članove udruženja pruža uvid u profile naših kompozitora, njihove biografije, dela i doprinose srpskoj muzičkoj sceni, ističući značaj njihovog stvaralaštva i uloge u očuvanju naše muzičke tradicije.",
+        "sectionDescription": "",
         "chooseSection": "Odaberite sekciju",
         "chooseName": "Upišite ime i prezime",
         "chooseNamePlaceholder": "Upišite ime",
@@ -134,23 +182,26 @@
         "profileButton": "Profil"
     },
     "talks": {
-        "title": "Razgovori",
-        "subtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti.",
-        "noTalks": "Trenutno nema dostupnih razgovora.",
+        "title": "Pisana reč",
+        "subtitle": "",
+        "noTalks": "Trenutno nema dostupnih pisanih reči.",
         "noImage": "Nema dostupne slike",
         "viewText": "Ceo tekst"
     },
     "tribine": {
-        "title": "Tribine",
-        "noTribines": "Nema dostupnih tribina za izabrani jezik.",
+        "title": "Festivali",
+        "desc": "<p>Međunarodna tribina kompozitora je najveći i najznačajniji festival savremene umetničke muzike u Srbiji, koji se održava svake godine početkom oktobra u Beogradu. Osnovan i organizovan od strane Udruženja kompozitora Srbije, festival svake godine uključuje 10-12 koncerata, kao i druge događaje, poput susreta sa kompozitorima, prezentacija muzičkih časopisa, notnih i CD izdanja, panel diskusija i radionica.</p><p>Veći deo koncertnog programa čine dela nastala tokom poslednjih pet godina, prijavljena putem javnog poziva za kompozicije, i odabrana od strane selektora festivala. Ostatak programa obuhvata širi vremenski okvir savremene muzike, kroz tematske segmente, koncerte antologijskih dela, programe koje predlažu solisti i ansambli na festivalu.</p><p>Članovi Udruženja kompozitora Srbije, kompozitori Ivana Stefanović, Milan Mihajlović i Srđan Hofman, pokrenuli su Međunarodnu tribinu kompozitora 1992. godine. Prve dve godine gradovi domaćini festivala bili su Sremski Karlovci i Novi Sad. Od 1994. godine, Međunardna tribina kompozitora premešta se u Beograd.</p><p>Ovde možete pronaći programe svih prethodnih izdanja festivala.</p>",
+        "title2": "Međunarodna tribina kompozitora",
+        "title3": "RIMUS",
+        "noTribines": "Nema dostupnih festivala za izabrani jezik.",
         "noThumbnail": "Nema dostupnog thumbnail-a"
     },
     "about": {
-        "title": "O nama",
+        "title": "Istorija",
         "subtitle": "Udruženje kompozitora Srbije",
         "boardTitle": "Udruženje kompozitora Srbije",
         "president": "Rade Radivojević, predsednik",
-        "description1": "Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja –1945. godine, do sada, predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u oblasti popularnog žanra.",
+        "description1": "<p>Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja 1945. godine predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u popularnim žanrovima.</p><p>Udruženje kompozitora Srbije ima 330 članova podeljenih u tri sekcije: Kompozitori ozbiljne muzike, Kompozitori džez i popularne muzike, Muzički pisci (muzikolozi, etnomuzikolozi i teoretičari muzike).</p><p>Udruženje kompozitora Srbije ulaže veliku energiju da srpsku muziku učini:</p><ul><li><strong>VIDLЈIVOM</strong>, tako što promoviše dela svojih članova, organizuje raznovrsne koncerte, kulturne i promotivne događaje i medijsku prezentaciju svog delovanja;</li><li><strong>DOSTUPNOM</strong>, tako što objavljuje partiture, CD i DVD izdanja i svoje publikacije nudi zainteresovanim muzičkim školama, institucijama kulture i pojedincima u zemlji i inostranstvu…</li><li><strong>PRISUTNOM</strong>, tako što čini sve da dela srpskih kompozitora budu na repertoaru simfonijskih orkestara, kamernih ansambala i solista, da njihova muzika živi na koncertnim podijumima i bude snimljena i emitovana na radiju i televiziji, pominjana u profesionalnim publikacijama, uključena što više u sistem muzičkog i opšteg obrazovanja;</li><li><strong>PREPOZNATLjIVOM</strong>, tako što organizuje festivale, tematske koncerte, autorske večeri, koncerte antologijskih dela, osigurava redovno prisustvo svojih članova na takmičenjima i festivalima širom sveta, neguje međunarodnu saradnju, učestvuje na internacionalnim skupovima.</li></ul><p>Neke od značajnih aktivnosti Udruženja kompozitora Srbije:</p><ul><li>Već 34 godine Udruženje organizujeme Međunarodnu tribinu kompozora, najveći i najznačajniji festival savremene umetničke muzike u Srbiji, gde kompozitori seriozne muzike mogu da prezentuju svoje stvaralaštvo;</li><li>Revija instrumentalne muzike Srbije – RIMUS pokrenuta je 2022. godine, kao podstrek kompozitorima popularne muzike da stvaraju instrumentale, „pesme bez reči“, u kojima kompozitorsko umeće dolazi do izražaja.</li><li>UKS dodeljuje četiri prestižne godišnje nagrade:<ul><li>Nagradu „Stevan Mokranjac“ za najbolje muzičko delo iz oblasti seriozne muzike koje je premijerno izvedeno u prethodnoj kalendarskoj godini;</li><li>Nagradu „Darko Kraljić“ za muzičko stvaralštvo u domenu popularne muzike;</li><li>Nagradu „Pavle Stefanović“ za muzičku esejistiku i kritiku;</li><li>Nagradu „Aleksandar Pavlović“, muzičarima, za promociju srpske muzike u zemlji i inostranstvu.</li></ul></li><li>Izdavačkom delatnošću Udruženje približava javnosti riznicu srpskog umetničkog stvaralaštva.</li></ul><p>Udruženje kompozitora Srbije član je međunarodnih organizacija: Međunarodno društva za savremenu muziku – <a href='https://iscm.org/' target='_blank'>ISCM</a> i Evropsko udruženje kompozitora i tekstopisaca – <a href='https://composeralliance.org/' target='_blank'>ECSA</a>.</p>",
         "vicePresident": "Svetlana Savić, potpredsednik",
         "executiveBoard": "Članovi Upravnog odbora:",
         "members": "Udruženje kompozitora Srbije ima 330 članova podeljenih u tri sekcije: Kompozitori ozbiljne muzike, Kompozitori džeza i popularne muzike, Muzički pisci (muzikolozi i etnomuzikolozi). Udruženje kompozitora Srbije ulaže veliku energiju da srpsku muziku učini:",
@@ -175,8 +226,8 @@
         "coordinator": "Predstavnik UKS-a u Koordinacionom odboru umetničkih udruženja je Dragomir Milenković."
     },
     "legalDocuments": {
-        "title": "Pravni dokumenti",
-        "subtitle": "Udruženje kompozitora Srbije",
+        "title": "Dokumenti ",
+        "subtitle": "Pravni dokumenti",
         "description": "Klikom na željeni link ispod možete preuzeti aktuelne verzije pravnih dokumenata Udruženja kompozitora Srbije:",
         "links": [
             {
@@ -191,12 +242,24 @@
     },
     "admission": {
         "title": "Pravilnik o prijemu",
-        "subtitle": "Udruženje kompozitora Srbije",
-        "description": "Klikom na link ispod možete preuzeti pravilnik u članstvo Udruženja kompozitora Srbije.",
+        "subtitle": "Pravilnik o prijemu",
+        "description": "Klikom na link ispod možete preuzeti Pravilnik prijema u članstvo Udruženja kompozitora Srbije.",
         "links": [
             {
                 "text": "Pravilnik prijema u članstvo - UKS",
-                "href": "#"
+                "href": "/festivali/83"
+            }
+        ]
+    },
+    
+    "admissionPage": {
+        "title": "Radna tela",
+        "subtitle": "Radna tela",
+        "description": "<p>Rade Radivojević, predsednik<br>Ana Gnjatović, potpredsednica</p><p><strong>Članovi Upravnog odbora:</strong></p><ul><li>Rade Radivojević</li><li>Ana Gnjatović</li><li>Vladimir Korać</li><li>Tatjana Milošević Mijanović</li><li>Svetlana Savić</li><li>Aleksandar Filipović</li><li>Dragoljub Ilić</li><li>Nevenka Leković</li><li>Biljana Leković</li><li>Sonja Marinković</li><li>Stefan Cvetković</li></ul><p><strong>Članovi Nadzornog odbora:</strong></p><ul><li>Milorad Marinković</li><li>Damjan Jovičin</li><li>Vladan Vučković Paja</li></ul><p><strong>Članovi Statusne komisije:</strong></p><ul><li>Rade Radivojević</li><li>Miroslav Miša Savić</li><li>Katarina Lazarević</li><li>Vladan Vučković Paja</li><li>Dragomir Milenković</li></ul>",
+        "links": [
+            {
+                "text": "Pravilnik prijema u članstvo - UKS",
+                "href": "/festivali/83"
             }
         ]
     },
@@ -204,11 +267,11 @@
         "awardTitle": "Nagrada",
         "pageTitle": "Nagrade",
         "moreInfo": "Više informacija",
-        "pageSubtitle": "Pratite najvažnije aktuelnosti, događaje, koncerte i dešavanja koji oblikuju svet srpske muzike i kompozitorske umetnosti."
+        "pageSubtitle": "<p>Udruženje kompozitora Srbije dodeljuje četiri prestižne godišnje nagrade:</p><ul><li><strong>Nagrada „Stevan Mokranjac“</strong> – za najbolje muzičko delo iz oblasti ozbiljne/seriozne muzike koje je premijerno izvedeno u prethodnoj kalendarskoj godini</li><li><strong>Nagrada „Darko Kraljić“</strong> – za muzičko stvaralaštvo u domenu popularne muzike</li><li><strong>Nagrada „Pavle Stefanović“</strong> – za muzičku esejistiku i kritiku</li><li><strong>Nagrada „Aleksandar Pavlović“</strong> – za promociju srpske muzike u zemlji i inostranstvu</li></ul>"
     },
     "slider": {
-        "supportTitle": "Podrška kompozitorskoj umetnosti Srbije",
-        "supportDescription": "Posvećeni smo očuvanju, promociji i razvoju kompozitorske umetnosti u Srbiji, pružajući podršku našim stvaraocima i čuvajući muzičku tradiciju.",
+        "supportTitle": "Udruženje kompozitora Srbije - od 1945. godine",
+        "supportDescription": "Negujemo i čuvamo srpsku kulturnu baštinu i promovišemo savremeno muzičko stvaralaštvo.",
         "noSlides": "Nema dostupnih slajdera"
     },
     "aboutAssociation": {
@@ -240,7 +303,7 @@
         "fax": "Fax",
         "pagesTitle": "Stranice",
         "socialMediaTitle": "Socijalne mreže",
-        "copyright": "Copyright © 2024. Udruženje kompozitora Srbije. Sva prava zadržava UKS",
+        "copyright": "©2025 www.composers.rs, Udruženje kompozitora Srbije. Izrada <a href='https://www.developers.rs' target='_blank' style='color:#fff'>Developers.rs</a>. Sva prava zadržana.",
         "pages": [
             {
                 "name": "Aktuelnosti",
@@ -255,12 +318,12 @@
                 "route": "clanovi"
             },
             {
-                "name": "Razgovori",
+                "name": "Pisana reč",
                 "route": "razgovori"
             },
             {
-                "name": "Tribine",
-                "route": "tribine"
+                "name": "Festivali",
+                "route": "festivali"
             },
             {
                 "name": "Nagrade",

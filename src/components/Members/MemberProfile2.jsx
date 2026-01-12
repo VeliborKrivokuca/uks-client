@@ -55,17 +55,6 @@ const MemberProfilePage = () => {
       <Clients />
       <Container className="section-divider">
         <Row>
-          <Col className="mt-1">
-            <h2 className="title-color fw-bold text-main-title">
-              {t("members.sectionTitle")}
-            </h2>
-            <p className="mb-4 primary-color border-bottom-primary pb-3 text-subtitle">
-              {t("members.sectionDescription")}
-            </p>
-          </Col>
-        </Row>
-
-        <Row>
           {acImage && (
             <Col md={3} className="mb-3">
               <img

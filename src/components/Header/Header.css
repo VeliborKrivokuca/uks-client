@@ -63,4 +63,7 @@ body {
   .logo-img {
     max-width: 150px;
   }
+  h1 {
+    font-size: 25px;
+  }
 }

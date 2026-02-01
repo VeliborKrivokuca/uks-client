@@ -58,6 +58,12 @@ body {
 
 @media screen and (max-width: 600px) {
   body {
-    padding-top: 100px;
-}
+    padding-top: 80px;
+  }
+  .logo-img {
+    max-width: 150px;
+  }
+  h1 {
+    font-size: 25px;
+  }
 }

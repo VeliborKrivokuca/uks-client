@@ -199,7 +199,13 @@ const Header = () => {
             <LanguageSwitcher />
           </Col>
 
-          <Col xs="auto" className="ms-auto d-xl-none">
+          <Col
+            xs="auto"
+            className="ms-auto d-xl-none d-flex align-items-center"
+          >
+            <div className="language-mobile-section">
+              <LanguageSwitcher />
+            </div>
             <button
               className="d-block d-xxl-none bg-transparent p-0 text-xl"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -218,7 +224,10 @@ const Header = () => {
       >
         <Container>
           <Row>
-            <Col>
+            {/* <Col lg={12} className="language-change">
+              <LanguageSwitcher />
+            </Col> */}
+            <Col lg={12}>
               <nav className="d-flex align-items-center">
                 <ul
                   className={`text-md d-flex flex-column flex-xl-row mb-0 ps-0 ms-0 ${

@@ -44,7 +44,7 @@ const Rimus = () => {
   const indexOfFirstTribine = indexOfLastTribine - itemsPerPage;
   const currentTribines = activeTribines.slice(
     indexOfFirstTribine,
-    indexOfLastTribine
+    indexOfLastTribine,
   );
 
   return (
@@ -59,7 +59,7 @@ const Rimus = () => {
               {t("tribine.title3")}
             </h1>
             {loading && <p>{t("info.loading")}</p>}
-            {error && <p>{t("info.error", { error })}</p>}
+            {/* {error && <p>{t("info.error", { error })}</p>} */}
           </Col>
         </Row>
 

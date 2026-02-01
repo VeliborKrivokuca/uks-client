@@ -12,7 +12,7 @@ export const fetchAllClients = createAsyncThunk(
   async () => {
     const response = await apiClient.get("/api/clients/get/all");
     return response.data;
-  }
+  },
 );
 
 export const fetchAllCalendar = createAsyncThunk(
@@ -20,7 +20,15 @@ export const fetchAllCalendar = createAsyncThunk(
   async () => {
     const response = await apiClient.get("/api/calendar/get/all");
     return response.data;
-  }
+  },
+);
+
+export const fetchAllCalendarHomepage = createAsyncThunk(
+  "calendar/fetchAll/homepage",
+  async () => {
+    const response = await apiClient.get("/api/calendar/get/all/homepage");
+    return response.data;
+  },
 );
 
 export const fetchDocuments = createAsyncThunk(
@@ -28,7 +36,7 @@ export const fetchDocuments = createAsyncThunk(
   async (namePage) => {
     const response = await apiClient.get(`/api/documents/list/get/${namePage}`);
     return response.data;
-  }
+  },
 );
 
 export const fetchPageDetail = createAsyncThunk(
@@ -36,7 +44,7 @@ export const fetchPageDetail = createAsyncThunk(
   async (id) => {
     const response = await apiClient.get(`/api/pages/get/items/${id}`);
     return response.data;
-  }
+  },
 );
 
 const pagesSlice = createSlice({
@@ -89,6 +97,19 @@ const pagesSlice = createSlice({
         state.calendar = action.payload;
       })
       .addCase(fetchAllCalendar.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // calendar
+      .addCase(fetchAllCalendarHomepage.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchAllCalendarHomepage.fulfilled, (state, action) => {
+        state.loading = false;
+        state.calendar = action.payload;
+      })
+      .addCase(fetchAllCalendarHomepage.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       })

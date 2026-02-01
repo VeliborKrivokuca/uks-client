@@ -6,8 +6,10 @@ import Clients from "../components/Clients/Clients";
 import Slider from "../components/Slider/Slider";
 import { fetchDocuments } from "../store/slices/pagesSlice";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const NotnaIzdanja = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const { documents, loading, error } = useSelector((state) => state.pages);
 
@@ -22,9 +24,12 @@ const NotnaIzdanja = () => {
         <Row className="my-4">
           <Col>
             <h1 className="px-1 title-color fw-bold text-main-title text-uppercase">
-              Notna izdanja
+              {t("notnaIzdanja.title")}
             </h1>
-            <p className="px-1 text-start border-bottom-primary pb-3 title-color text-subtitle"></p>
+            <p
+              className="px-1 text-start border-bottom-primary pb-3 title-color text-subtitle"
+              dangerouslySetInnerHTML={{ __html: t("notnaIzdanja.subtitle") }}
+            ></p>
           </Col>
         </Row>
 

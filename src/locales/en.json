@@ -1,6 +1,6 @@
 {
   "header": {
-    "tribinaKompozitora": "Composers Forum",
+    "tribinaKompozitora": "Composers' Review",
     "fesitval": "Festivals",
     "rimus": "Rimus",
     "emailLabel": "Send us an email",
@@ -47,7 +47,7 @@
             },
             {
                 "id": "50",
-                "name": "Composers Forum",
+                "name": "International Review of Composers",
                 "parentId": 4,
                 "route": "tribina-kompozitora"
             },
@@ -130,10 +130,10 @@
     "calendar_detail": "More Details",
     "members": "Our Members",
     "news": "News",
-    "tribunes": "Tribunes",
-    "allTribunes": "All tribunes",
-    "talks": "Written Word",
-    "allTalks": "All Written Words",
+    "tribunes": "Festivals",
+    "allTribunes": "All festivals",
+    "talks": "Words on Writing",
+    "allTalks": "All Words on Writing",
     "awards": "Awards",
     "allAwards": "All Awards",
     "allNews": "All News"
@@ -144,7 +144,7 @@
     "details": "More details →",
     "composers": "Composers Association of Serbia",
     "noBlogs": "No available news",
-    "metaAuthor": "Serbian Composers Association"
+    "metaAuthor": "Composers' Association of Serbia"
   },
   "gallery": {
     "title": "Gallery",
@@ -182,18 +182,18 @@
     "profileButton": "Profile"
   },
   "tribine": {
-    "title": "Panels",
+    "title": "Festivals",
     "desc": "<p>The International Review of Composers is the biggest and most important festival of contemporary art music in Serbia, held annually at the beginning of October in Belgrade. Founded and produced by the Composers' Association in Serbia, the festival features 10-12 concerts every year, along with other events, such as meetings with composers, presentations of music periodicals, sheet music, and CD editions, panel discussions, and workshops.</p><p>The majority of the concert program consists of works created over the past five years, submitted via a public call for scores, and selected by the festival curator. The rest of the program encompasses a broader time frame of contemporary music through thematic segments, concerts of anthological works, and programs proposed by festival soloists or ensembles.</p><p>The members of the Composers' Association of Serbia, composers Ivana Stefanović, Milan Mihajlović, and Srđan Hofman, first initiated the International Review of Composers in 1992. Towns Sremski Karlovci and Novi Sad hosted the first two editions of the festival. From 1994, the International Review of Composers relocated to Belgrade.</p><p>You can find the programs of all previous editions of the festival here.</p>",
     "title2": "International Review of Composers",
     "title3": "RIMUS",
-    "noTribines": "No panels available for the selected language.",
+    "noTribines": "No festivals available for the selected language.",
     "noThumbnail": "No Thumbnail Available",
     "date": "Date"
   },
   "talks": {
-    "title": "Written Word",
+    "title": "Words on Writing",
     "subtitle": "",
-    "noTalks": "No Written Word available at the moment.",
+    "noTalks": "Additional content available in Serbian.",
     "noImage": "No Image Available",
     "viewText": "View text"
   },
@@ -293,8 +293,8 @@
   },
   "aboutAssociation": {
     "title": "About the Association",
-    "subtitle": "Preserving tradition and inspiring the future of Serbian music",
-    "description": "The Serbian Composers' Association is dedicated to promoting, preserving, and advancing the art of composition, supporting our creators, and nurturing the richness of musical tradition.",
+    "subtitle": "",
+    "description": "The Composers' Association of Serbia is a representative and fruitful organization that, since its foundation in 1945, has been dedicated to nurturing and preserving Serbian cultural heritage as well as promoting contemporary musical artistry in both serious music and popular music genres.",
     "viewDetails": "View Details"
   },
   "stats": {
@@ -335,7 +335,7 @@
         "route": "clanovi"
       },
       {
-        "name": "Written Word",
+        "name": "Words on Writing",
         "route": "razgovori"
       },
       {
@@ -359,5 +359,8 @@
   "biblioteka": {
       "title": "LIBRARY",
       "subtitle": "The Serbian Composers' Association holds a large number of scores: from those for solo instruments to those for symphony orchestra. You can borrow or photocopy the available scores at the premises of the Serbian Composers' Association. <br/><br/>Part of our library fund is also a rich archive of audio and video recordings from concerts held within the International Review of Composers."
+  },
+  "calendar": {
+    "noEvents": "There are no planned events at this time."
   }
 }

@@ -23,7 +23,6 @@ const SectionHeader = ({
           <Link to={"/tribina-kompozitora"}>
             <button
               className="rounded px-3 text-light primary-bg py-1 shadow mt-md-0 mt-3 text-subtitle"
-              onClick={onButtonClick}
               style={{ marginRight: "30px" }}
             >
               {t("header.tribinaKompozitora")}{" "}
@@ -33,7 +32,6 @@ const SectionHeader = ({
           <Link to={"/rimus"}>
             <button
               className="rounded px-3 text-light primary-bg py-1 shadow mt-md-0 mt-3 text-subtitle"
-              onClick={onButtonClick}
               style={{ marginRight: "30px" }}
             >
               {t("header.rimus")}{" "}

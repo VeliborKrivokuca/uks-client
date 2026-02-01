@@ -4,11 +4,14 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { Col, Container, Row } from "react-bootstrap";
 import React, { useEffect, useMemo } from "react";
+import {
+  fetchAllCalendar,
+  fetchAllCalendarHomepage,
+} from "../store/slices/pagesSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import Slider from "react-slick";
-import { fetchAllCalendar } from "../store/slices/pagesSlice";
 import { useTranslation } from "react-i18next";
 
 const KalendarList = () => {
@@ -16,7 +19,7 @@ const KalendarList = () => {
   const { calendar, loading, error } = useSelector((state) => state.pages);
 
   useEffect(() => {
-    dispatch(fetchAllCalendar());
+    dispatch(fetchAllCalendarHomepage());
   }, [dispatch]);
 
   const { t } = useTranslation();
@@ -63,6 +66,7 @@ const KalendarList = () => {
 
   return (
     <Container className="calendar-list-content-compontent">
+      {parsedEvents?.length === 0 && <div>{t("calendar.noEvents")}</div>}
       <Slider
         dots={true}
         infinite={true}

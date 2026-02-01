@@ -276,8 +276,8 @@
     },
     "aboutAssociation": {
         "title": "O udruženju",
-        "subtitle": "Čuvamo tradiciju i inspirišemo budućnost srpske muzike",
-        "description": "Udruženje kompozitora Srbije posvećeno je promociji, očuvanju i razvoju kompozitorske umetnosti, pružajući podršku našim stvaraocima i negujući bogatstvo muzičke tradicije.",
+        "subtitle": "",
+        "description": "Udruženje kompozitora Srbije predstavlja reprezentativno i plodno udruženje koje, od svog osnivanja 1945. godine predano radi na negovanju i očuvanju srpske kulturne baštine i promociji savremenog muzičkog stvaralaštva, kako u domenu umetničke muzike, tako i u popularnim žanrovima.",
         "viewDetails": "Više detalja"
     },
     "stats": {
@@ -303,7 +303,7 @@
         "fax": "Fax",
         "pagesTitle": "Stranice",
         "socialMediaTitle": "Socijalne mreže",
-        "copyright": "©2025 www.composers.rs, Udruženje kompozitora Srbije. Izrada <a href='https://www.developers.rs' target='_blank' style='color:#fff'>Developers.rs</a>. Sva prava zadržana.",
+        "copyright": "©2026 www.composers.rs, Udruženje kompozitora Srbije. Izrada <a href='https://www.enio.rs' target='_blank' style='color:#fff'>Enio.rs</a>. Sva prava zadržana.",
         "pages": [
             {
                 "name": "Aktuelnosti",
@@ -342,5 +342,8 @@
     "biblioteka": {
         "title": "Biblioteka",
         "subtitle": "U Udruženju kompozitora Srbije nalazi se veliki broj partitura: od onih za solo instrumente do onih za simfonijski orkestar. Dostupne partiture možete pozajmiti ili fotokopirati u prostorijama Udruženja kompozitora Srbije. <br/><br/>Deo našeg bibliotečkog fonda čini i bogata arhiva tonskih i video zapisa sa koncerata održanih u okviru Međunarodne tribine kompozitora."
-    }
-    }
+    },
+  "calendar": {
+    "noEvents": "U ovom trenutku nema planiranih događaja."
+  }
+}

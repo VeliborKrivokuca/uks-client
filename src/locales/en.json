@@ -95,21 +95,21 @@
             },
             {
                 "id": "552",
-                "name": "Noted Editions",
+                "name": "Sheet music",
                 "parentId": 551,
-                "route": "noted-editions"
+                "route": "notna-izdanja"
             },
             {
                 "id": "553",
-                "name": "Other Editions",
+                "name": "Other publications",
                 "parentId": 551,
-                "route": "other-editions"
+                "route": "ostala-izdanja"
             },
             {
                 "id": "554",
                 "name": "Library",
                 "parentId": 551,
-                "route": "library"
+                "route": "biblioteka"
             },
             {
                 "id": "600",
